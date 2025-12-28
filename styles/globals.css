@@ -3,6 +3,8 @@
 :root {
   --background: #222222;
   --foreground: #f1f0ec;
+  --footer-background: #171717;
+  --footer-foreground: #6D6D6D;
   --accent: #eb742a;
 }
 
@@ -16,6 +18,8 @@
   :root {
     --background: #f1f0ec;
     --foreground: #222222;
+    --footer-background: #171717;
+    --footer-foreground: #6D6D6D;
   }
 }
 
@@ -25,6 +29,15 @@ body {
   font-family: var(--font-regular);
 }
 
-.nav:hover {
+header nav a:hover {
   color: var(--accent);
+}
+
+.header .nav a.active {
+  color: var(--accent);
+}
+
+footer {
+  background: var(--footer-background);
+  color: var(--footer-foreground);
 }

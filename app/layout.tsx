@@ -23,9 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${robotoSlab.className} ${robotoSlab.className} antialiased`}>
-      <Header />
-      <body>{children}</body>
-      <Footer />
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
