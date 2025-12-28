@@ -6,10 +6,10 @@ export default function ModellingPage() {
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
-          src="/public/LogoOffWhite.png"
+          src="/lamps/1.png"
           alt="Simona Barboiu"
-          width={1600}
-          height={2000}
+          width={200}
+          height={200}
           priority
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">

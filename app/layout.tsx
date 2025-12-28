@@ -7,7 +7,6 @@ import "@/styles/globals.css";
 import path from "path";
 
 const robotoSlab = Roboto_Slab({
-
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '600', '700', '800', '900'],
 });
@@ -24,9 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${robotoSlab.className} ${robotoSlab.className} antialiased`}>
-      <Header/>
+      <Header />
       <body>{children}</body>
-      <Footer/>
+      <Footer />
     </html>
   );
 }
