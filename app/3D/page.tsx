@@ -3,10 +3,13 @@ import Link from "next/link";
 
 export default function ModellingPage() {
   return (
-    <main>
+    <main >
       <h1>3D</h1>
       <p>...</p>
-      <Link href="/3D/Viz/VintageFlowerLamps">Vintage Flower Lamps</Link>
+      <div className="mb-8 flex flex-col gap-4">
+        <Link href="/3D/Viz/vintageFlowerLamps">Vintage Flower Lamps</Link>
+        <Link href="/3D/games/paxvr">PaxVR</Link>
+      </div>
     </main>
   );
 }

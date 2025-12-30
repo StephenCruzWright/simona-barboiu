@@ -9,6 +9,8 @@ export type Crumb = {
 export const SEGMENT_LABELS: Record<string, string> = {
   "2d": "2D",
   "3d": "3D",
+  games: "Games",
+  illustration: "Illustration",
   viz: "viz",
   work: "Work",
   about: "About",
@@ -16,6 +18,7 @@ export const SEGMENT_LABELS: Record<string, string> = {
 
 // Full path overrides (useful for special cases/projects)
 export const PATH_LABELS: Record<string, string> = {
+  "/3d/games/paxvr": "PaxVR",
   //  "/3d/viz/vintageflowerlamps": "Vintage Flower Lamps",
 };
 
