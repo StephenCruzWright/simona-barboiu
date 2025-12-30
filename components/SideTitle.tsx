@@ -9,7 +9,7 @@ export default function SideTitle() {
   const title = crumbs[crumbs.length - 1]?.label ?? "";
 
   return (
-    <div className="h-full">
+    <div className="h-full pointer-events-none">
       <div className="origin-left -rotate-90 whitespace-nowrap text-4xl font-semibold tracking-wide opacity-90">
         {title}
       </div>
