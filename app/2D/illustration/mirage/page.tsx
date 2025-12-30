@@ -1,8 +1,8 @@
 
-export default function ExamplePage() {
+export default function MiragePage() {
   return (
     <main>
-      <h1>example</h1>
+      <h1>Mirage</h1>
       <p>...</p>
     </main>
   );

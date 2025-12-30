@@ -3,12 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Roboto_Slab } from "next/font/google";
 import "@/styles/globals.css";
-
-import path from "path";
 import RoutingNav from "@/components/RoutingNav";
-import SideTitle from "@/components/SideTitle";
-import { pageToRoute } from "next/dist/build/utils";
-import { title } from "process";
+
 
 const robotoSlab = Roboto_Slab({
   subsets: ['latin'],
