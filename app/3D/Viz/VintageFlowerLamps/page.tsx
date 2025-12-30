@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function VintageFlowerLampsPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center ">
+    <div className="min-h-screen items-center justify-center ">
       <div className="text-4xl font-bold pointer-events-none">
         <Image
           className="dark:invert"
