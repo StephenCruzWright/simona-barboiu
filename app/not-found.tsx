@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-20 bg-white dark:bg-black min-h-screen flex flex-col items-center justify-center text-center">
+    <main className="px-4 py-20 bg-white dark:bg-black min-h-screen flex flex-col items-center justify-center text-center">
       <h1 className="text-3xl font-semibold">404 — Page not found</h1>
       <p className="mt-4 opacity-80">
         The page you’re looking for doesn’t exist (or it was moved).

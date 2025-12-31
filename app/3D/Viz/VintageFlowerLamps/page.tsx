@@ -1,3 +1,4 @@
+import ScrollModel from "@/components/ScrollModel";
 import Image from "next/image";
 
 export default function VintageFlowerLampsPage() {
@@ -12,6 +13,7 @@ export default function VintageFlowerLampsPage() {
           height={200}
           priority
         />
+        <ScrollModel path="/lamps/array" />
       </div>
     </div>
   );

@@ -48,3 +48,36 @@ footer {
   background: var(--footer-background);
   color: var(--footer-foreground);
 }
+
+.scrollmodel-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  outline: none;
+}
+
+.scrollmodel-slider::-moz-range-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.scrollmodel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 54px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 0;
+}
+
+.scrollmodel-slider::-moz-range-thumb {
+  width: 54px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 0;
+}
