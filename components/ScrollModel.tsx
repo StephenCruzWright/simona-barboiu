@@ -10,7 +10,7 @@ function pad4(n: number) {
 export default function ScrollModel({
   path,
   frameCount = 30,
-  ext = "png",
+  ext = "webp",
   width = 900,
   height = 1200,
   className = "",
@@ -91,7 +91,7 @@ export default function ScrollModel({
       />
 
       {/* Slider (clickable + draggable) */}
-      <div className="absolute bottom-3 left-0 right-0 px-4">
+      <div className="absolute bottom-3 left-0 right-0 px-4 z-50 pointer-events-auto">
         <input
           className="scrollmodel-slider w-full"
           type="range"

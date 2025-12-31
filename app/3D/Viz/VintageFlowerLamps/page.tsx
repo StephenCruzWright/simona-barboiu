@@ -7,7 +7,7 @@ export default function VintageFlowerLampsPage() {
       <div className="text-4xl font-bold pointer-events-none">
         <Image
           className="dark:invert"
-          src="/lamps/1.png"
+          src="/lamps/1.webp"
           alt="Simona Barboiu"
           width={500}
           height={200}
