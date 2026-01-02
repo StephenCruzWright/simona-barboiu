@@ -6,7 +6,7 @@ export default function IllustrationsPage() {
     <main>
       <h1>2D</h1>
       <p>...</p>
-      <Link href="/2D/illustration/mirage"> Go to Mirage</Link>
+      <Link href="/2d/illustration/mirage"> Go to Mirage</Link>
     </main>
   );
 }
