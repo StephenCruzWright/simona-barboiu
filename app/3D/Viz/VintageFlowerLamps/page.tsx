@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function VintageFlowerLampsPage() {
   return (
-    <div className="min-h-screen items-center justify-center">
+    <div className="min-h-screen items-center justify-center flex flex-col gap-8 py-8">
       {/* Title Image + ScrollModel next to each other on desktop, but on top of each other on mobile */}
       <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 p-4 md:p-8">
         <Image
@@ -20,7 +20,7 @@ export default function VintageFlowerLampsPage() {
       </div>
       {/* description of image, mobile friendly */}
       <div className="flex flex-fit">
-        <p className="">
+        <p>
           Inspired by 1980s ornamental decoration, this lamp pack includes
           four floral-motif models. I modeled them in Blender, rendered in
           Blender and Twinmotion, textured by hand in Substance Painter,
