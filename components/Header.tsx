@@ -45,17 +45,17 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row md:text-lg lg:text-xl xl:text-2xl">
           <div className="flex flex-col">
-            <Link href="/3D">3D</Link>
+            <Link href="/3d">3D</Link>
             <div className="flex flex-col text-sm">
-              <Link href="/3D/#ProductViz">Product viz</Link>
-              <Link href="/3D/#Games">Games & Interactive apps</Link>
+              <Link href="/3d/#product">Product viz</Link>
+              <Link href="/3d/#games">Games & Interactive apps</Link>
             </div>
           </div>
 
           <div className="flex flex-col">
-            <Link href="/2D">2D</Link>
+            <Link href="/2d">2D</Link>
             <div className="flex text-sm">
-              <Link href="/2D/#Illustration">Illustration</Link>
+              <Link href="/2d/#illustration">Illustration</Link>
             </div>
           </div>
 
@@ -119,14 +119,14 @@ export default function Header() {
 
             <nav className="mt-6 flex flex-col gap-6 text-lg">
               <div className="flex flex-col gap-2">
-                <Link href="/3D" onClick={close}>3D</Link>
-                <Link href="/3D/#ProductViz" onClick={close}>Product viz</Link>
-                <Link href="/3D/#Games" onClick={close}>Games &amp; Interactive apps</Link>
+                <Link href="/3d" onClick={close}>3D</Link>
+                <Link href="/3d/#product" onClick={close}>Product viz</Link>
+                <Link href="/3d/#games" onClick={close}>Games &amp; Interactive apps</Link>
               </div>
 
               <div className="flex flex-col gap-2">
-                <Link href="/2D" onClick={close}>2D</Link>
-                <Link href="/2D/#Illustration" onClick={close}>Illustration</Link>
+                <Link href="/2d" onClick={close}>2D</Link>
+                <Link href="/2d/#illustration" onClick={close}>Illustration</Link>
               </div>
 
               <Link href="/work" onClick={close}>Work Experience</Link>

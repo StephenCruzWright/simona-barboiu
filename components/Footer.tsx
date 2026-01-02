@@ -7,9 +7,9 @@ export default function Footer() {
       <nav className="flex flex-row justify-between text-sm md:text-md lg:text-l xl:text-xl">
         <div className="flex flex-row gap-12 mr-8">
           <div className="flex flex-col">
-            <Link href="/3D/#ProductViz">Product viz</Link>
-            <Link href="/3D/#Games">Games & Interactive apps</Link>
-            <Link href="/2D/#Illustration">Illustration</Link>
+            <Link href="/3d/#product">Product viz</Link>
+            <Link href="/3d/#games">Games & Interactive apps</Link>
+            <Link href="/2d/#illustration">Illustration</Link>
           </div>
           <div className="flex flex-col">
             <Link href="/work">Work Experience</Link>
