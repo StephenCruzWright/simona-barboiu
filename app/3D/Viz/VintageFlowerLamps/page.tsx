@@ -34,7 +34,7 @@ export default function VintageFlowerLampsPage() {
           className="dark:invert pointer-events-none"
           src="/lamps/2.webp"
           alt="Simona Barboiu"
-          width={350}
+          width={300}
           height={400}
           draggable={false}
           priority
@@ -43,7 +43,7 @@ export default function VintageFlowerLampsPage() {
           className="dark:invert pointer-events-none"
           src="/lamps/3.webp"
           alt="Simona Barboiu"
-          width={350}
+          width={300}
           height={400}
           draggable={false}
           priority
@@ -52,7 +52,7 @@ export default function VintageFlowerLampsPage() {
           className="dark:invert pointer-events-none"
           src="/lamps/4.webp"
           alt="Simona Barboiu"
-          width={350}
+          width={300}
           height={400}
           draggable={false}
           priority
@@ -77,31 +77,13 @@ export default function VintageFlowerLampsPage() {
       </div>
       {/* Title + 2 images + decription stacked artistically on desktop, but on top of each other on mobile */}
       <div className="flex justify-left gap-8">
-        <div className="self-center absolute sm:flex flex-col mx-auto right-20 gap-4 md:gap-16 p-4 md:p-8 flex flex-col z-10">
-          <Image
-            className="dark:invert pointer-events-none"
-            src="/lamps/Animation.gif"
-            alt="Simona Barboiu"
-            width={400}
-            height={400}
-            draggable={false}
-            priority
-          />
-          <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" target="_blank" rel="noopener noreferrer">
-            <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition">
-              Go to Product Page
-            </button>
-          </a>
-        </div>
-        <div>
-          <h2 className="self-center text-2xl md:text-4xl font-bold">
+        <div className="">
+          <h2 className="text-2xl md:text-4xl font-bold">
             Unreal Engine Integration
           </h2>
-          <p className="max-w-md py-4">
+          <p className="max-w-md py-4 flex flex-col items-center justify-center">
             The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. The Blueprint includes an on/off toggle for the light and an intensity adjustement.
           </p>
-
-
           <Image
             className="dark:invert pointer-events-none"
             src="/lamps/Unreal.webp"
@@ -111,9 +93,24 @@ export default function VintageFlowerLampsPage() {
             draggable={false}
             priority
           />
-
-
+          
         </div>
+        <div className="lg:absolute mx-auto right-20 gap-4 md: absolute gap-16 p-4 md:p-8 flex flex-col z-10">
+            <Image
+              className="dark:invert pointer-events-none item-center"
+              src="/lamps/Animation.gif"
+              alt="Simona Barboiu"
+              width={400}
+              height={400}
+              draggable={false}
+              priority
+            />
+            <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack">
+              <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition">
+                Go to Product Page
+              </button>
+            </a>
+          </div>
       </div>
     </div>
   );
