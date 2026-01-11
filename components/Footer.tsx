@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-center ml-auto">
           <Link href="/">
             <Image
-              className="dark:invert opacity-70 hover:opacity-100 transition-opacity duration-910"
+              className="opacity-70 hover:opacity-100 transition-opacity duration-910"
               src="/LogoOffWhite.png"
               alt="Simona Barboiu"
               width={160}

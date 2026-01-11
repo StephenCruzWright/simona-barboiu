@@ -3,10 +3,6 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-function pad4(n: number) {
-    return String(n).padStart(4, "0");
-}
-
 export default function ScrollModel({
     path,
     frameCount = 30,
@@ -27,7 +23,7 @@ export default function ScrollModel({
     const images = useMemo(() => {
         const base = path.replace(/\/$/, "");
         return Array.from({ length: frameCount }, (_, i) => {
-            const frame = pad4(i + 1); // 0001..0030
+            const frame = String(i + 1).padStart(4, "0");
             return `${base}/${frame}.${ext}`;
         });
     }, [path, frameCount, ext]);

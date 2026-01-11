@@ -33,7 +33,6 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" onClick={close} className="shrink-0">
           <Image
-            className="dark:invert"
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
             width={160}

@@ -19,7 +19,7 @@ export const SEGMENT_LABELS: Record<string, string> = {
 // Full path overrides (useful for special cases/projects)
 export const PATH_LABELS: Record<string, string> = {
   "/3d/games/paxvr": "PaxVR",
-  //  "/3d/viz/vintageflowerlamps": "Vintage Flower Lamps",
+  "/3d/viz/vintage-flower-lamps": "Vintage Flower Lamps",
 };
 
 export function titleCaseFromSlug(slug: string) {
