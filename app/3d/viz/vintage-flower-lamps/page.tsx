@@ -5,8 +5,8 @@ import Image from "next/image";
 export default function VintageFlowerLampsPage() {
   return (
     <div className="min-h-screen items-center justify-center flex flex-col gap-8">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 p-4 md:p-8">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 p-4 md:p-8">
           <Image
             className="pointer-events-none"
             src="/lamps/1.webp"
@@ -30,7 +30,7 @@ export default function VintageFlowerLampsPage() {
 
       <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8">
         <Image
-          className="pointer-events-none flex-fit"
+          className="pointer-events-none"
           src="/lamps/2.webp"
           alt="Simona Barboiu"
           width={300}
@@ -89,13 +89,13 @@ export default function VintageFlowerLampsPage() {
             src="/lamps/Unreal.webp"
             alt="Simona Barboiu"
             width={600}
-            height={1400}
+            height={400}
             draggable={false}
             priority
           />
 
         </div>
-        <div className="lg:absolute mx-auto right-20 gap-4 md: absolute gap-16 p-4 md:p-8 flex flex-col z-10">
+        <div className="lg:absolute mx-auto right-0 gap-4 md: absolute gap-16 p-4 md:p-8 flex flex-col z-10">
           <Image
             className="pointer-events-none item-center"
             src="/lamps/Animation.gif"
@@ -106,7 +106,7 @@ export default function VintageFlowerLampsPage() {
             priority
           />
           <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack">
-            <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition duration-300">
+            <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition duration-300 ease-in-out">
               Go to Product Page
             </button>
           </a>

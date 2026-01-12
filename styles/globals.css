@@ -28,6 +28,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-regular);
   min-height: screen;
+  justify-items: auto;
 }
 
 /* 
