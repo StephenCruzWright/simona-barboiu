@@ -31,7 +31,7 @@ export default function ScrollToTop() {
                     onClick={scrollToTop}
                     className="p-3 bg-gray-500 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 transition duration-300 ease-in-out rounded-full shadow-lg"
                 >
-                    ↑
+                    ⇮
                 </button>
             )}
         </div>

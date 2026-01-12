@@ -1,4 +1,3 @@
-import SideTitle from "@/components/SideTitle";
 
 export default function ThreeDLayout({ children }: { children: React.ReactNode }) {
   return (

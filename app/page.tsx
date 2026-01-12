@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center py-32 px-16 sm:items-start h-screen">
+      <main className="flex w-full max-w-3xl flex-col items-center py-32 px-16 sm:items-start h-screen mx-auto max-w-6xl px-6 sm:px-16">
         Home
         <a href="/3d/viz/vintage-flower-lamps" >
 

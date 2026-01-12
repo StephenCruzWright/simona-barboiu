@@ -28,7 +28,7 @@ export default function GreekHousePage() {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8 width-full">
+      <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8 w-full">
         <Image
           className="pointer-events-none"
           src="/lamps/2.webp"

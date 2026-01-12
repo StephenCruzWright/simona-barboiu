@@ -105,11 +105,11 @@ export default function Header() {
             id={panelId}
             className="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-background p-6 shadow-xl"
           >
-            <div className="flex items-center justify-between">
-              <span className="text-sm opacity-70">Menu</span>
+            <div className="flex items-center justify-between text-xl">
+              <div/>
               <button
                 type="button"
-                className="rounded-md p-2"
+                className="rounded-md px-6 py-2 hover:opacity-70 transition-opacity"
                 aria-label="Close menu"
                 onClick={close}
               >
@@ -118,19 +118,22 @@ export default function Header() {
             </div>
 
             <nav className="mt-6 flex flex-col gap-6 text-lg">
-              <div className="flex flex-col gap-2">
+              <div>
                 <Link href="/3d" onClick={close}>3D</Link>
-                <Link href="/3d/#product" onClick={close}>Product viz</Link>
-                <Link href="/3d/#games" onClick={close}>Games &amp; Interactive apps</Link>
-                <Link href="/3d/#environments">Environments</Link>
-
+                <div className="flex flex-col gap-0 text-sm">
+                  <Link href="/3d/#product" onClick={close}>Product viz</Link>
+                  <Link href="/3d/#games" onClick={close}>Games &amp; Interactive apps</Link>
+                  <Link href="/3d/#environments">Environments</Link>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div>
                 <Link href="/2d" onClick={close}>2D</Link>
-                <Link href="/2d/#illustration" onClick={close}>Illustration</Link>
+                <div className="flex flex-col gap-0 text-sm">
+                  <Link href="/2d/#illustration" onClick={close}>Illustration</Link>
+                </div>
               </div>
-
+              
               <Link href="/work" onClick={close}>Work Experience</Link>
               <Link href="/about" onClick={close}>About &amp; Contact</Link>
             </nav>

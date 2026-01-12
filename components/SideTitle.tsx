@@ -1,3 +1,5 @@
+// components/SideTitle.tsx
+
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -8,7 +10,15 @@ export default function SideTitle() {
   const title = crumbs[crumbs.length - 1]?.label ?? "";
 
   return (
-    <div className="origin-left -rotate-90 text-5xl sm:text-l font-semibold tracking-wide opacity-90 h-full pointer-events-none flex items-center absolute left-6 z-10 justify-end">
+    <div
+      className="
+        absolute top-1/2 left-0 -translate-y-1/2
+        origin-left -rotate-90
+        whitespace-nowrap
+        text-5xl font-semibold opacity-90
+        pointer-events-none
+      "
+    >
       {title}
     </div>
   );
