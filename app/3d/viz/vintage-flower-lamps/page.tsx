@@ -4,21 +4,20 @@ import Image from "next/image";
 
 export default function VintageFlowerLampsPage() {
   return (
-    <div className="min-h-screen items-center justify-center flex flex-col gap-8 py-8">
-      <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 p-4 md:p-8">
-        <Image
-          className="pointer-events-none"
-          src="/lamps/1.webp"
-          alt="Simona Barboiu"
-          width={400}
-          height={400}
-          draggable={false}
-          priority
-        />
-        <ScrollModel path="/lamps/array" />
-      </div>
-
-      <div className="flex flex-fit">
+    <div className="min-h-screen items-center justify-center flex flex-col gap-8">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 p-4 md:p-8">
+          <Image
+            className="pointer-events-none"
+            src="/lamps/1.webp"
+            alt="Simona Barboiu"
+            width={600}
+            height={400}
+            draggable={false}
+            priority
+          />
+          <ScrollModel path="/lamps/array" />
+        </div>
         <p>
           Inspired by 1980s ornamental decoration, this lamp pack includes
           four floral-motif models. I modeled them in Blender, rendered in
@@ -31,7 +30,7 @@ export default function VintageFlowerLampsPage() {
 
       <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8">
         <Image
-          className="pointer-events-none"
+          className="pointer-events-none flex-fit"
           src="/lamps/2.webp"
           alt="Simona Barboiu"
           width={300}
@@ -107,7 +106,7 @@ export default function VintageFlowerLampsPage() {
             priority
           />
           <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack">
-            <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition">
+            <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-orange-700 transition duration-300">
               Go to Product Page
             </button>
           </a>

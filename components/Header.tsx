@@ -37,6 +37,7 @@ export default function Header() {
             alt="Simona Barboiu"
             width={160}
             height={200}
+            draggable={false}
             priority
           />
         </Link>

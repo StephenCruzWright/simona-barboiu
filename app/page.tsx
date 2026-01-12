@@ -11,6 +11,7 @@ export default function Home() {
             alt="Simona Barboiu"
             width={500}
             height={128}
+            draggable={false}
             className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100"
           />
         </a>

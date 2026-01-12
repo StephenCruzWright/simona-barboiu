@@ -25,7 +25,8 @@ export default function Footer() {
               alt="Simona Barboiu"
               width={160}
               height={200}
-              priority />
+              draggable={false}
+               />
           </Link>
         </div>
       
