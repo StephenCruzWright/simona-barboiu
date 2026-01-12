@@ -12,6 +12,7 @@ export const SEGMENT_LABELS: Record<string, string> = {
   games: "Games",
   illustration: "Illustration",
   viz: "viz",
+  environments: "Environments",
   work: "Work",
   about: "About",
 };

@@ -2,9 +2,9 @@ import BeforeAndAfter from "@/components/BeforeAndAfter";
 import ScrollModel from "@/components/ScrollModel";
 import Image from "next/image";
 
-export default function VintageFlowerLampsPage() {
+export default function GreekHousePage() {
   return (
-    <div className="items-center justify-center flex flex-col gap-8 ">
+    <div className="items-center justify-center flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 p-4 md:p-8">
           <Image

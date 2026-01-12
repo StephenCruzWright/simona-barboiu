@@ -30,7 +30,6 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background shadow-lg">
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
-        {/* Logo */}
         <Link href="/" onClick={close} className="shrink-0">
           <Image
             src="/LogoOffWhite.png"
@@ -49,6 +48,7 @@ export default function Header() {
             <div className="flex flex-col text-sm">
               <Link href="/3d/#product">Product viz</Link>
               <Link href="/3d/#games">Games & Interactive apps</Link>
+              <Link href="/3d/#environments">Environments</Link>
             </div>
           </div>
 
@@ -122,6 +122,8 @@ export default function Header() {
                 <Link href="/3d" onClick={close}>3D</Link>
                 <Link href="/3d/#product" onClick={close}>Product viz</Link>
                 <Link href="/3d/#games" onClick={close}>Games &amp; Interactive apps</Link>
+                <Link href="/3d/#environments">Environments</Link>
+
               </div>
 
               <div className="flex flex-col gap-2">

@@ -4,16 +4,17 @@ import Footer from "@/components/Footer";
 import { Roboto_Slab } from "next/font/google";
 import "@/styles/globals.css";
 import RoutingNav from "@/components/RoutingNav";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 const robotoSlab = Roboto_Slab({
   subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
   title: "Simona Barboiu",
-  description: "Portfolio website of Simona Barboiu",
+  description: "Portfolio Website for Simona Barboiu",
 };
 
 export default function RootLayout({
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Header />
         <RoutingNav />
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

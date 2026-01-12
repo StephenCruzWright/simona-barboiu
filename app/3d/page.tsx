@@ -9,6 +9,7 @@ export default function ModellingPage() {
       <div className="mb-8 flex flex-col gap-4">
         <Link href="/3d/viz/vintage-flower-lamps">Vintage Flower Lamps</Link>
         <Link href="/3d/games/paxvr">PaxVR</Link>
+        <Link href="/3d/environments/greek-house">Greek House</Link>
       </div>
     </main>
   );
