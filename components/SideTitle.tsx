@@ -12,14 +12,12 @@ export default function SideTitle() {
   return (
     <div
       className="
-        z-10
-        absolute top-165
+        z-10 absolute top-165
         origin-left -rotate-90
         whitespace-nowrap
         text-5xl font-semibold opacity-90
         pointer-events-none
-      "
-    >
+      ">
       {title}
     </div>
   );

@@ -1,12 +1,11 @@
+// app/3d/viz/layout.tsx
 import SideTitle from "@/components/SideTitle";
 
-export default function EnvironmentsLayout({ children }: { children: React.ReactNode }) {
+export default function VizLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 gap-4 flex flex-col items-center justify-center">
-      <aside className="justify-end pt-4 nowrap">
+    <div className="mx-auto max-w-7xl px-6 pb-10">
         <SideTitle />
-      </aside>
-      <main>{children}</main>
+        <main className="min-w-0 w-full">{children}</main>
     </div>
   );
 }
