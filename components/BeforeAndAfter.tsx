@@ -48,7 +48,7 @@ export default function BeforeAndAfter({
   return (
     <div
       ref={wrapRef}
-      className={`relative overflow-hidden rounded-xl ${className}`}
+      className={`relative rounded-xl ${className}`}
     >
       {/* Base image (before) */}
       <Image
@@ -61,8 +61,8 @@ export default function BeforeAndAfter({
       />
 
       {/* Overlay image (after), clipped like a window wipe */}
-<div
-  className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}>        <Image
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)`}}>
+        <Image
           src={afterSrc}
           alt="After"
           width={1600}

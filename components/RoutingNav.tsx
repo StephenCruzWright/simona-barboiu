@@ -9,7 +9,7 @@ export default function RoutingNav() {
   const crumbs = buildCrumbs(pathname);
 
   return (
-    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm px-4 py-2 no-select">
+    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm px-4 py-2 no-select lg:max-w-7xl mx-auto">
       {crumbs.map((c, idx) => {
         const isLast = idx === crumbs.length - 1;
 

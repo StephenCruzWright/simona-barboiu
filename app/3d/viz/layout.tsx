@@ -3,8 +3,8 @@ import SideTitle from "@/components/SideTitle";
 
 export default function VizLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto px-6">
-      <div className="grid grid-cols-[64px_1fr] gap-8 py-10">
+    <div className="mx-auto max-w-7xl px-6 pb-10">
+      <div className="grid grid-cols-[64px_1fr] gap-8">
         <aside className="relative">
           <SideTitle />
         </aside>

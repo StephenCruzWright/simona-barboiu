@@ -73,7 +73,7 @@ export default function ScrollModel({
     return (
         <div
             ref={containerRef}
-            className={`relative overflow-hidden ${className}`}
+            className={`relative ${className}`}
             style={{ cursor: "ns-resize" }}
         >
             <Image
