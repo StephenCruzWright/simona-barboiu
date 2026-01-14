@@ -8,12 +8,12 @@ export default function VintageFlowerLampsPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 p-4 md:p-8">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
           <Image
             className="pointer-events-none"
             src="/lamps/1.webp"
             alt="Simona Barboiu"
-            width={550}
+            width={600}
             height={300}
             draggable={false}
             priority

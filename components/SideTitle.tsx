@@ -12,7 +12,8 @@ export default function SideTitle() {
   return (
     <div
       className="
-        relative top-120
+        z-10
+        absolute top-165
         origin-left -rotate-90
         whitespace-nowrap
         text-5xl font-semibold opacity-90
