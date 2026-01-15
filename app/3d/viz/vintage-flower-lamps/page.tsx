@@ -18,9 +18,9 @@ export default function VintageFlowerLampsPage() {
             draggable={false}
             priority
           />
-          <ScrollModel path="/lamps/array" />
+          <ScrollModel path="/lamps/array"/>
         </div>
-        
+
         <p>
           Inspired by 1980s ornamental decoration, this lamp pack includes
           four floral-motif models. I modeled them in Blender, rendered in
