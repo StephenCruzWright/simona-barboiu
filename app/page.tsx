@@ -15,6 +15,7 @@ export default function Home() {
             className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100 mb-10"
           />
         </a>
+
         Greek House
         <a href="/3d/environments/greek-house">
           <Image
@@ -26,10 +27,11 @@ export default function Home() {
             className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100 crop-center mb-10"
           />
         </a>
+        
         Pax VR
         <a href="/3d/games/paxvr">
           <Image
-            src="/lamps/unreal.webp"
+            src="/lamps/StudioSetupA01.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
@@ -37,10 +39,11 @@ export default function Home() {
             className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100 crop-center mb-10"
           />
         </a>
+
         Mirage
         <a href="/2d/illustration/mirage">
           <Image
-            src="/lamps/unreal.webp"
+            src="/lamps/StudioSetupA02.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
