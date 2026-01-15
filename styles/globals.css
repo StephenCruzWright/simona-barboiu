@@ -82,3 +82,26 @@ footer {
   background: rgba(255, 255, 255, 0.9);
   border: 0;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent);
+}
+
+button.btn {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: auto;
+  max-width: fit-content;
+  transition: background-color 0.3s ease, transform 0.3s ease
+  
+}
+button.btn:hover {
+  background-color: var(--footer-background);
+  transform: scale(1.05);
+}

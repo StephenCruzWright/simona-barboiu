@@ -20,6 +20,7 @@ export default function VintageFlowerLampsPage() {
           />
           <ScrollModel path="/lamps/array" />
         </div>
+        
         <p>
           Inspired by 1980s ornamental decoration, this lamp pack includes
           four floral-motif models. I modeled them in Blender, rendered in
@@ -78,37 +79,39 @@ export default function VintageFlowerLampsPage() {
         />
       </div>
 
-      <div className="flex justify-center gap-8">
+      <div className="flex justify-center gap-4">
         <div className=" flex flex-col gap-4 items-start">
           <h2 className="text-2xl md:text-4xl font-bold">
             Unreal Engine Integration
           </h2>
+
           <p className="max-w-md py-4 flex flex-col items-center justify-center">
             The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. The Blueprint includes an on/off toggle for the light and an intensity adjustement.
           </p>
+
           <Image
             className="pointer-events-none"
             src="/lamps/Unreal.webp"
-            alt="Simona Barboiu"
-            width={600}
-            height={400}
-            draggable={false}
-            priority
-          />
-        </div>
-
-        <div className="grid flex flex-row gap-4 items-center justify-center">
-          <Image
-            className="pointer-events-none"
-            src="/lamps/Animation.gif"
             alt="Simona Barboiu"
             width={400}
             height={400}
             draggable={false}
             priority
           />
+        </div>
+
+        <div className="flex flex-col gap-4 justify-center items-start">
+          <Image
+            className="pointer-events-none"
+            src="/lamps/Animation.gif"
+            alt="Simona Barboiu"
+            width={500}
+            height={400}
+            draggable={false}
+            priority
+          />
           <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-end">
-            <button className="w-full lg:w-auto px-4 py-2 hover:bg-black text-white rounded-lg bg-orange-700 transition hover:scale-105 duration-300">
+            <button className="btn">
               Go to Product Page ↪
             </button>
           </a>
