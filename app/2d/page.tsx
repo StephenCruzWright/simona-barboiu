@@ -18,6 +18,14 @@ export default function IllustrationsPage() {
         />
         <LightImage
           className="pb-4"
+          src="/illustration/lakelady.webp"
+          alt="Lady of the Lake"
+          altsrc="/illustration/Process.webp"
+          width={2000}
+          height={2000}
+        />
+        <LightImage
+          className="pb-4"
           src="/illustration/prpls.webp"
           alt="Storm Eater"
           altsrc="/illustration/pprocess.webp"
@@ -38,17 +46,9 @@ export default function IllustrationsPage() {
           width={2000}
           height={2000}
         />
-        <LightImage
-          className="pb-4"
-          src="/illustration/lakelady.webp"
-          alt="Lady of the Lake"
-          altsrc="/illustration/Process.webp"
-          width={2000}
-          height={2000}
-        />
       </FlexGrid>
 
-      <div className="flex flex-col md:flex-row justify-center items-center max-w-xl mx-auto">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain lg:max-w-[25vw]">
         <LightImage
           src="/illustration/simonabarboiu001.webp"
           alt="Ink Sketch 1"

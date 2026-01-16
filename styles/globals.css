@@ -80,7 +80,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--foreground);
   font-family: var(--font-regular);
-  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  padding: 0 0 1vh 0;
+  justify-content: start;
+  align-items: start;
+  margin: 0;
 }
 
 header nav a:hover {
