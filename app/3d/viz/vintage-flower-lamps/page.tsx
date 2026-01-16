@@ -64,6 +64,7 @@ export default function VintageFlowerLampsPage() {
         <LightImage
           src="/lamps/wireframe.webp"
           alt="Simona Barboiu"
+          altsrc="/lamps/Unreal.webp"
           width={800}
           height={400}
           draggable={false}

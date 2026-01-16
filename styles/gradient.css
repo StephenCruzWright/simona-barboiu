@@ -1,0 +1,34 @@
+.gradient-animated {
+  --mx: 0px;
+  --my: 0px;
+
+  background: linear-gradient(
+    120deg,
+    #ff6b6b,
+    #feca57,
+    #48dbfb,
+    #5f27cd,
+    #ff9ff3
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+  will-change: background-position;
+  transition: background-position 0.15s ease-out;
+
+  /* mouse influence */
+  background-position:
+    calc(50% + var(--mx)) 
+    calc(50% + var(--my));
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-animated {
+    animation: none;
+  }
+}

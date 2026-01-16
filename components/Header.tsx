@@ -28,7 +28,7 @@ export default function Header() {
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-background shadow-lg">
+    <header className="sticky top-0 z-50 bg-background shadow-lg gradient-animated">
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
         <Link href="/" onClick={close} className="shrink-0">
           <Image
@@ -42,7 +42,8 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row md:text-lg lg:text-xl xl:text-2xl">
+        <nav className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row 
+        md:text-lg lg:text-xl xl:text-2xl">
           <div className="flex flex-col">
             <Link href="/3d">3D</Link>
             <div className="flex flex-col text-sm">

@@ -1,0 +1,20 @@
+import { ReactNode } from "react";
+
+type Props = {
+  className?: string;
+  children: ReactNode;
+};
+
+export default function FlexGrid({ children, className }: Props) {
+  return (
+    <div
+    className="
+      columns-1
+      sm:columns-2
+      gap-4
+      pb-8
+    ">
+    {children}
+    </div>
+  );
+}

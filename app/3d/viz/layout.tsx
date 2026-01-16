@@ -1,4 +1,3 @@
-// app/3d/viz/layout.tsx
 import SideTitle from "@/components/SideTitle";
 
 export default function VizLayout({ children }: { children: React.ReactNode }) {
