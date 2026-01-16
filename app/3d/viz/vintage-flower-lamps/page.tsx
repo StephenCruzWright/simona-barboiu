@@ -9,12 +9,10 @@ export default function VintageFlowerLampsPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 columns-1 sm:columns-2">
           <LightImage
             src="/lamps/1.webp"
             alt="Simona Barboiu"
-            width={600}
-            height={300}
             draggable={false}
           />
           <ScrollModel path="/lamps/array"/>
@@ -30,26 +28,20 @@ export default function VintageFlowerLampsPage() {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8 max-w-4xl mx-auto">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-[23vw] mx-auto object-contain">
         <LightImage
           src="/lamps/2.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
         />
         <LightImage
           src="/lamps/3.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
         />
         <LightImage
           src="/lamps/4.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
         />
       </div>

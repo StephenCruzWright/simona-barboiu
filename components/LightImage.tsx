@@ -20,6 +20,8 @@ export default function LightImage({
     const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
 
     const bigSrc = altsrc || props.src;
+    const imageWidth = props.width ?? 2000;
+    const imageHeight = props.height ?? 2000;
 
     useEffect(() => {
         if (!open) return;
@@ -45,6 +47,8 @@ export default function LightImage({
             <Image
                 {...props}
                 className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+                width={imageWidth}
+                height={imageHeight}
                 draggable={props.draggable ?? true}
                 onClick={() => zoomable && (setLoaded(false), setOpen(true))}
             />
@@ -52,7 +56,7 @@ export default function LightImage({
             {open && (
                 <div
                     className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {setOpen(false), setZoomed(false)}}
                 >
                     <div
                         className="relative max-h-[90vh] max-w-[90vw] overflow-hidden"
@@ -69,8 +73,8 @@ export default function LightImage({
                             {...props}
                             src={bigSrc}
                             alt={props.alt}
-                            width={2000}
-                            height={2000}
+                            width={imageWidth}
+                            height={imageHeight}
                             priority
                             onLoad={() => setLoaded(true)}
                             onClick={() => setZoomed(!zoomed)}

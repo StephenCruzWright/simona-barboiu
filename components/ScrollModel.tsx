@@ -7,8 +7,8 @@ export default function ScrollModel({
     path,
     frameCount = 30,
     ext = "webp",
-    width = 900,
-    height = 1200,
+    width = 2000,
+    height = 2000,
     className = "",
     sensitivity = 80,
 }: {
@@ -81,7 +81,7 @@ export default function ScrollModel({
                 alt={`Model frame ${index + 1}`}
                 width={width}
                 height={height}
-                className="h-auto w-full select-none"
+                className="w-full select-none"
                 draggable={false}
                 priority={index === 0}
             />
