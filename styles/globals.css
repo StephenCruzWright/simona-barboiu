@@ -6,6 +6,7 @@
   --footer-background: #171717;
   --footer-foreground: #6D6D6D;
   --accent: #eb742a;
+  --grey-button: #585858;
 }
 
 @theme inline {
@@ -146,16 +147,16 @@ a:hover {
 }
 
 button.btn {
-  background-color: var(--accent);
+  background-color: var(--grey-button);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   width: auto;
   max-width: fit-content;
   transition: background-color 0.3s ease, transform 0.3s ease
-  
 }
+
 button.btn:hover {
-  background-color: var(--footer-background);
+  /* background-color: var(--accent); */
   transform: scale(1.05);
 }

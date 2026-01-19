@@ -80,7 +80,7 @@ export default function VintageFlowerLampsPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 justify-center items-start max-h-[400px]">
+        <div className="flex flex-col gap-4 justify-center items-start max-h-[50vh]">
           <LightImage
             src="/lamps/Animation.gif"
             alt="Simona Barboiu"
