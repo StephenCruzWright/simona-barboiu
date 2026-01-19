@@ -19,7 +19,7 @@ export default function Home() {
         Illustrations
         <a href="/2d">
           <Image
-            src="/illustration/2.webp"
+            src="/illustration/prpls.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
