@@ -40,8 +40,8 @@ export default function Home() {
           />
         </a>
 
-        Mirage
-        <a href="/2d/illustration/mirage">
+        Illustrations
+        <a href="/2d">
           <Image
             src="/lamps/StudioSetupA02.webp"
             alt="Simona Barboiu"

@@ -3,13 +3,12 @@
 import BeforeAndAfter from "@/components/BeforeAndAfter";
 import LightImage from "@/components/LightImage";
 import ScrollModel from "@/components/ScrollModel";
-import Image from "next/image";
 
 export default function VintageFlowerLampsPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 columns-1 sm:columns-2">
+        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-xl object-contain">
           <LightImage
             src="/lamps/1.webp"
             alt="Simona Barboiu"
@@ -28,7 +27,7 @@ export default function VintageFlowerLampsPage() {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-[23vw] mx-auto object-contain">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[23vw] object-contain">
         <LightImage
           src="/lamps/2.webp"
           alt="Simona Barboiu"
@@ -56,32 +55,32 @@ export default function VintageFlowerLampsPage() {
         <LightImage
           src="/lamps/wireframe.webp"
           alt="Simona Barboiu"
-          width={800}
-          height={400}
+          width={1000}
+          height={1000}
           draggable={false}
         />
       </div>
 
       <div className="flex justify-center gap-4">
         <div className=" flex flex-col gap-4 items-start">
-          <h2 className="text-2xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap">
             Unreal Engine Integration
           </h2>
 
-          <p className="max-w-md py-4 flex flex-col items-center justify-center">
+          <p className="max-w-lg py-4 flex flex-col items-center justify-center">
             The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. The Blueprint includes an on/off toggle for the light and an intensity adjustement.
           </p>
 
           <LightImage
             src="/lamps/Unreal.webp"
             alt="Simona Barboiu"
-            width={400}
+            width={600}
             height={400}
             draggable={false}
           />
         </div>
 
-        <div className="flex flex-col gap-4 justify-center items-start">
+        <div className="flex flex-col gap-4 justify-center items-start max-h-[400px]">
           <LightImage
             src="/lamps/Animation.gif"
             alt="Simona Barboiu"

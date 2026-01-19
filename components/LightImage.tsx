@@ -73,8 +73,8 @@ export default function LightImage({
                             {...props}
                             src={bigSrc}
                             alt={props.alt}
-                            width={imageWidth}
-                            height={imageHeight}
+                            width={2000}
+                            height={2000}
                             priority
                             onLoad={() => setLoaded(true)}
                             onClick={() => setZoomed(!zoomed)}

@@ -9,7 +9,7 @@ export default function ScrollModel({
     ext = "webp",
     width = 2000,
     height = 2000,
-    className = "",
+    className = "min-w-[33vw] w-full h-auto",
     sensitivity = 80,
 }: {
     path: string;
@@ -34,7 +34,6 @@ export default function ScrollModel({
     const hoveringRef = useRef(false);
     const accRef = useRef(0);
 
-    // Wheel cycles frames ONLY while hovered
     useEffect(() => {
         const el = containerRef.current;
         if (!el || images.length === 0) return;
@@ -81,7 +80,7 @@ export default function ScrollModel({
                 alt={`Model frame ${index + 1}`}
                 width={width}
                 height={height}
-                className="w-full select-none"
+                className="select-none h-auto pointer-events-none user-select-none"
                 draggable={false}
                 priority={index === 0}
             />

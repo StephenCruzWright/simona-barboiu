@@ -1,7 +1,5 @@
 import FlexGrid from "@/components/FlexGrid";
 import LightImage from "@/components/LightImage";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function IllustrationsPage() {
   return (

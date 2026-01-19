@@ -34,7 +34,7 @@ export default function Header() {
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
-            width={160}
+            width={200}
             height={200}
             draggable={false}
             priority
