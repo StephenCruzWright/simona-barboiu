@@ -8,7 +8,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
-  // Close on ESC
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
@@ -17,7 +16,6 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // Prevent background scroll when menu is open (mobile)
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -41,9 +39,10 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row 
-        md:text-lg lg:text-xl xl:text-2xl">
+        <nav
+          className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row 
+        md:text-lg lg:text-xl xl:text-2xl"
+        >
           <div className="flex flex-col">
             <Link href="/3d">3D</Link>
             <div className="flex flex-col text-sm">
@@ -64,7 +63,6 @@ export default function Header() {
           <Link href="/about">About &amp; Contact</Link>
         </nav>
 
-        {/* Mobile burger button */}
         <button
           type="button"
           className="md:hidden inline-flex items-center justify-center rounded-md p-2"
@@ -73,7 +71,6 @@ export default function Header() {
           aria-controls={panelId}
           onClick={() => setOpen((v) => !v)}
         >
-          {/* Simple burger / close icon */}
           <span className="relative block h-5 w-6">
             <span
               className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition-transform 
@@ -91,17 +88,13 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu overlay + panel */}
       {open && (
         <div className="md:hidden">
-          {/* Overlay */}
           <button
             aria-label="Close menu"
             className="fixed inset-0 z-40 bg-black/50"
             onClick={close}
           />
-
-          {/* Panel */}
           <div
             id={panelId}
             className="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-background p-6 shadow-xl"
@@ -110,7 +103,7 @@ export default function Header() {
               <div/>
               <button
                 type="button"
-                className="rounded-md px-6 py-2 hover:opacity-70 transition-opacity"
+                className="rounded-mdpx-6 py-5 px-6 hover:opacity-70 transition-opacity"
                 aria-label="Close menu"
                 onClick={close}
               >
@@ -120,23 +113,37 @@ export default function Header() {
 
             <nav className="mt-6 flex flex-col gap-6 text-lg">
               <div>
-                <Link href="/3d" onClick={close}>3D</Link>
+                <Link href="/3d" onClick={close}>
+                  3D
+                </Link>
                 <div className="flex flex-col gap-0 text-sm">
-                  <Link href="/3d/#product" onClick={close}>Product viz</Link>
-                  <Link href="/3d/#games" onClick={close}>Games &amp; Interactive apps</Link>
+                  <Link href="/3d/#product" onClick={close}>
+                    Product viz
+                  </Link>
+                  <Link href="/3d/#games" onClick={close}>
+                    Games &amp; Interactive apps
+                  </Link>
                   <Link href="/3d/#environments">Environments</Link>
                 </div>
               </div>
 
               <div>
-                <Link href="/2d" onClick={close}>2D</Link>
+                <Link href="/2d" onClick={close}>
+                  2D
+                </Link>
                 <div className="flex flex-col gap-0 text-sm">
-                  <Link href="/2d/#illustration" onClick={close}>Illustration</Link>
+                  <Link href="/2d/#illustration" onClick={close}>
+                    Illustration
+                  </Link>
                 </div>
               </div>
-              
-              <Link href="/work" onClick={close}>Work Experience</Link>
-              <Link href="/about" onClick={close}>About &amp; Contact</Link>
+
+              <Link href="/work" onClick={close}>
+                Work Experience
+              </Link>
+              <Link href="/about" onClick={close}>
+                About &amp; Contact
+              </Link>
             </nav>
           </div>
         </div>

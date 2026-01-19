@@ -4,7 +4,7 @@ import LightImage from "@/components/LightImage";
 export default function IllustrationsPage() {
   return (
     <main className="min-h-screen">
-      <FlexGrid className="mb-4 opacity-0 animate-fade-in">
+      <FlexGrid className="opacity-0 animate-fade-in ">
         <h1 id="illustration">Illustration</h1>
         <LightImage
           className="mb-4"
@@ -27,7 +27,7 @@ export default function IllustrationsPage() {
           className="mb-4"
           src="/illustration/lakelady.webp"
           alt="Lady of the Lake"
-          altsrc="/illustration/Process.webp"
+          altsrc="/illustration/process.webp"
         />
         <LightImage
           className="mb-4"

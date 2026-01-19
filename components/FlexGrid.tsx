@@ -12,7 +12,6 @@ export default function FlexGrid({ children}: Props) {
       columns-1
       sm:columns-2
       gap-4
-      pb-8
     ">
     {children}
     </div>
