@@ -61,7 +61,7 @@ export default function VintageFlowerLampsPage() {
         />
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex felx-col justify-center gap-4">
         <div className=" flex flex-col gap-4 items-start">
           <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap">
             Unreal Engine Integration
