@@ -53,7 +53,7 @@ export default function LightImage({
         width={imageWidth}
         height={imageHeight}
         draggable={props.draggable ?? true}
-        onClick={() => zoomable && (setLoaded(false), setOpen(true))}
+        onClick={() => (screen.availWidth > 1900 ? zoomable && (setLoaded(false), setOpen(true)) : null)}
       />
 
       {open && (
