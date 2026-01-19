@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background shadow-lg gradient-animated">
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
-        <Link href="/" onClick={close} className="shrink-0">
+        <Link href="/" onClick={close} className="shrink-0 max-w-[23vw]">
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"

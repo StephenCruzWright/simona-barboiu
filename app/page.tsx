@@ -31,7 +31,7 @@ export default function Home() {
         Greek House
         <a href="/3d/environments/greek-house">
           <Image
-            src="/lamps/unreal.webp"
+            src="/lamps/Unreal.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
