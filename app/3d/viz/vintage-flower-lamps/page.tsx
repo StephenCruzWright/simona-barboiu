@@ -60,9 +60,9 @@ export default function VintageFlowerLampsPage() {
           draggable={false}
         />
       </div>
-
-      <div className="flex felx-col md:flex-row justify-center gap-4 columns-1 md:columns-2">
-        <div className=" flex flex-col gap-4 items-start">
+      {/* 2 columns on desktop, but those are stacked on mobile */}
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[50vw] object-contain gap-8 lg:gap-4">
+        <div className=" flex flex-col gap-4 items-start ">
           <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap" id="unreal">
             Unreal Engine Integration
           </h2>
@@ -81,12 +81,10 @@ export default function VintageFlowerLampsPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 justify-center items-start">
+        <div className="flex flex-col gap-4 justify-center items-start ">
           <LightImage
             src="/lamps/Animation.gif"
             alt="Simona Barboiu"
-            width={500}
-            height={400}
             draggable={false}
           />
           <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-center" target="_blank" rel="noopener noreferrer">

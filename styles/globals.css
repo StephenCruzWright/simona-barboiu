@@ -15,14 +15,14 @@
   --font-regular: var(--font-roboto-slab);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     --background: #f1f0ec;
     --foreground: #222222;
     --footer-background: #171717;
     --footer-foreground: #6D6D6D;
   }
-}
+} */
 
 body {
   background: var(--background);

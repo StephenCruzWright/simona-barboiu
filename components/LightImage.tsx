@@ -83,7 +83,7 @@ export default function LightImage({
               priority
               draggable={false}
               onLoad={() => setLoaded(true)}
-              onClick={() => setZoomed(screen.availWidth > 1900 ? !zoomed : false)}
+              onClick={() => setZoomed(!zoomed)}
               className={`h-auto w-auto max-h-[90vh] max-w-[90vw] object-contain
                           transition-opacity duration-500
                           ${loaded ? "opacity-100" : "opacity-0"}`}
