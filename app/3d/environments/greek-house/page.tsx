@@ -6,74 +6,42 @@ import ScrollModel from "@/components/ScrollModel";
 
 export default function GreekPage() {
   return (
-    <div className="flex flex-col gap-8 min-w-0">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-xl object-contain">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 items-center justify-center">
+        <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain ">
           <LightImage
-            src="/lamps/1.webp"
+            src="/greek/01.webp"
             alt="Simona Barboiu"
             draggable={false}
           />
-          <ScrollModel path="/lamps/array"/>
         </div>
 
-        <p>
-          Inspired by 1980s ornamental decoration, this lamp pack includes
-          four floral-motif models. I modeled them in Blender, rendered in
-          Blender and Twinmotion, textured by hand in Substance Painter,
-          and integrated into Unreal Engine with Blueprints.
-          Uses a consistent two-material workflow (opaque + transparent)
-          across all assets.
+        <p className="max-w-5xl py-4 flex flex-col items-center justify-center">
+          I started this project as an opportunity to focus on creating
+          high-poly plants, inspired by the pretty bougainvilleas in Greece.
+          These plants were my main focus in this scene.
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[23vw] object-contain">
-        <LightImage
-          src="/lamps/2.webp"
-          alt="Simona Barboiu"
-          draggable={false}
-        />
-        <LightImage
-          src="/lamps/3.webp"
-          alt="Simona Barboiu"
-          draggable={false}
-        />
-        <LightImage
-          src="/lamps/4.webp"
-          alt="Simona Barboiu"
-          draggable={false}
-        />
-      </div>
+      <LightImage
+        src="/greek/closeupmovie_AS.mp4"
+        alt="Simona Barboiu"
+        draggable={false}
+        type="video"
+      />
 
-      <div className="flex flex-col md:flex-row justify-center">
-        <BeforeAndAfter
-          beforeSrc="/lamps/StudioSetupA01.webp"
-          afterSrc="/lamps/StudioSetupA02.webp" />
-      </div>
-
-      <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8">
-        <LightImage
-          src="/lamps/wireframe.webp"
-          alt="Simona Barboiu"
-          width={1000}
-          height={1000}
-          draggable={false}
-        />
-      </div>
-      {/* 2 columns on desktop, but those are stacked on mobile */}
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[50vw] object-contain gap-8 lg:gap-4">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
         <div className=" flex flex-col gap-4 items-start ">
-          <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap" id="unreal">
-            Unreal Engine Integration
-          </h2>
-
           <p className="max-w-lg py-4 flex flex-col items-center justify-center">
-            The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. 
-            The Blueprint includes an on/off toggle for the light and an intensity adjustement.
+            The bougainvillea plants were created using L-systems in Houdini -
+            one system for the branches and one for each trunk. The flowers and
+            leaves are modeled in Maya, and hand-painted in Substance Painter.
+            The other plants were created using the same workflow. In Unreal,
+            they have a material with subsurface scattering.
           </p>
 
           <LightImage
-            src="/lamps/Unreal.webp"
+            src="/greek/08b.webp"
             alt="Simona Barboiu"
             width={600}
             height={400}
@@ -83,17 +51,52 @@ export default function GreekPage() {
 
         <div className="flex flex-col gap-4 justify-center items-start ">
           <LightImage
-            src="/lamps/Animation.gif"
+            src="/greek/06.webp"
             alt="Simona Barboiu"
             draggable={false}
           />
-          <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-center" target="_blank" rel="noopener noreferrer">
-            <button className="btn">
-              Go to Product Page ↪
-            </button>
-          </a>
         </div>
       </div>
+
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
+        <div className="flex flex-col gap-4 justify-center items-start ">
+          <LightImage
+            src="/greek/08.webp"
+            alt="Simona Barboiu"
+            draggable={false}
+          />
+        </div>
+
+        <div className=" flex flex-col gap-4 items-start ">
+          <p className="max-w-lg py-4 flex flex-col items-center justify-center">
+            The house and door decoration are sculpted in ZBrush. 
+            All the other assets are modeled in Maya and mostly painted in Substance.
+            I also created the water shader, falling leaf particles, and did the lighting 
+            (using a HDRI and volumetric clouds) and post-processing, directly in Unreal.
+            For reference, I used photos I took myself. 
+            A few materials and assets, such as the roof tiles, ground textures, sand, 
+            and some table objects, were sourced from Quixel to complement the scene.
+          </p>
+        </div>
+      </div>
+
+      <LightImage
+        src="/greek/07a.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <LightImage
+        src="/greek/07b.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <LightImage
+        src="/greek/07c.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
     </div>
   );
 }

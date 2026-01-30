@@ -6,12 +6,14 @@ import Image, { ImageProps } from "next/image";
 type Props = ImageProps & {
   zoomable?: boolean;
   altsrc?: string;
+  type?: "image" | "video";
 };
 
 export default function LightImage({
   zoomable = true,
   altsrc,
   className,
+  type = "image",
   ...props
 }: Props) {
   const [open, setOpen] = useState(false);
@@ -22,6 +24,7 @@ export default function LightImage({
   const bigSrc = altsrc || props.src;
   const imageWidth = props.width ?? 2000;
   const imageHeight = props.height ?? 2000;
+  const isVideo = type === "video";
 
   useEffect(() => {
     if (!open) return;
@@ -47,14 +50,36 @@ export default function LightImage({
 
   return (
     <>
-      <Image
-        {...props}
-        className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
-        width={imageWidth}
-        height={imageHeight}
-        draggable={props.draggable ?? true}
-        onClick={() => (screen.availWidth > 1900 ? zoomable && (setLoaded(false), setOpen(true)) : null)}
-      />
+      {isVideo ? (
+        <video
+          src={String(bigSrc)}
+          className={`max-h-[90vh] max-w-[90vw] object-contain
+                transition-opacity duration-500
+                ${loaded ? "opacity-100" : "opacity-0"}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          onClick={() =>
+            screen.availWidth > 1900
+              ? zoomable && (setLoaded(false), setOpen(true))
+              : null
+          }
+        />
+      ) : (
+        <Image
+          {...props}
+          className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+          width={imageWidth}
+          height={imageHeight}
+          draggable={props.draggable ?? true}
+          onClick={() =>
+            screen.availWidth > 1900
+              ? zoomable && (setLoaded(false), setOpen(true))
+              : null
+          }
+        />
+      )}
 
       {open && (
         <div
@@ -73,26 +98,39 @@ export default function LightImage({
                 Loading…
               </div>
             )}
-
-            <Image
-              {...props}
-              src={bigSrc}
-              alt={props.alt}
-              width={2000}
-              height={2000}
-              priority
-              draggable={false}
-              onLoad={() => setLoaded(true)}
-              onClick={() => setZoomed(!zoomed)}
-              className={`h-auto w-auto max-h-[90vh] max-w-[90vw] object-contain
+            {isVideo ? (
+              <video
+                src={String(bigSrc)}
+                className={`max-h-[90vh] max-w-[90vw] object-contain
+                transition-opacity duration-500
+                ${loaded ? "opacity-100" : "opacity-0"}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onLoadedData={() => setLoaded(true)}
+              />
+            ) : (
+              <Image
+                {...props}
+                src={bigSrc}
+                alt={props.alt}
+                width={2000}
+                height={2000}
+                priority
+                draggable={false}
+                onLoad={() => setLoaded(true)}
+                onClick={() => setZoomed(!zoomed)}
+                className={`h-auto w-auto max-h-[90vh] max-w-[90vw] object-contain
                           transition-opacity duration-500
                           ${loaded ? "opacity-100" : "opacity-0"}`}
-              style={{
-                transform: zoomed ? "scale(1.6)" : "scale(1)",
-                transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
-                cursor: zoomed ? "zoom-out" : "zoom-in",
-              }}
-            />
+                style={{
+                  transform: zoomed ? "scale(1.6)" : "scale(1)",
+                  transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
+                  cursor: zoomed ? "zoom-out" : "zoom-in",
+                }}
+              />
+            )}
             <button
               className="absolute top-4 right-4 text-white text-3xl hover:opacity-70 transition-opacity"
               onClick={() => {
