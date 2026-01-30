@@ -31,7 +31,7 @@ export default function Home() {
         Greek House
         <a href="/3d/environments/greek-house">
           <Image
-            src="/lamps/Unreal.webp"
+            src="/greek/01.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
@@ -40,10 +40,10 @@ export default function Home() {
           />
         </a>
         
-        Pax VR
+        Flower Alley
         <a href="/3d/games/paxvr">
           <Image
-            src="/lamps/StudioSetupA01.webp"
+            src="/alley/08.webp"
             alt="Simona Barboiu"
             width={500}
             height={128}
