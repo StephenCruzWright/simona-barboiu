@@ -31,7 +31,7 @@ export default function GreekPage() {
       />
 
       <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
-        <div className=" flex flex-col gap-4 items-start ">
+        <div className=" flex flex-col gap-4 items-start justify-space-between ">
           <p className="max-w-lg py-4 flex flex-col items-center justify-center">
             The bougainvillea plants were created using L-systems in Houdini -
             one system for the branches and one for each trunk. The flowers and
@@ -43,7 +43,7 @@ export default function GreekPage() {
           <LightImage
             src="/greek/08b.webp"
             alt="Simona Barboiu"
-            width={600}
+            width={800}
             height={400}
             draggable={false}
           />
@@ -69,16 +69,24 @@ export default function GreekPage() {
 
         <div className=" flex flex-col gap-4 items-start ">
           <p className="max-w-lg py-4 flex flex-col items-center justify-center">
-            The house and door decoration are sculpted in ZBrush. 
-            All the other assets are modeled in Maya and mostly painted in Substance.
-            I also created the water shader, falling leaf particles, and did the lighting 
-            (using a HDRI and volumetric clouds) and post-processing, directly in Unreal.
-            For reference, I used photos I took myself. 
-            A few materials and assets, such as the roof tiles, ground textures, sand, 
-            and some table objects, were sourced from Quixel to complement the scene.
+            The house and door decoration are sculpted in ZBrush. All the other
+            assets are modeled in Maya and mostly painted in Substance. I also
+            created the water shader, falling leaf particles, and did the
+            lighting (using a HDRI and volumetric clouds) and post-processing,
+            directly in Unreal. For reference, I used photos I took myself. A
+            few materials and assets, such as the roof tiles, ground textures,
+            sand, and some table objects, were sourced from Quixel to complement
+            the scene.
           </p>
         </div>
       </div>
+
+      <LightImage
+        src="/greek/overallmovie_AS.mp4"
+        alt="Simona Barboiu"
+        draggable={false}
+        type="video"
+      />
 
       <LightImage
         src="/greek/07a.webp"

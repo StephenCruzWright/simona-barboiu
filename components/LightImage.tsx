@@ -53,9 +53,7 @@ export default function LightImage({
       {isVideo ? (
         <video
           src={String(bigSrc)}
-          className={`max-h-[90vh] max-w-[90vw] object-contain
-                transition-opacity duration-500
-                ${loaded ? "opacity-100" : "opacity-0"}`}
+          className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
           autoPlay
           loop
           muted
