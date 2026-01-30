@@ -1,8 +1,6 @@
 // app/3d/viz/vintage-flower-lamps/page.tsx
 
-import BeforeAndAfter from "@/components/BeforeAndAfter";
 import LightImage from "@/components/LightImage";
-import ScrollModel from "@/components/ScrollModel";
 
 export default function GreekPage() {
   return (
