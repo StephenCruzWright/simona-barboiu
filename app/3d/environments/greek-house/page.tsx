@@ -1,25 +1,22 @@
 // app/3d/viz/vintage-flower-lamps/page.tsx
 
 import BeforeAndAfter from "@/components/BeforeAndAfter";
+import LightImage from "@/components/LightImage";
 import ScrollModel from "@/components/ScrollModel";
-import Image from "next/image";
 
-export default function VintageFlowerLampsPage() {
+export default function GreekPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-          <Image
-            className="pointer-events-none"
+        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-xl object-contain">
+          <LightImage
             src="/lamps/1.webp"
             alt="Simona Barboiu"
-            width={600}
-            height={300}
             draggable={false}
-            priority
           />
-          <ScrollModel path="/lamps/array" />
+          <ScrollModel path="/lamps/array"/>
         </div>
+
         <p>
           Inspired by 1980s ornamental decoration, this lamp pack includes
           four floral-motif models. I modeled them in Blender, rendered in
@@ -30,33 +27,21 @@ export default function VintageFlowerLampsPage() {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8 max-w-4xl mx-auto">
-        <Image
-          className="pointer-events-none"
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[23vw] object-contain">
+        <LightImage
           src="/lamps/2.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
-          priority
         />
-        <Image
-          className="pointer-events-none"
+        <LightImage
           src="/lamps/3.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
-          priority
         />
-        <Image
-          className="pointer-events-none"
+        <LightImage
           src="/lamps/4.webp"
           alt="Simona Barboiu"
-          width={300}
-          height={300}
           draggable={false}
-          priority
         />
       </div>
 
@@ -67,48 +52,43 @@ export default function VintageFlowerLampsPage() {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8">
-        <Image
-          className="pointer-events-none"
+        <LightImage
           src="/lamps/wireframe.webp"
           alt="Simona Barboiu"
-          width={800}
-          height={400}
+          width={1000}
+          height={1000}
           draggable={false}
-          priority
         />
       </div>
-
-      <div className="flex justify-center gap-8">
-        <div className=" flex flex-col gap-4 items-start">
-          <h2 className="text-2xl md:text-4xl font-bold">
+      {/* 2 columns on desktop, but those are stacked on mobile */}
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[50vw] object-contain gap-8 lg:gap-4">
+        <div className=" flex flex-col gap-4 items-start ">
+          <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap" id="unreal">
             Unreal Engine Integration
           </h2>
-          <p className="max-w-md py-4 flex flex-col items-center justify-center">
-            The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. The Blueprint includes an on/off toggle for the light and an intensity adjustement.
+
+          <p className="max-w-lg py-4 flex flex-col items-center justify-center">
+            The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. 
+            The Blueprint includes an on/off toggle for the light and an intensity adjustement.
           </p>
-          <Image
-            className="pointer-events-none"
+
+          <LightImage
             src="/lamps/Unreal.webp"
             alt="Simona Barboiu"
             width={600}
             height={400}
             draggable={false}
-            priority
           />
         </div>
 
-        <div className="grid flex flex-row gap-4 items-center justify-center">
-          <Image
-            className="pointer-events-none"
+        <div className="flex flex-col gap-4 justify-center items-start ">
+          <LightImage
             src="/lamps/Animation.gif"
             alt="Simona Barboiu"
-            width={400}
-            height={400}
             draggable={false}
-            priority
           />
-          <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-end">
-            <button className="w-full lg:w-auto px-4 py-2 hover:bg-black text-white rounded-lg bg-orange-700 transition hover:scale-105 duration-300">
+          <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-center" target="_blank" rel="noopener noreferrer">
+            <button className="btn">
               Go to Product Page ↪
             </button>
           </a>
