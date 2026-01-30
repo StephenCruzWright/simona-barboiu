@@ -41,7 +41,7 @@ export default function Home() {
         </a>
         
         Flower Alley
-        <a href="/3d/games/paxvr">
+        <a href="/3d/viz/flower-alley">
           <Image
             src="/alley/08.webp"
             alt="Simona Barboiu"
