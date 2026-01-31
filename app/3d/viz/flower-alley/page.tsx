@@ -5,22 +5,22 @@ import LightImage from "@/components/LightImage";
 export default function GreekPage() {
   return (
     <div className="flex flex-col gap-8 items-center justify-center">
-      <div className="flex flex-col gap-4 items-center justify-center">
-        <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain ">
-          <LightImage
-            src="/alley/01.webp"
-            alt="Simona Barboiu"
-            draggable={false}
-          />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto justify-center items-center">
+        <LightImage
+          src="/alley/01.webp"
+          alt="Simona Barboiu"
+          draggable={false}
+        />
 
-          <LightImage
-            src="/alley/02.mp4"
-            alt="Simona Barboiu"
-            draggable={false}
-            type="video"
-          />
-        </div>
+        <LightImage
+          src="/alley/02.mp4"
+          alt="Simona Barboiu"
+          draggable={false}
+          type="video"
+        />
+      </div>
 
+      <div className="flex flex-col gap-4 lg: max-w-6xl items-center justify-center">
         <p className="max-w-5xl py-4 flex flex-col items-center justify-center">
           The assets from this project were modelled in Blender and textured
           using both Blender and Substance Painter. The scene was assembled and
@@ -61,14 +61,10 @@ export default function GreekPage() {
         draggable={false}
       />
 
-      <LightImage
-        src="/alley/08.webp"
-        alt="Simona Barboiu"
-        draggable={false}
-      />
+      <LightImage src="/alley/08.webp" alt="Simona Barboiu" draggable={false} />
 
       <LightImage src="/alley/06.webp" alt="Simona Barboiu" draggable={false} />
-      
+
       <LightImage
         src="/alley/09.mp4"
         alt="Simona Barboiu"
