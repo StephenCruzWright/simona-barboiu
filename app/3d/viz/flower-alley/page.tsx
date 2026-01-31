@@ -4,103 +4,76 @@ import LightImage from "@/components/LightImage";
 
 export default function GreekPage() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 items-center justify-center">
       <div className="flex flex-col gap-4 items-center justify-center">
         <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain ">
           <LightImage
-            src="/greek/01.webp"
+            src="/alley/01.webp"
             alt="Simona Barboiu"
             draggable={false}
+          />
+
+          <LightImage
+            src="/alley/02.mp4"
+            alt="Simona Barboiu"
+            draggable={false}
+            type="video"
           />
         </div>
 
         <p className="max-w-5xl py-4 flex flex-col items-center justify-center">
-          The assets from this project were modelled in Blender and textured using both Blender and Substance Painter. 
-          The scene was assembled and rendered in Unreal Engine.
+          The assets from this project were modelled in Blender and textured
+          using both Blender and Substance Painter. The scene was assembled and
+          rendered in Unreal Engine.
         </p>
       </div>
 
+      <LightImage src="/alley/03.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/alley/04.webp" alt="Simona Barboiu" draggable={false} />
+
+      <p>
+        The plant textures are based on pictures of real plants, upscaled and
+        refined in Photoshop, then arranged in one image to create a texture.
+        All the plants share one shader, which uses a base color map, simple
+        wind for movement, and SSS. The tree has a particle system for falling
+        leaves.
+      </p>
+
+      <LightImage src="/alley/05.webp" alt="Simona Barboiu" draggable={false} />
+
       <LightImage
-        src="/greek/closeupmovie_AS.mp4"
+        src="/alley/05b.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <p className=" py-4 flex flex-col items-center justify-center">
+        Here is a quick environment, for a different perspective of the plants.
+        I created modular assets for the architecture, including various wall
+        sizes, corners, and decorative trims. Decals from Quixel were used to
+        add subtle wear and tear — all other assets were made by me.
+      </p>
+
+      <LightImage
+        src="/alley/05b.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <LightImage
+        src="/alley/08.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <LightImage src="/alley/06.webp" alt="Simona Barboiu" draggable={false} />
+      
+      <LightImage
+        src="/alley/09.mp4"
         alt="Simona Barboiu"
         draggable={false}
         type="video"
-      />
-
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
-        <div className=" flex flex-col gap-4 items-start justify-space-between ">
-          <p className="max-w-lg py-4 flex flex-col items-center justify-center">
-            The bougainvillea plants were created using L-systems in Houdini -
-            one system for the branches and one for each trunk. The flowers and
-            leaves are modeled in Maya, and hand-painted in Substance Painter.
-            The other plants were created using the same workflow. In Unreal,
-            they have a material with subsurface scattering.
-          </p>
-
-          <LightImage
-            src="/greek/08b.webp"
-            alt="Simona Barboiu"
-            width={800}
-            height={400}
-            draggable={false}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4 justify-center items-start ">
-          <LightImage
-            src="/greek/06.webp"
-            alt="Simona Barboiu"
-            draggable={false}
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
-        <div className="flex flex-col gap-4 justify-center items-start ">
-          <LightImage
-            src="/greek/08.webp"
-            alt="Simona Barboiu"
-            draggable={false}
-          />
-        </div>
-
-        <div className=" flex flex-col gap-4 items-start ">
-          <p className="max-w-lg py-4 flex flex-col items-center justify-center">
-            The house and door decoration are sculpted in ZBrush. All the other
-            assets are modeled in Maya and mostly painted in Substance. I also
-            created the water shader, falling leaf particles, and did the
-            lighting (using a HDRI and volumetric clouds) and post-processing,
-            directly in Unreal. For reference, I used photos I took myself. A
-            few materials and assets, such as the roof tiles, ground textures,
-            sand, and some table objects, were sourced from Quixel to complement
-            the scene.
-          </p>
-        </div>
-      </div>
-
-      <LightImage
-        src="/greek/overallmovie_AS.mp4"
-        alt="Simona Barboiu"
-        draggable={false}
-        type="video"
-      />
-
-      <LightImage
-        src="/greek/07a.webp"
-        alt="Simona Barboiu"
-        draggable={false}
-      />
-
-      <LightImage
-        src="/greek/07b.webp"
-        alt="Simona Barboiu"
-        draggable={false}
-      />
-
-      <LightImage
-        src="/greek/07c.webp"
-        alt="Simona Barboiu"
-        draggable={false}
       />
     </div>
   );
