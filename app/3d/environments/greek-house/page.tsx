@@ -39,7 +39,7 @@ export default function GreekPage() {
           </p>
 
           <LightImage
-            src="/greek/08b.webp"
+            src="/greek/02.webp"
             alt="Simona Barboiu"
             width={800}
             height={400}
@@ -49,7 +49,7 @@ export default function GreekPage() {
 
         <div className="flex flex-col gap-4 justify-center items-start ">
           <LightImage
-            src="/greek/06.webp"
+            src="/greek/03.webp"
             alt="Simona Barboiu"
             draggable={false}
           />
@@ -59,7 +59,7 @@ export default function GreekPage() {
       <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
         <div className="flex flex-col gap-4 justify-center items-start ">
           <LightImage
-            src="/greek/08.webp"
+            src="/greek/04.webp"
             alt="Simona Barboiu"
             draggable={false}
           />
@@ -86,6 +86,10 @@ export default function GreekPage() {
         type="video"
       />
 
+      <LightImage src="/greek/05.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/greek/06.webp" alt="Simona Barboiu" draggable={false} />
+
       <LightImage
         src="/greek/07a.webp"
         alt="Simona Barboiu"
@@ -103,6 +107,22 @@ export default function GreekPage() {
         alt="Simona Barboiu"
         draggable={false}
       />
+
+      <LightImage src="/greek/08.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage
+        src="/greek/08b.webp"
+        alt="Simona Barboiu"
+        draggable={false}
+      />
+
+      <LightImage src="/greek/09.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/greek/10.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/greek/11.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/greek/12.webp" alt="Simona Barboiu" draggable={false} />
     </div>
   );
 }

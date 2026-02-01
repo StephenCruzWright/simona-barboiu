@@ -41,11 +41,7 @@ export default function FlowerAlleyPage() {
 
       <LightImage src="/alley/05.webp" alt="Simona Barboiu" draggable={false} />
 
-      <LightImage
-        src="/alley/05b.webp"
-        alt="Simona Barboiu"
-        draggable={false}
-      />
+      <LightImage src="/alley/05b.webp" alt="Simona Barboiu" draggable={false} />
 
       <p className=" py-4 flex flex-col items-center justify-center">
         Here is a quick environment, for a different perspective of the plants.
@@ -60,9 +56,9 @@ export default function FlowerAlleyPage() {
         draggable={false}
       />
 
-      <LightImage src="/alley/08.webp" alt="Simona Barboiu" draggable={false} />
-
       <LightImage src="/alley/06.webp" alt="Simona Barboiu" draggable={false} />
+
+      <LightImage src="/alley/08.webp" alt="Simona Barboiu" draggable={false} />
 
       <LightImage
         src="/alley/09.mp4"
@@ -70,6 +66,8 @@ export default function FlowerAlleyPage() {
         draggable={false}
         type="video"
       />
+
+      <LightImage src="/alley/environment_flower_deco.webp" alt="Simona Barboiu" draggable={false} />
     </div>
   );
 }
