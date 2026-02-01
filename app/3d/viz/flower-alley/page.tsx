@@ -2,7 +2,7 @@
 
 import LightImage from "@/components/LightImage";
 
-export default function GreekPage() {
+export default function FlowerAlleyPage() {
   return (
     <div className="flex flex-col gap-8 items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto justify-center items-center">
