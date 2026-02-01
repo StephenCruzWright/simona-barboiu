@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function ThreeDPage() {
   return (
     <main>
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain bg-white/5 px-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain bg-white/5 px-4 pb-4">
         <div>
           <h1 id="viz">Product Viz</h1>
-          <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain mt-4">
+          <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
             <a href="/3d/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
@@ -46,7 +46,7 @@ export default function ThreeDPage() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto gap-4 object-contain mt-4 bg-white/5 px-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto gap-4 object-contain mt-4 bg-white/5 px-4 pb-4">
         <div>
           <h1 id="games">Games & Interactive Apps</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
@@ -89,7 +89,7 @@ export default function ThreeDPage() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto gap-4 object-contain mt-4 bg-white/5 px-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto gap-4 object-contain mt-4 bg-white/5 px-4 pb-4">
         <div>
           <h1 id="environments">Environments</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
