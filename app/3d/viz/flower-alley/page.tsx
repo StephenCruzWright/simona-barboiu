@@ -20,13 +20,12 @@ export default function GreekPage() {
         />
       </div>
 
-      <div className="flex flex-col gap-4 lg: max-w-6xl items-center justify-center">
-        <p className="max-w-5xl py-4 flex flex-col items-center justify-center">
+      
+        <p className="py-4 flex flex-col items-center justify-center">
           The assets from this project were modelled in Blender and textured
           using both Blender and Substance Painter. The scene was assembled and
           rendered in Unreal Engine.
         </p>
-      </div>
 
       <LightImage src="/alley/03.webp" alt="Simona Barboiu" draggable={false} />
 
