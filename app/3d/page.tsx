@@ -1,10 +1,9 @@
-import LightImage from "@/components/LightImage";
 import Image from "next/image";
 
 export default function ThreeDPage() {
   return (
     <main>
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain mt-4 bg-white/5 px-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain bg-white/5 px-4">
         <div>
           <h1 id="viz">Product Viz</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain mt-4">
