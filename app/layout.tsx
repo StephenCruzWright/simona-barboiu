@@ -5,6 +5,7 @@ import { Roboto_Slab } from "next/font/google";
 import "@/styles/globals.css";
 import RoutingNav from "@/components/RoutingNav";
 import ScrollToTop from "@/components/ScrollToTop";
+import HeaderGradient from "@/components/HeaderGradient";
 
 
 const robotoSlab = Roboto_Slab({
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${robotoSlab.className} ${robotoSlab.className} antialiased`}>
       <body>
+        <HeaderGradient/>
         <Header />
         <RoutingNav />
         {children}

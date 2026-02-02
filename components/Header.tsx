@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import HeaderGradient from "./HeaderGradient";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
-
+  
+  
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
@@ -25,8 +27,10 @@ export default function Header() {
 
   const close = () => setOpen(false);
 
+  
   return (
-    <header className="sticky top-0 z-50 bg-background shadow-lg gradient-animated">
+    <header className="sticky top-0 z-50 shadow-lg sticky top-0 z-50 shadow-lg">
+      
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
         <Link href="/" onClick={close} className="shrink-0 max-w-[23vw]">
           <Image

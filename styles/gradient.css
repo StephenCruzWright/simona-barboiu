@@ -15,7 +15,6 @@
   will-change: background-position;
   transition: background-position 0.15s ease-out;
 
-  /* mouse influence */
   background-position:
     calc(50% + var(--mx)) 
     calc(50% + var(--my));
