@@ -550,11 +550,12 @@ export default function HeaderGradient() {
   }, []);
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: -1 }}>
+    <div style={{ position: "absolute", inset: 0, zIndex: -1, overflow: "hidden", pointerEvents: "none"}}>
       <canvas
         ref={canvasRef}
-        style={{ width: "100vw", height: "100vh", display: "block" }}
-        aria-hidden
+        style={{ width: "100vw", height: "15vh", display: "internal" }}
+        aria-hidden="true"
+
       />
     </div>
   );

@@ -26,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${robotoSlab.className} ${robotoSlab.className} antialiased`}>
       <body>
-        <HeaderGradient/>
         <Header />
         <RoutingNav />
         {children}

@@ -29,8 +29,10 @@ export default function Header() {
 
   
   return (
-    <header className="sticky top-0 z-50 shadow-lg sticky top-0 z-50 shadow-lg">
+    
+    <header className="sticky top-0 z-50 shadow-lg">
       
+        <HeaderGradient/>
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
         <Link href="/" onClick={close} className="shrink-0 max-w-[23vw]">
           <Image
