@@ -4,12 +4,13 @@ import { useEffect, useId, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HeaderGradient from "./HeaderGradient";
+import { useHideOnScroll } from "@/lib/useHideOnScroll";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
-  
-  
+  const hidden = useHideOnScroll(10);
+
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
@@ -27,12 +28,15 @@ export default function Header() {
 
   const close = () => setOpen(false);
 
-  
   return (
-    
-    <header className="sticky top-0 z-50 shadow-lg">
-      
-        <HeaderGradient/>
+    <header
+      className={`
+        sticky top-0 z-50 shadow-lg relative bg-background
+        transition-transform duration-300 ease-out
+        ${hidden ? "-translate-y-full" : "translate-y-0"}
+    `}
+    >
+      <HeaderGradient />
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
         <Link href="/" onClick={close} className="shrink-0 max-w-[23vw]">
           <Image
@@ -106,7 +110,7 @@ export default function Header() {
             className="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-background p-6 shadow-xl"
           >
             <div className="flex items-center justify-between text-xl">
-              <div/>
+              <div />
               <button
                 type="button"
                 className="rounded-mdpx-6 py-5 px-6 hover:opacity-70 transition-opacity"

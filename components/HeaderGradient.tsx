@@ -404,7 +404,6 @@ export default function HeaderGradient() {
     const uColor1WeightLoc = gl.getUniformLocation(program, "uColor1Weight");
     const uColor2WeightLoc = gl.getUniformLocation(program, "uColor2Weight");
 
-    
     gl.uniform1f(uGrainIntensityLoc, 0.08);
     gl.uniform3f(uDarkNavyLoc, 0.039, 0.055, 0.153);
     gl.uniform1f(uSpeedLoc, 1.2);
@@ -412,7 +411,6 @@ export default function HeaderGradient() {
     gl.uniform1f(uGradientSizeLoc, 0.45);
     gl.uniform1f(uGradientCountLoc, 12.0);
 
-    
     gl.uniform3f(uColor1Loc, 0.945, 0.353, 0.133);
     gl.uniform3f(uColor2Loc, 0.039, 0.055, 0.153);
     gl.uniform3f(uColor3Loc, 0.945, 0.353, 0.133);
@@ -422,17 +420,16 @@ export default function HeaderGradient() {
     gl.uniform1f(uColor1WeightLoc, 0.5);
     gl.uniform1f(uColor2WeightLoc, 1.8);
 
-    
     const touchTexture = gl.createTexture();
     if (!touchTexture) throw new Error("Could not create texture");
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, touchTexture);
-    
+
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    
+
     const initImg = new Uint8Array([0, 0, 0, 255]);
     gl.texImage2D(
       gl.TEXTURE_2D,
@@ -473,7 +470,7 @@ export default function HeaderGradient() {
     const onMouse = (ev: MouseEvent) => {
       touch.addTouch({
         x: ev.clientX / window.innerWidth,
-        y: 1 - ev.clientY / window.innerHeight,
+        y: (ev.clientY - 5) / window.innerHeight,
       });
     };
     const onTouch = (ev: TouchEvent) => {
@@ -481,7 +478,7 @@ export default function HeaderGradient() {
       if (!t) return;
       touch.addTouch({
         x: t.clientX / window.innerWidth,
-        y: 1 - t.clientY / window.innerHeight,
+        y: (t.clientY - 2) / window.innerHeight,
       });
     };
 
@@ -491,44 +488,44 @@ export default function HeaderGradient() {
 
     let start = performance.now();
     function tick(now: number) {
-  if (!gl) return;   
+      if (!gl) return;
 
-  const t = (now - start) * 0.001;
+      const t = (now - start) * 0.001;
 
-  gl.useProgram(program);
-  gl.uniform1f(uTimeLoc, t);
+      gl.useProgram(program);
+      gl.uniform1f(uTimeLoc, t);
 
-  touch.update();
-  gl.activeTexture(gl.TEXTURE0);
-  gl.bindTexture(gl.TEXTURE_2D, touchTexture);
+      touch.update();
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, touchTexture);
 
-  try {
-    gl.texImage2D(
-      gl.TEXTURE_2D,
-      0,
-      gl.RGBA,
-      gl.RGBA,
-      gl.UNSIGNED_BYTE,
-      touch.canvas,
-    );
-  } catch (err) {
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 0);
-    gl.texImage2D(
-      gl.TEXTURE_2D,
-      0,
-      gl.RGBA,
-      gl.RGBA,
-      gl.UNSIGNED_BYTE,
-      touch.canvas,
-    );
-  }
+      try {
+        gl.texImage2D(
+          gl.TEXTURE_2D,
+          0,
+          gl.RGBA,
+          gl.RGBA,
+          gl.UNSIGNED_BYTE,
+          touch.canvas,
+        );
+      } catch (err) {
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 0);
+        gl.texImage2D(
+          gl.TEXTURE_2D,
+          0,
+          gl.RGBA,
+          gl.RGBA,
+          gl.UNSIGNED_BYTE,
+          touch.canvas,
+        );
+      }
 
-  gl.clearColor(0.039, 0.055, 0.153, 1.0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.drawArrays(gl.TRIANGLES, 0, 6);
+      gl.clearColor(0.039, 0.055, 0.153, 1.0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-  rafRef.current = requestAnimationFrame(tick);
-}
+      rafRef.current = requestAnimationFrame(tick);
+    }
 
     rafRef.current = requestAnimationFrame(tick);
 
@@ -550,12 +547,19 @@ export default function HeaderGradient() {
   }, []);
 
   return (
-    <div style={{ position: "absolute", inset: 0, zIndex: -1, overflow: "hidden", pointerEvents: "none"}}>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: -1,
+        overflow: "hidden",
+        pointerEvents: "none"
+      }}
+    >
       <canvas
         ref={canvasRef}
         style={{ width: "100vw", height: "15vh", display: "internal" }}
-        aria-hidden="true"
-
+        aria-hidden
       />
     </div>
   );
