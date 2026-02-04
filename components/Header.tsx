@@ -99,7 +99,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden pointer-events-none bg-black/80">
+        <div className="md:hidden bg-black/80">
           <button
             aria-label="Close menu"
             className="fixed inset-0 z-40"
@@ -110,7 +110,7 @@ export default function Header() {
             className="fixed right-0 top-0 z-50 h-[100vh] w-60 p-6 shadow-xl bg-background"
           >
             {/* <HeaderGradient /> */}
-            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-black/20" />
             <div className="relative">
               <div className="flex items-center justify-between text-xl">
                 <div />
