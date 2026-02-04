@@ -107,7 +107,7 @@ export default function Header() {
           />
           <div
             id={panelId}
-            className="fixed right-0 top-0 z-50 h-[100vh] w-60 p-6 shadow-xl bg-background"
+            className="fixed right-0 top-0 z-50 h-[100vh] w-60 p-6 shadow-xl bg-black/80"
           >
             {/* <HeaderGradient /> */}
             <div className="absolute inset-0 bg-black/20" />
