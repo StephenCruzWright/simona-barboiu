@@ -33,7 +33,7 @@ export default function Header() {
       className={`
         sticky top-0 z-50 shadow-lg relative bg-background
         transition-transform duration-300 ease-out
-        ${hidden ? "-translate-y-full" : "translate-y-0"}
+        ${hidden ? "md:translate-y-0 -translate-y-full" : "translate-y-0"}
     `}
     >
       <HeaderGradient />
@@ -51,7 +51,7 @@ export default function Header() {
 
         <nav
           className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row 
-        md:text-lg lg:text-xl xl:text-2xl"
+        md:text-lg lg:text-xl"
         >
           <div className="flex flex-col">
             <Link href="/3d">3D</Link>
