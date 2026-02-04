@@ -558,7 +558,7 @@ export default function HeaderGradient() {
     >
       <canvas
         ref={canvasRef}
-        style={{ width: "100vw", height: "15vh", display: "internal" }}
+        style={{ width: "100vw", height: "100%", display: "external" }}
         aria-hidden
       />
     </div>

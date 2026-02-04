@@ -5,7 +5,7 @@
 import { usePathname } from "next/navigation";
 import { buildCrumbs } from "@/lib/breadcrumbs";
 
-export default function SideTitle({className}: {className?: string;}) {
+export default function SideTitle({ className }: { className?: string }) {
   const crumbs = buildCrumbs(usePathname());
   const title = crumbs[crumbs.length - 1]?.label ?? "";
 
@@ -18,8 +18,9 @@ export default function SideTitle({className}: {className?: string;}) {
         text-5xl font-semibold opacity-90
         pointer-events-none
         select-none
-        ${className ?? ""}`}
-      >
+        ${className ?? ""}
+        `}
+    >
       {title}
     </div>
   );

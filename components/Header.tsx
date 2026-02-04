@@ -81,7 +81,7 @@ export default function Header() {
           aria-controls={panelId}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="relative block h-5 w-6">
+          <span className="absolute block h-5 w-6 z-100">
             <span
               className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition-transform 
                 ${open ? "translate-y-2 rotate-45" : ""}`}
@@ -99,62 +99,64 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden">
+        <div className="md:hidden pointer-events-none bg-black/80">
           <button
             aria-label="Close menu"
-            className="fixed inset-0 z-40 bg-black/50"
+            className="fixed inset-0 z-40"
             onClick={close}
           />
           <div
             id={panelId}
-            className="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-background p-6 shadow-xl"
+            className="fixed right-0 top-0 z-50 h-[100vh] w-60 p-6 shadow-xl bg-background"
           >
-            <div className="flex items-center justify-between text-xl">
-              <div />
-              <button
-                type="button"
-                className="rounded-mdpx-6 py-5 px-6 hover:opacity-70 transition-opacity"
-                aria-label="Close menu"
-                onClick={close}
-              >
-                ✕
-              </button>
+            {/* <HeaderGradient /> */}
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+            <div className="relative">
+              <div className="flex items-center justify-between text-xl">
+                <div />
+                <button
+                  type="button"
+                  className="rounded-mdpx-6 py-5 px-6 hover:opacity-70 transition-opacity select-none"
+                  aria-label="Close menu"
+                  onClick={close}
+                />
+              </div>
+
+              <nav className="mt-6 flex flex-col gap-6 text-lg">
+                <div>
+                  <Link href="/3d" onClick={close}>
+                    3D
+                  </Link>
+                  <div className="flex flex-col gap-0 text-sm">
+                    <Link href="/3d/#product" onClick={close}>
+                      Product viz
+                    </Link>
+                    <Link href="/3d/#games" onClick={close}>
+                      Games &amp; Interactive apps
+                    </Link>
+                    <Link href="/3d/#environments">Environments</Link>
+                  </div>
+                </div>
+
+                <div>
+                  <Link href="/2d" onClick={close}>
+                    2D
+                  </Link>
+                  <div className="flex flex-col gap-0 text-sm">
+                    <Link href="/2d/#illustration" onClick={close}>
+                      Illustration
+                    </Link>
+                  </div>
+                </div>
+
+                <Link href="/work" onClick={close}>
+                  Work Experience
+                </Link>
+                <Link href="/about" onClick={close}>
+                  About &amp; Contact
+                </Link>
+              </nav>
             </div>
-
-            <nav className="mt-6 flex flex-col gap-6 text-lg">
-              <div>
-                <Link href="/3d" onClick={close}>
-                  3D
-                </Link>
-                <div className="flex flex-col gap-0 text-sm">
-                  <Link href="/3d/#product" onClick={close}>
-                    Product viz
-                  </Link>
-                  <Link href="/3d/#games" onClick={close}>
-                    Games &amp; Interactive apps
-                  </Link>
-                  <Link href="/3d/#environments">Environments</Link>
-                </div>
-              </div>
-
-              <div>
-                <Link href="/2d" onClick={close}>
-                  2D
-                </Link>
-                <div className="flex flex-col gap-0 text-sm">
-                  <Link href="/2d/#illustration" onClick={close}>
-                    Illustration
-                  </Link>
-                </div>
-              </div>
-
-              <Link href="/work" onClick={close}>
-                Work Experience
-              </Link>
-              <Link href="/about" onClick={close}>
-                About &amp; Contact
-              </Link>
-            </nav>
           </div>
         </div>
       )}

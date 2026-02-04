@@ -30,6 +30,7 @@ body {
   font-family: var(--font-regular);
   min-height: screen;
   justify-items: auto;
+  user-select: none;
 }
 
 @keyframes fadeIn {
@@ -56,6 +57,7 @@ h5,
 h6 {
   color: var(--foreground);
   font-family: var(--font-regular);
+  user-select: none;
 }
 
 h1 {
