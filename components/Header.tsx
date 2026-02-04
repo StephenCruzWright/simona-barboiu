@@ -33,7 +33,7 @@ export default function Header() {
       className={`
         sticky top-0 z-50 shadow-lg relative bg-background
         transition-transform duration-300 ease-out
-        ${hidden ? "md:translate-y-0 -translate-y-full" : "translate-y-0"}
+        ${hidden ? "md:translate-y-0 -translate-y-full shadow-lg" : "translate-y-0"}
     `}
     >
       <HeaderGradient />
