@@ -1,21 +1,19 @@
 # Simona Barboiu Portfolio
-
-![Banner](public\LogoOffWhite.png)
-
-![GitHub Created At](https://img.shields.io/github/created-at/StephenCruzWright/Programming-Languages-Cheat-Sheet?style=flat-square)
-![GitHub Contributors](https://img.shields.io/github/contributors/StephenCruzWright/Programming-Languages-Cheat-Sheet?style=flat-square)
-[![License](https://img.shields.io/github/license/StephenCruzWright/Programming-Languages-Cheat-Sheet?style=flat-square)](LICENSE)
-[![]]
-
-or
+<p align="center">
+  <img src="https://github.com/StephenCruzWright/simona-barboiu/blob/main/public/LogoOffWhite.png" alt="Portfolio Website">
+</p>
 
 <p align="center">
-  <a href="https://github.com/StephenCruzWright/simona-barboiu/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/StephenCruzWright/simona-barboiu/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/StephenCruzWright/simona-barboiu/releases"><img src="https://img.shields.io/github/v/release/StephenCruzWright/simona-barboiu?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
+  <a href="https://github.com/StephenCruzWright/simona-barboiu/actions/workflows?branch=main">
+    <img src="https://img.shields.io/github/actions/workflow/status/StephenCruzWright/simona-barboiu/npm-publish-github-packages.yml?branch=main&style=for-the-badge" alt="CI status">
+  </a>
+  <a href="https://github.com/StephenCruzWright/simona-barboiu/releases"><img alt="GitHub deployments" src="https://img.shields.io/github/deployments/StephenCruzWright/simona-barboiu/Production?branch=main&style=for-the-badge"></a>
   <a href=""><img src="https://img.shields.io/github/created-at/StephenCruzWright/simona-barboiu?label=Creation&logo=github&logoColor=white&color=5865F2&style=for-the-badge" alt="GitHub Created At"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/StephenCruzWright/simona-barboiu?style=for-the-badge" alt="License"></a>
-  <a href=""><img src="https://img.shields.io/github/commit-activity/m/StephenCruzWright/simona-barboiu&style=for-the-badge" alt="GitHub commit activity"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/StephenCruzWright/simona-barboiu?branch=main&style=for-the-badge" alt="License"></a>
+  <a href=""><img src="https://img.shields.io/github/commit-activity/w/StephenCruzWright/simona-barboiu?branch=main&style=for-the-badge" alt="GitHub commit activity"></a>
 </p>
+
+## About
 
 This is the portfolio website made for Simona Barboiu, a multifaceted 3D/2D artist/designer and is actively hosted with vercel on [simonabarboiu.com](https://simonabarboiu.com)
 
