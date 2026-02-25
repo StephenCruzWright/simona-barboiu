@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center py-10 px-16 mx-auto max-w-6xl px-6 ">
+      <main className="flex w-full flex-col items-center py-10 px-16 mx-auto max-w-6xl ">
         Vintage Flower Lamps
-        <a href="/3d/viz/vintage-flower-lamps">
+        <a href="/projects/viz/vintage-flower-lamps">
           <Image
             src="/lamps/wireframe.webp"
             alt="Simona Barboiu"
@@ -17,7 +17,7 @@ export default function Home() {
         </a>
 
         Illustrations
-        <a href="/2d">
+        <a href="/projects/illustration">
           <Image
             src="/illustration/prpls.webp"
             alt="Simona Barboiu"
@@ -29,7 +29,7 @@ export default function Home() {
         </a>
 
         Greek House
-        <a href="/3d/environments/greek-house">
+        <a href="/projects/environments/greek-house">
           <Image
             src="/greek/01.webp"
             alt="Simona Barboiu"
@@ -41,7 +41,7 @@ export default function Home() {
         </a>
         
         Flower Alley
-        <a href="/3d/viz/flower-alley">
+        <a href="/projects/viz/flower-alley">
           <Image
             src="/alley/08.webp"
             alt="Simona Barboiu"

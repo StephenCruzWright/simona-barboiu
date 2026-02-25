@@ -7,7 +7,7 @@ export default function ThreeDPage() {
         <div>
           <h1 id="viz">Product Viz</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -19,7 +19,7 @@ export default function ThreeDPage() {
               <h3>Vintage Flower Lamps</h3>
             </a>
 
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -31,7 +31,7 @@ export default function ThreeDPage() {
               <h3>Vintage Flower Lamps</h3>
             </a>
 
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -50,7 +50,7 @@ export default function ThreeDPage() {
         <div>
           <h1 id="games">Games & Interactive Apps</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -62,7 +62,7 @@ export default function ThreeDPage() {
               <h3>Vintage Flower Lamps</h3>
             </a>
 
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -74,7 +74,7 @@ export default function ThreeDPage() {
               <h3>Vintage Flower Lamps</h3>
             </a>
 
-            <a href="/3d/viz/vintage-flower-lamps">
+            <a href="/projects/viz/vintage-flower-lamps">
               <Image
                 src="/lamps/1.webp"
                 alt="Simona Barboiu"
@@ -94,7 +94,7 @@ export default function ThreeDPage() {
           <h1 id="environments">Environments</h1>
           <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain">
             <div>
-              <a href="/3d/environments/greek-house">
+              <a href="/projects/environments/greek-house">
                 <Image
                   src="/greek/01.webp"
                   alt="Simona Barboiu"
@@ -106,7 +106,7 @@ export default function ThreeDPage() {
                 <h3>Greek House</h3>
               </a>
 
-              <a href="/3d/games/paxvr">
+              <a href="/projects/games/paxvr">
                 <Image
                   src="/alley/environment_flower_deco.webp"
                   alt="Simona Barboiu"
@@ -119,7 +119,7 @@ export default function ThreeDPage() {
               </a>
             </div>
 
-            <a href="/3d/viz/flower-alley">
+            <a href="/projects/viz/flower-alley">
               <Image
                 src="/alley/01.webp"
                 alt="Simona Barboiu"

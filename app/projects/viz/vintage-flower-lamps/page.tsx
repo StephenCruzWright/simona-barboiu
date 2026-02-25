@@ -1,4 +1,4 @@
-// app/3d/viz/vintage-flower-lamps/page.tsx
+// app/projects/viz/vintage-flower-lamps/page.tsx
 
 import BeforeAndAfter from "@/components/BeforeAndAfter";
 import LightImage from "@/components/LightImage";

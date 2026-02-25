@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <header
       className={`
-        sticky top-0 z-50 shadow-lg relative bg-background
+        sticky top-0 z-50 shadow-lg bg-background
         transition-transform duration-300 ease-out
         ${hidden ? "md:translate-y-0 -translate-y-full shadow-lg" : "translate-y-0"}
     `}
@@ -54,18 +54,12 @@ export default function Header() {
         md:text-lg lg:text-xl"
         >
           <div className="flex flex-col">
-            <Link href="/3d">3D</Link>
+            <Link href="/projects">Projects</Link>
             <div className="flex flex-col text-sm">
-              <Link href="/3d/#product">Product viz</Link>
-              <Link href="/3d/#games">Games & Interactive apps</Link>
-              <Link href="/3d/#environments">Environments</Link>
-            </div>
-          </div>
-
-          <div className="flex flex-col">
-            <Link href="/2d">2D</Link>
-            <div className="flex text-sm">
-              <Link href="/2d/#illustration">Illustration</Link>
+              <Link href="/projects/#product">Product viz</Link>
+              <Link href="/projects/#games">Games & Interactive apps</Link>
+              <Link href="/projects/#environments">Environments</Link>
+              <Link href="/projects/illustration">Illustration</Link>
             </div>
           </div>
 
@@ -107,7 +101,7 @@ export default function Header() {
           />
           <div
             id={panelId}
-            className="fixed right-0 top-0 z-50 h-[100vh] w-60 p-6 shadow-xl bg-black/80"
+            className="fixed right-0 top-0 z-50 h-screen w-60 p-6 shadow-xl bg-black/80"
           >
             {/* <HeaderGradient /> */}
             <div className="absolute inset-0 bg-black/20" />
@@ -124,26 +118,18 @@ export default function Header() {
 
               <nav className="mt-6 flex flex-col gap-6 text-lg">
                 <div>
-                  <Link href="/3d" onClick={close}>
-                    3D
+                  <Link href="/projects" onClick={close}>
+                    Projects
                   </Link>
                   <div className="flex flex-col gap-0 text-sm">
-                    <Link href="/3d/#product" onClick={close}>
+                    <Link href="/projects/#product" onClick={close}>
                       Product viz
                     </Link>
-                    <Link href="/3d/#games" onClick={close}>
+                    <Link href="/projects/#games" onClick={close}>
                       Games &amp; Interactive apps
                     </Link>
-                    <Link href="/3d/#environments">Environments</Link>
-                  </div>
-                </div>
-
-                <div>
-                  <Link href="/2d" onClick={close}>
-                    2D
-                  </Link>
-                  <div className="flex flex-col gap-0 text-sm">
-                    <Link href="/2d/#illustration" onClick={close}>
+                    <Link href="/projects/#environments">Environments</Link>
+                    <Link href="/projects/illustration" onClick={close}>
                       Illustration
                     </Link>
                   </div>
