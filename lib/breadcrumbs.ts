@@ -8,7 +8,7 @@ export type Crumb = {
 // Segment label overrides (for nicer casing / naming)
 export const SEGMENT_LABELS: Record<string, string> = {
   "projects": "Projects",
-  games: "Games",
+  interactive: "Interactive",
   illustration: "Illustration",
   viz: "viz",
   environments: "Environments",
@@ -18,8 +18,9 @@ export const SEGMENT_LABELS: Record<string, string> = {
 
 // Full path overrides (useful for special cases/projects)
 export const PATH_LABELS: Record<string, string> = {
-  "/projects/games/paxvr": "PaxVR",
+  "/projects/interactive/paxvr": "PaxVR",
   "/projects/viz/vintage-flower-lamps": "Vintage Flower Lamps",
+  "/projects/environments/greek-house": "Greek House",
 };
 
 export function titleCaseFromSlug(slug: string) {

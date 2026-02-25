@@ -56,9 +56,9 @@ export default function Header() {
           <div className="flex flex-col">
             <Link href="/projects">Projects</Link>
             <div className="flex flex-col text-sm">
-              <Link href="/projects/#product">Product viz</Link>
-              <Link href="/projects/#games">Games & Interactive apps</Link>
               <Link href="/projects/#environments">Environments</Link>
+              <Link href="/projects/#product">Product viz</Link>
+              <Link href="/projects/#interactive">Interactive</Link>
               <Link href="/projects/illustration">Illustration</Link>
             </div>
           </div>
@@ -122,16 +122,10 @@ export default function Header() {
                     Projects
                   </Link>
                   <div className="flex flex-col gap-0 text-sm">
-                    <Link href="/projects/#product" onClick={close}>
-                      Product viz
-                    </Link>
-                    <Link href="/projects/#games" onClick={close}>
-                      Games &amp; Interactive apps
-                    </Link>
                     <Link href="/projects/#environments">Environments</Link>
-                    <Link href="/projects/illustration" onClick={close}>
-                      Illustration
-                    </Link>
+                    <Link href="/projects/#product">Product viz</Link>
+                    <Link href="/projects/#interactive">Interactive</Link>
+                    <Link href="/projects/illustration">Illustration</Link>
                   </div>
                 </div>
 

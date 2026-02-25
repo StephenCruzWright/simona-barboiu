@@ -51,6 +51,18 @@ export default function Home() {
             className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100 crop-center mb-10"
           />
         </a>
+
+        Pax vR
+        <a href="/projects/interactive/paxvr">
+          <Image
+            src="/alley/08.webp"
+            alt="Simona Barboiu"
+            width={500}
+            height={128}
+            draggable={false}
+            className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-80 hover:opacity-100 crop-center mb-10"
+          />
+        </a>
       </main>
     </div>
   );
