@@ -103,7 +103,6 @@ export default function Header() {
             id={panelId}
             className="fixed right-0 top-0 z-50 h-screen w-60 p-6 shadow-xl bg-black/80"
           >
-            {/* <HeaderGradient /> */}
             <div className="absolute inset-0 bg-black/20" />
             <div className="relative">
               <div className="flex items-center justify-between text-xl">

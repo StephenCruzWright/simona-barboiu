@@ -52,7 +52,7 @@ export default function Home() {
           />
         </a>
 
-        Pax vR
+        Pax VR
         <a href="/projects/interactive/paxvr">
           <Image
             src="/alley/08.webp"
