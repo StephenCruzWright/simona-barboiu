@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${interFont.variable} antialiased`}>
-      <body className="font-[var(--font-inter)]">
+      <body className="font-(--font-inter)">
         <Header />
         <RoutingNav />
         {children}

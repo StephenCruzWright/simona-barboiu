@@ -66,7 +66,7 @@ export default function LightImage({
         >
           <video
             src={String(bigSrc)}
-            className={`cursor-zoom-in w-full h-auto ${className ?? ""} transition-transform motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+            className={`cursor-zoom-in w-full h-auto ${className ?? ""} motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
             autoPlay
             loop
             muted
@@ -83,7 +83,7 @@ export default function LightImage({
           <Image
             {...props}
             alt={altText}
-            className={`cursor-zoom-in w-full h-auto ${className ?? ""} transition-transform motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+            className={`cursor-zoom-in w-full h-auto ${className ?? ""} motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
             width={imageWidth}
             height={imageHeight}
             draggable={props.draggable ?? true}
@@ -93,7 +93,7 @@ export default function LightImage({
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+          className="fixed inset-0 z-100 bg-black/90 backdrop-blur-sm flex items-center justify-center"
           onClick={() => {
             setOpen(false);
             setZoomed(false);
