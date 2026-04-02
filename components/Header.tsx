@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, useRef } from "react";
+import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HeaderGradient from "./HeaderGradient";
@@ -38,19 +38,19 @@ export default function Header() {
     >
       <HeaderGradient />
       <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
-        <Link href="/" onClick={close} className="shrink-0 max-w-[23vw]">
+        <Link href="/" onClick={close} className=" max-w-[23vw]">
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
-            width={200}
-            height={200}
+            width={250}
+            height={250}
             draggable={false}
             priority
           />
         </Link>
 
         <nav
-          className="hidden justify-between gap-8 text-sm md:flex lg:flex flex-row 
+          className="hidden gap-8 text-sm md:flex lg:flex flex-row 
         md:text-lg lg:text-xl"
         >
           <div className="flex flex-col">

@@ -65,7 +65,7 @@ export default function ScrollModel({
         return () => {
             el.removeEventListener("mouseenter", onEnter);
             el.removeEventListener("mouseleave", onLeave);
-            el.removeEventListener("wheel", onWheel as any);
+            el.removeEventListener("wheel", onWheel);
         };
     }, [images.length, sensitivity]);
 
