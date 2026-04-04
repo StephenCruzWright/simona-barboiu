@@ -1,10 +1,10 @@
-// app/projects/viz/vintage-flower-lamps/page.tsx
-
 import BeforeAndAfter from "@/components/BeforeAndAfter";
 import ScrollModel from "@/components/ScrollModel";
 import Image from "next/image";
 
-export default function VintageFlowerLampsPage() {
+// TODO: add a scroll model of the unreal package with the blueprint functionality, and a before and after of the unreal integration (maybe a video or gif of the light turning on and off in unreal?)
+
+export default function PaxVrPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">

@@ -53,6 +53,7 @@ export default function Header() {
           className="hidden gap-8 text-sm md:flex lg:flex flex-row 
         md:text-lg lg:text-xl"
         >
+          {/* TODO: make this a dropdown */}
           <div className="flex flex-col">
             <Link href="/projects">Projects</Link>
             <div className="flex flex-col text-sm">

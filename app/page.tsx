@@ -3,6 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex items-center justify-center font-sans">
+      {/* TODO: Change this to be a collection of project thumbnails that fade up into the page as the user scrolls */}
       <main className="flex w-full flex-col items-center py-10 px-16 mx-auto max-w-6xl ">
         Vintage Flower Lamps
         <a href="/projects/viz/vintage-flower-lamps">
