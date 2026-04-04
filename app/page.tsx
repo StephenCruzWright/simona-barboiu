@@ -83,14 +83,14 @@ export default function Home() {
         </div>
 
         <div className="relative aspect-16/10 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
-          <div className="absolute inset-0 bg-linear-to-tr from-black/30 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-tr from-black/30 via-transparent to-black/40 " />
           <LightImage
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover hover:scale-[1.09] transition-transform duration-500"
             src="/greek/overallmovie_AS.mp4"
             alt="Simona Barboiu showreel thumbnail"
             type="video"
             fill
-          ></LightImage>
+          />
         </div>
       </section>
 
