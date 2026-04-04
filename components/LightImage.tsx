@@ -25,6 +25,7 @@ export default function LightImage({
   const imageWidth = props.width ?? 2000;
   const imageHeight = props.height ?? 2000;
   const isVideo = type === "video";
+  const altText = typeof props.alt === "string" ? props.alt : "Portfolio media";
 
   useEffect(() => {
     if (!open) return;
@@ -40,6 +41,12 @@ export default function LightImage({
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  function openLightbox() {
+    if (!zoomable) return;
+    setLoaded(false);
+    setOpen(true);
+  }
+
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!zoomed) return;
     const rect = e.currentTarget.getBoundingClientRect();
@@ -51,39 +58,45 @@ export default function LightImage({
   return (
     <>
       {isVideo ? (
-        <video
-          src={String(bigSrc)}
-          className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          onClick={() =>
-            screen.availWidth > 1900
-              ? zoomable && (setLoaded(false), setOpen(true))
-              : null
-          }
-        />
+        <button
+          type="button"
+          onClick={openLightbox}
+          className="block w-full bg-transparent border-0 p-0 text-left"
+          aria-label={`Open ${altText}`}
+        >
+          <video
+            src={String(bigSrc)}
+            className={`cursor-zoom-in w-full h-auto ${className ?? ""} motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </button>
       ) : (
-        <Image
-          {...props}
-          className={`cursor-zoom-in ${className ?? ""} transition-transform hover:scale-[1.01] transition-shadow hover:shadow-lg`}
-          width={imageWidth}
-          height={imageHeight}
-          draggable={props.draggable ?? true}
-          onClick={() =>
-            screen.availWidth > 1900
-              ? zoomable && (setLoaded(false), setOpen(true))
-              : null
-          }
-        />
+        <button
+          type="button"
+          onClick={openLightbox}
+          className="block w-full bg-transparent border-0 p-0 text-left"
+          aria-label={`Open ${altText}`}
+        >
+          <Image
+            {...props}
+            alt={altText}
+            className={`cursor-zoom-in w-full h-auto ${className ?? ""} motion-safe:hover:scale-[1.01] transition-shadow hover:shadow-lg`}
+            width={imageWidth}
+            height={imageHeight}
+            draggable={props.draggable ?? true}
+          />
+        </button>
       )}
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+          className="fixed inset-0 z-100 bg-black/90 backdrop-blur-sm flex items-center justify-center"
           onClick={() => {
-            (setOpen(false), setZoomed(false));
+            setOpen(false);
+            setZoomed(false);
           }}
         >
           <div
@@ -112,7 +125,7 @@ export default function LightImage({
               <Image
                 {...props}
                 src={bigSrc}
-                alt={props.alt}
+                alt={altText}
                 width={2000}
                 height={2000}
                 priority
@@ -130,6 +143,8 @@ export default function LightImage({
               />
             )}
             <button
+              type="button"
+              aria-label="Close media dialog"
               className="absolute top-4 right-4 text-white text-3xl hover:opacity-70 transition-opacity"
               onClick={() => {
                 setOpen(false);

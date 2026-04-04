@@ -1,5 +1,3 @@
-// app/projects/viz/vintage-flower-lamps/page.tsx
-
 import BeforeAndAfter from "@/components/BeforeAndAfter";
 import LightImage from "@/components/LightImage";
 import ScrollModel from "@/components/ScrollModel";
@@ -8,26 +6,25 @@ export default function VintageFlowerLampsPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-xl object-contain">
+        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-8xl object-contain">
           <LightImage
             src="/lamps/1.webp"
             alt="Simona Barboiu"
             draggable={false}
           />
-          <ScrollModel path="/lamps/array"/>
+          <ScrollModel path="/lamps/array" />
         </div>
 
         <p>
-          Inspired by 1980s ornamental decoration, this lamp pack includes
-          four floral-motif models. I modeled them in Blender, rendered in
-          Blender and Twinmotion, textured by hand in Substance Painter,
-          and integrated into Unreal Engine with Blueprints.
-          Uses a consistent two-material workflow (opaque + transparent)
-          across all assets.
+          Inspired by 1980s ornamental decoration, this lamp pack includes four
+          floral-motif models. I modeled them in Blender, rendered in Blender
+          and Twinmotion, textured by hand in Substance Painter, and integrated
+          into Unreal Engine with Blueprints. Uses a consistent two-material
+          workflow (opaque + transparent) across all assets.
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[23vw] object-contain">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-8xl object-contain">
         <LightImage
           src="/lamps/2.webp"
           alt="Simona Barboiu"
@@ -48,7 +45,8 @@ export default function VintageFlowerLampsPage() {
       <div className="flex flex-col md:flex-row justify-center">
         <BeforeAndAfter
           beforeSrc="/lamps/StudioSetupA01.webp"
-          afterSrc="/lamps/StudioSetupA02.webp" />
+          afterSrc="/lamps/StudioSetupA02.webp"
+        />
       </div>
 
       <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-1 py-4 md:py-8">
@@ -61,15 +59,19 @@ export default function VintageFlowerLampsPage() {
         />
       </div>
       {/* 2 columns on desktop, but those are stacked on mobile */}
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-[50vw] object-contain gap-8 lg:gap-4">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-8xl object-contain gap-8 lg:gap-4">
         <div className=" flex flex-col gap-4 items-start ">
-          <h2 className="text-2xl md:text-4xl font-bold whitespace-nowrap" id="unreal">
+          <h2
+            className="text-2xl md:text-4xl font-bold whitespace-nowrap"
+            id="unreal"
+          >
             Unreal Engine Integration
           </h2>
 
           <p className="max-w-lg py-4 flex flex-col items-center justify-center">
-            The Unreal Integration allows for an easy drag and drop Unreal Package or Fab download. 
-            The Blueprint includes an on/off toggle for the light and an intensity adjustement.
+            The Unreal Integration allows for an easy drag and drop Unreal
+            Package or Fab download. The Blueprint includes an on/off toggle for
+            the light and an intensity adjustement.
           </p>
 
           <LightImage
@@ -87,10 +89,13 @@ export default function VintageFlowerLampsPage() {
             alt="Simona Barboiu"
             draggable={false}
           />
-          <a href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack" className="w-full flex justify-center" target="_blank" rel="noopener noreferrer">
-            <button className="btn">
-              Go to Product Page ↪
-            </button>
+          <a
+            href="https://www.cgtrader.com/3d-models/interior/house-interior/retro-lamp-pack"
+            className="w-full flex justify-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="btn">Go to Product Page ↪</button>
           </a>
         </div>
       </div>

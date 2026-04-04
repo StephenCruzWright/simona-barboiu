@@ -5,7 +5,7 @@ export type Crumb = {
   active: boolean;
 };
 
-// Segment label overrides (for nicer casing / naming)
+// Segment label overrides
 export const SEGMENT_LABELS: Record<string, string> = {
   "projects": "Projects",
   interactive: "Interactive",
@@ -16,7 +16,7 @@ export const SEGMENT_LABELS: Record<string, string> = {
   about: "About",
 };
 
-// Full path overrides (useful for special cases/projects)
+// Full path overrides (for special cases/projects)
 export const PATH_LABELS: Record<string, string> = {
   "/projects/interactive/paxvr": "PaxVR",
   "/projects/viz/vintage-flower-lamps": "Vintage Flower Lamps",
