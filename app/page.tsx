@@ -49,7 +49,7 @@ const projects = [
 
 export default function Home() {
   return (
-    <main className="relative mx-auto max-w-7xl overflow-hidden px-4 pb-24 pt-10 sm:px-6 lg:px-8">
+    <main className="relative mx-auto overflow-hidden px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <section className="grid items-end gap-8 pb-16 lg:grid-cols-[1fr_1.05fr] lg:pb-20">
         <div className="space-y-6">
           <p className="text-xs uppercase tracking-[0.45em] text-white/55">
