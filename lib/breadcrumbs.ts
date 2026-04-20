@@ -18,7 +18,7 @@ export const SEGMENT_LABELS: Record<string, string> = {
 
 // Full path overrides (for special cases/projects)
 export const PATH_LABELS: Record<string, string> = {
-  "/projects/interactive/paxvr": "PaxVR",
+  "/projects/interactive/paxvr": "Pax VR",
   "/projects/viz/vintage-flower-lamps": "Vintage Flower Lamps",
   "/projects/environments/greek-house": "Greek House",
 };

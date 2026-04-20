@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HeaderGradient from "./HeaderGradient";
+import NavDropdown from "./NavDropdown";
 import { useHideOnScroll } from "@/lib/useHideOnScroll";
 
 export default function Header() {
@@ -42,26 +43,24 @@ export default function Header() {
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
-            width={250}
-            height={250}
+            width={200}
+            height={200}
             draggable={false}
             priority
           />
         </Link>
 
-        <nav
-          className="hidden gap-8 text-sm md:flex lg:flex flex-row 
-        md:text-lg lg:text-xl"
-        >
-          <div className="flex flex-col">
-            <Link href="/projects">Projects</Link>
-            <div className="flex flex-col text-sm">
-              <Link href="/projects/#environments">Environments</Link>
-              <Link href="/projects/#product">Product viz</Link>
-              <Link href="/projects/#interactive">Interactive</Link>
-              <Link href="/projects/illustration">Illustration</Link>
-            </div>
-          </div>
+        <nav className="hidden gap-8 text-sm md:flex md:text-lg lg:text-xl flex-row items-center">
+          <NavDropdown
+            label="Projects"
+            items={[
+              { label: "All projects", href: "/projects" },
+              { label: "Environments", href: "/projects/#environments" },
+              { label: "Product viz", href: "/projects/#product" },
+              { label: "Interactive", href: "/projects/#interactive" },
+              { label: "Illustration", href: "/projects/illustration" },
+            ]}
+          />
 
           <Link href="/work">Work Experience</Link>
           <Link href="/about">About &amp; Contact</Link>

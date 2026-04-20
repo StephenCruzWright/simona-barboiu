@@ -5,15 +5,10 @@ type Props = {
   children: ReactNode;
 };
 
-export default function FlexGrid({ children}: Props) {
+export default function FlexGrid({ className = "", children }: Props) {
   return (
-    <div
-    className="
-      columns-1
-      sm:columns-2
-      gap-4
-    ">
-    {children}
+    <div className={`columns-1 sm:columns-2 gap-x-4 ${className}`}>
+      {children}
     </div>
   );
 }
