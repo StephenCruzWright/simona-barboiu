@@ -28,7 +28,7 @@ export default function GreekPage() {
         type="video"
       />
 
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain gap-8 lg:gap-4">
         <div className=" flex flex-col gap-4 items-start justify-space-between ">
           <p className="max-w-lg py-4 flex flex-col items-center justify-center">
             The bougainvillea plants were created using L-systems in Houdini -
@@ -56,7 +56,7 @@ export default function GreekPage() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-7xl object-contain gap-8 lg:gap-4">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain gap-8 lg:gap-4">
         <div className="flex flex-col gap-4 justify-center items-start ">
           <LightImage
             src="/greek/04.webp"

@@ -10,7 +10,7 @@ const projects = [
     summary:
       "Product visualization with a refined studio look and Unreal-ready presentation.",
     spanClassName: "md:col-span-7",
-    aspectClassName: "aspect-[16/10]",
+    aspectClassName: "aspect-[2100/2874]",
   },
   {
     href: "/projects/illustration",
@@ -18,7 +18,7 @@ const projects = [
     imageAlt: "Illustration portfolio thumbnail",
     summary: "Color-driven illustration work with a softer, expressive finish.",
     spanClassName: "md:col-span-5",
-    aspectClassName: "aspect-[4/5]",
+    aspectClassName: "aspect-[4961/2695]",
   },
   {
     href: "/projects/environments/greek-house",
@@ -26,7 +26,7 @@ const projects = [
     imageAlt: "Greek House environment thumbnail",
     summary: "A warm environment study focused on structure, light and mood.",
     spanClassName: "md:col-span-6",
-    aspectClassName: "aspect-[5/6]",
+    aspectClassName: "aspect-[16/9]",
   },
   {
     href: "/projects/viz/flower-alley",
@@ -34,7 +34,7 @@ const projects = [
     imageAlt: "Flower Alley environment thumbnail",
     summary: "Stylized scenery with layered botanical detail and atmosphere.",
     spanClassName: "md:col-span-6",
-    aspectClassName: "aspect-[16/10]",
+    aspectClassName: "aspect-[1677/2160]",
   },
   {
     href: "/projects/interactive/paxvr",
@@ -43,13 +43,13 @@ const projects = [
     summary:
       "Interactive product work and Unreal integration for the lamp pack.",
     spanClassName: "md:col-span-12",
-    aspectClassName: "aspect-[21/9]",
+    aspectClassName: "aspect-[2065/1406]",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="relative mx-auto overflow-hidden px-4 pb-24 pt-10 sm:px-6 lg:px-8">
+    <main className="relative mx-auto max-w-screen-2xl overflow-hidden px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <section className="grid items-end gap-8 pb-16 lg:grid-cols-[1fr_1.05fr] lg:pb-20">
         <div className="space-y-6">
           <p className="text-xs uppercase tracking-[0.45em] text-white/55">
@@ -68,7 +68,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/projects"
+              href="/#projects"
               className="rounded-full bg-black px-5 py-3 text-sm font-medium text-black transition-transform duration-300 hover:scale-[1.02]"
             >
               Jump to projects

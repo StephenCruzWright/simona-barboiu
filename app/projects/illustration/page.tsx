@@ -36,7 +36,7 @@ export default function IllustrationsPage() {
         />
       </FlexGrid>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain lg:max-w-[23vw] mt-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center mx-auto object-contain mt-4">
         <LightImage
           src="/illustration/simonabarboiu001.webp"
           alt="Ink Sketch 1"
