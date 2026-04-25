@@ -13,6 +13,25 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-regular: var(--font-inter, --font-roboto-slab, system-ui, sans-serif);
+
+  /* Motion — easing curves and durations for hover/transition consistency. */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+
+  /* Stagger delays for choreographed reveals (e.g. home grid via IntersectionObserver). */
+  --stagger-tight: 20ms;
+  --stagger-normal: 50ms;
+  --stagger-luxe: 100ms;
+
+  /* Z-index scale — formalises layering for dropdown / sticky nav / lightbox / modal. */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-toast: 50;
 }
 
 /* @media (prefers-color-scheme: light) {
