@@ -6,7 +6,7 @@ export default function VintageFlowerLampsPage() {
   return (
     <div className="flex flex-col gap-8 min-w-0">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-8xl object-contain">
+        <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain">
           <LightImage
             src="/lamps/1.webp"
             alt="Simona Barboiu"
@@ -59,7 +59,7 @@ export default function VintageFlowerLampsPage() {
         />
       </div>
       {/* 2 columns on desktop, but those are stacked on mobile */}
-      <div className="flex flex-col lg:flex-row justify-center mx-auto lg:max-w-8xl object-contain gap-8 lg:gap-4">
+      <div className="flex flex-col lg:flex-row justify-center mx-auto object-contain gap-8 lg:gap-4">
         <div className=" flex flex-col gap-4 items-start ">
           <h2
             className="text-2xl md:text-4xl font-bold whitespace-nowrap"

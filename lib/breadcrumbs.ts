@@ -1,6 +1,6 @@
 // lib/breadcrumbs.ts
 export type Crumb = {
-  href: string;
+  href?: string;
   label: string;
   active: boolean;
 };
@@ -39,21 +39,24 @@ function titleCaseFromCamelCase(camel: string) {
     .join(" ");
 }
 
-function toHashId(segment: string) {
-  return segment
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "-");
-}
-
+// Routes that actually resolve to a page. Anything else that appears as an
+// intermediate crumb (e.g. /projects, /projects/viz) is rendered as plain text.
+const VALID_ROUTES = new Set<string>([
+  "/",
+  "/work",
+  "/about",
+  "/projects/illustration",
+  "/projects/viz/vintage-flower-lamps",
+  "/projects/viz/flower-alley",
+  "/projects/environments/greek-house",
+  "/projects/interactive/paxvr",
+]);
 
 export function buildCrumbs(pathname: string): Crumb[] {
   const clean = pathname.split("?")[0].split("#")[0];
   const parts = clean.split("/").filter(Boolean);
 
-  const crumbs: Crumb[] = [
-    // { href: "/", label: "Home", active: parts.length === 0 } //keep this to include home link
-  ];
+  const crumbs: Crumb[] = [];
 
   let currentHref = "";
   for (let i = 0; i < parts.length; i++) {
@@ -72,20 +75,10 @@ export function buildCrumbs(pathname: string): Crumb[] {
       caseChecker;
 
     crumbs.push({
-      href: currentHref,
+      href: VALID_ROUTES.has(currentHref) ? currentHref : undefined,
       label,
       active: isLast,
     });
-  }
-
-  if (crumbs.length >= 2) {
-    const firstHref = crumbs[0]?.href ?? "/";
-    const second = crumbs[1];
-
-    crumbs[1] = {
-      ...second,
-      href: `${firstHref}#${toHashId(second.label)}`,
-    };
   }
 
   return crumbs;

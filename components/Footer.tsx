@@ -4,16 +4,14 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-background position-fixed bottom-0">
-      <div className="max-w-6xl flex items-center p-8 text-sm md:text-lg justify-between mx-auto">
+      <div className="max-w-screen-2xl flex items-center p-8 text-sm md:text-lg justify-between mx-auto">
         <nav className="flex flex-row justify-between text-sm md:text-md">
           <div className="flex flex-row gap-12 mr-8">
             <div className="flex flex-col">
-              <Link href="/projects/#environments">Environments</Link>
-              <Link href="/projects/#product">Product viz</Link>
-              <Link href="/projects/#interactive">Interactive</Link>
+              <Link href="/#projects">Projects</Link>
               <Link href="/projects/illustration">Illustration</Link>
             </div>
-            
+
             <div className="flex flex-col">
               <Link href="/work">Work Experience</Link>
               <Link href="/about">About & Contact</Link>

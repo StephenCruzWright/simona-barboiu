@@ -38,30 +38,30 @@ export default function Header() {
     `}
     >
       <HeaderGradient />
-      <div className="mx-auto flex p-5 max-w-6xl justify-between gap-4">
-        <Link href="/" onClick={close} className=" max-w-[23vw]">
+      <div className="mx-auto flex px-4 py-2 sm:px-6 lg:px-8 max-w-screen-2xl justify-between items-center gap-4">
+        <Link href="/" onClick={close} className="max-w-[20vw]">
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             draggable={false}
             priority
           />
         </Link>
 
-        <nav className="hidden gap-8 text-sm md:flex md:text-lg lg:text-xl flex-row items-center">
+        <nav className="hidden gap-8 text-sm md:flex md:text-base lg:text-lg flex-row items-center">
           <NavDropdown
             label="Projects"
             items={[
-              { label: "All projects", href: "/projects" },
-              { label: "Environments", href: "/projects/#environments" },
-              { label: "Product viz", href: "/projects/#product" },
-              { label: "Interactive", href: "/projects/#interactive" },
+              { label: "All projects", href: "/#projects" },
+              { label: "Vintage Flower Lamps", href: "/projects/viz/vintage-flower-lamps" },
+              { label: "Flower Alley", href: "/projects/viz/flower-alley" },
+              { label: "Greek House", href: "/projects/environments/greek-house" },
+              { label: "Pax VR", href: "/projects/interactive/paxvr" },
               { label: "Illustration", href: "/projects/illustration" },
             ]}
           />
-
           <Link href="/work">Work Experience</Link>
           <Link href="/about">About &amp; Contact</Link>
         </nav>
@@ -116,14 +116,25 @@ export default function Header() {
 
               <nav className="mt-6 flex flex-col gap-6 text-lg">
                 <div>
-                  <Link href="/projects" onClick={close}>
+                  <Link href="/#projects" onClick={close}>
                     Projects
                   </Link>
-                  <div className="flex flex-col gap-0 text-sm">
-                    <Link href="/projects/#environments">Environments</Link>
-                    <Link href="/projects/#product">Product viz</Link>
-                    <Link href="/projects/#interactive">Interactive</Link>
-                    <Link href="/projects/illustration">Illustration</Link>
+                  <div className="mt-2 flex flex-col gap-1 text-sm opacity-80">
+                    <Link href="/projects/viz/vintage-flower-lamps" onClick={close}>
+                      Vintage Flower Lamps
+                    </Link>
+                    <Link href="/projects/viz/flower-alley" onClick={close}>
+                      Flower Alley
+                    </Link>
+                    <Link href="/projects/environments/greek-house" onClick={close}>
+                      Greek House
+                    </Link>
+                    <Link href="/projects/interactive/paxvr" onClick={close}>
+                      Pax VR
+                    </Link>
+                    <Link href="/projects/illustration" onClick={close}>
+                      Illustration
+                    </Link>
                   </div>
                 </div>
 
