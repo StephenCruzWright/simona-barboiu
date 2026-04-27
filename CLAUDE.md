@@ -23,7 +23,7 @@ Live: simonabarboiu.com (Vercel).
 **Do not change colours, font, or layout primitives without asking the developer.** The brand below is established and the client likes it.
 
 | Token | Value | Use |
-|---|---|---|
+| --- | --- | --- |
 | `--background` | `#222222` | Body background — near-black neutral |
 | `--foreground` | `#f1f0ec` | Primary text — warm off-white |
 | `--accent` | `#eb742a` | Hover colour for links + brand orange |
@@ -51,7 +51,7 @@ Hosted on Vercel; auto-deploy from `main`.
 ## Routing & pages
 
 | Route | File | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `/` | [app/page.tsx](app/page.tsx) | Hero copy + showreel video + featured projects grid |
 | `/about` | [app/about/page.tsx](app/about/page.tsx) | Bio + email contact |
 | `/work` | [app/work/page.tsx](app/work/page.tsx) | CV-style timeline (years + bullets) |
@@ -66,7 +66,7 @@ Project media lives in [public/](public/), grouped by project (`/lamps`, `/greek
 ## Key components
 
 | Component | Path | What it does |
-|---|---|---|
+| --- | --- | --- |
 | `Header` | [components/Header.tsx](components/Header.tsx) | Sticky nav; uses `useHideOnScroll` to collapse on scroll |
 | `NavDropdown` | [components/NavDropdown.tsx](components/NavDropdown.tsx) | Projects dropdown — keyboard accessible, click-outside-aware |
 | `LightImage` | [components/LightImage.tsx](components/LightImage.tsx) | Image/video viewer with click-to-open lightbox + zoom + Esc-to-close |
@@ -88,47 +88,173 @@ These are adapted from `web-starter-claude/AGENTS.md` and tuned to this Next.js 
 - **Brand stays.** The colour palette and font are not up for refresh without explicit sign-off. Visual polish goes into motion/interaction tokens, not colour.
 - **Media validation.** [scripts/validate-media.mjs](scripts/validate-media.mjs) exists — run `npm run test:media` if you've added or moved files in `public/`.
 
-## Roadmap (phased)
+## Roadmap — make the site look as good as possible
 
-Each phase is independently shippable. Tackle in order; later phases depend on earlier ones.
+This roadmap is the source of truth for ongoing work. Phases are sequenced so each is independently shippable and later ones depend on earlier ones (especially Phase 0 — motion infrastructure underpins almost everything else).
 
-### Phase A — Project content schema (foundation)
-- Move the inline `projects` array out of [app/page.tsx](app/page.tsx) into a typed file at `lib/projects.ts`.
-- Define `Project = { slug; title; summary; category: '3d' | 'illustration' | 'interactive'; heroImage; software: string[]; renders: Image[]; process: ProcessStep[] }`.
-- Refactor home + project pages to read from this single source. Unlocks Phases B and C.
+**Brand discipline:** colour palette (`#222222` / `#f1f0ec` / `#eb742a`) and Inter font are preserved across every phase. What changes is composition, motion, depth, and interaction — borrowing the *general style* of [cognisearch](../cognisearch) (editorial premium, motion-rich, type-forward) without lifting its red/yellow palette. Curated components from [reactbits.dev](https://reactbits.dev) supply set-piece moments (galleries, hero text effects, ambient backgrounds).
 
-### Phase B — Flesh out 3D project detail pages
-- Use the lamps page structure as the canonical template: **renders → description → process (wireframes/timelapses with captions) → software badges**.
-- Build a reusable `<ProjectLayout>` and `<ProcessSection>`. Apply to flower-alley, greek-house, paxvr.
-- Add software/logo badges (Blender, Substance, Unreal, Photoshop, etc.) — single source list in `lib/software.ts`.
+### Phase 0 — Motion infrastructure (foundation)
 
-### Phase C — Illustration gallery: zoom + process scroll
-- Extend `LightImage` so an illustration with `process: Image[]` opens a vertical scroller in the lightbox: hero illustration first, process pics below.
-- Falls back to current zoom for illustrations without process images.
-- Matches the brief: "click to zoom and scroll to see the process pictures."
+Everything that follows leans on this. Without smooth scroll + scroll-triggered animation, the rest feels like utility-class polish.
 
-### Phase D — Contact form (optional)
-- Adapt the Zod schema from `web-starter-claude/src/lib/contact-schema.ts` and the state-machine pattern from `ContactFormIsland.tsx` into a Next.js Route Handler at `app/api/contact/route.ts`.
-- Keep the existing email link as a fallback.
-- Integrate Resend if the client wants real delivery; otherwise mailto stays.
+- Install **Lenis** (smooth scroll), **GSAP** + **ScrollTrigger** (scroll-driven animation), **Split-Type** (line-by-line text splits).
+- Build `components/motion/MotionProvider.tsx` (client component mounted in [app/layout.tsx](app/layout.tsx)). Mirrors cognisearch's pattern at `cognisearch/src/components/motion/MotionProvider.tsx`:
+  - Initialise Lenis (lerp `0.05`) and sync to GSAP ticker.
+  - Scan for `data-reveal`, `data-reveal-clip`, `data-parallax`, `data-stagger-in`, `data-hscroll`, `data-magnetic-wrap` on mount and wire ScrollTrigger animations.
+  - Mount a custom cursor (lerped white dot, `mix-blend-mode: difference`, grows on link/button hover) — hidden on coarse pointers.
+  - Mount a top-edge scroll progress bar (`scaleX 0 → 1`, accent orange).
+  - Honour `prefers-reduced-motion`: skip Lenis, hide cursor, set animation durations to `0.01ms`, reveal content immediately.
+- Add a film-grain SVG overlay (low opacity, `feTurbulence`-based) at the body level for editorial texture — matches cognisearch's signature finish.
 
-### Phase E — Interaction polish
-- Sweep nav items, project cards, and buttons for consistent "simple-text + accent-orange-on-hover" treatment.
-- Replace ad-hoc `transition-*` durations with the new `--ease-*` / `--duration-*` tokens (see [styles/globals.css](styles/globals.css) — added alongside this file).
-- Wire `HomeProjectThumbnail`'s existing IntersectionObserver to `--stagger-*` delays for choreographed reveals.
+**Files**: `components/motion/MotionProvider.tsx`, `components/motion/Cursor.tsx`, `components/motion/ScrollProgress.tsx`, `components/motion/GrainOverlay.tsx`. Add deps to [package.json](package.json): `lenis`, `gsap`, `split-type`.
 
-### Phase F — Quality guardrails (optional)
-- Add husky pre-commit running `lint` + `tsc --noEmit` (copy from `web-starter-claude/.husky/pre-commit`).
-- Add a minimal GitHub Actions CI mirroring those checks.
+### Phase 1 — Design system extension (tokens, type, layout)
 
-## Reference: useful artifacts in `web-starter-claude`
+Pull the structural tokens from cognisearch's `@theme` block (NOT the colour palette) into [styles/globals.css](styles/globals.css):
 
-For browse-only reference. The template is at `c:\Users\Stephen\GithubRepos\web-starter-claude`.
+- **Fluid type scale**: `--text-display`, `--text-h1`, `--text-h2`, `--text-h3`, `--text-h4`, `--text-body`, `--text-small` (clamp-based, no media queries). Wire to Tailwind utilities `text-display`, `text-h1`, etc.
+- **Fluid spacing**: `--space-section-y: clamp(5rem, 12vh, 14rem)` for vertical section padding; `--space-section-x: clamp(1.25rem, 5vw, 6rem)` for horizontal gutters. 8-point scale `--spacing-1` to `--spacing-9`.
+- **Asymmetric grid utilities**: `.grid-hero` (`40% 1fr 1fr 1fr`), `.grid-editorial` (`1fr 1fr`), `.grid-section-header` (`55% 1fr`), all collapsing to single column below 768px. Lifts straight from cognisearch.
+- **Reveal primitive**: the `[data-reveal]` / `[data-reveal][data-revealed]` CSS hook from cognisearch and web-starter-claude. Pairs with the MotionProvider scanner.
+- Keep existing colour tokens untouched.
 
-- `AGENTS.md` — broader workflow conventions; cherry-pick what fits Next.js.
-- `docs/PHASE-PLAN-TEMPLATE.md` — scaffold for future feature plans.
-- `docs/LESSONS-LEARNED.md` — Tailwind v4 / build gotchas (some apply here, e.g., Tailwind v4 `@theme` syntax).
-- `src/lib/contact-schema.ts` — Zod contact-form pattern (Phase D).
-- `src/components/islands/ContactFormIsland.tsx` — form state-machine (idle/submitting/success/error) (Phase D).
-- `.husky/pre-commit` and `.github/workflows/ci.yml` — copy when ready (Phase F).
-- `src/styles/global.css` — has a richer design-token system; **only the motion tokens were ported** (easing curves, durations, stagger delays, z-index scale). Colour, type, and spacing tokens were intentionally NOT ported to preserve the existing brand.
+### Phase 2 — Project content schema (was Phase A)
+
+Foundation for proper project detail pages. Without typed data, every later phase has to reach into component props.
+
+- Create `lib/projects.ts` with this type:
+
+  ```ts
+  type Project = {
+    slug: string;
+    title: string;
+    summary: string;
+    category: '3d-viz' | '3d-environment' | 'illustration' | 'interactive';
+    heroImage: { src: string; alt: string; aspectRatio?: string };
+    description: string;
+    renders: { src: string; alt: string }[];
+    process: { src: string; alt: string; caption?: string }[];
+    software: string[]; // keys into lib/software.ts
+  };
+  ```
+
+- Move the inline `projects` array from [app/page.tsx](app/page.tsx#L5-L48) into this file.
+- Create `lib/software.ts` with `{ key, label, logoSrc }[]` — Blender, Substance Painter, Unreal Engine, Photoshop, Procreate, Maya, ZBrush, Marvelous Designer.
+
+### Phase 3 — Header & navigation
+
+Make the chrome feel premium without changing the wordmark.
+
+- **Mix-blend-mode header** ([components/Header.tsx](components/Header.tsx)): apply `mix-blend-mode: difference` to header text + logo. Per-pixel inversion against any backdrop. Render `NavDropdown` panels in a sibling element so the panel content is unaffected by the blend (cognisearch's escape pattern at `Header.astro` + `.site-header-panels`).
+- **Section nav dots** (right rail): port `cognisearch/src/components/motion/SectionNavDots.astro` to a React equivalent. Shows on `md+`, one dot per `[data-nav-section]`, active dot scales `1.6x` and fills with accent orange. Click to scroll-to-section via Lenis. Apply to long pages (project details).
+- **Magnetic primary CTAs**: any button with `data-magnetic-wrap` translates `15%` toward the cursor on hover, springs back `elastic.out` on leave. Wire automatically to `.btn` / primary CTAs.
+
+### Phase 4 — Home page rework
+
+The hero and grid are the first impression — invest here.
+
+- **Hero text**: replace the current `text-5xl/6xl/7xl` heading with React Bits **SplitText** (line-by-line `yPercent: 100 → 0` reveal, `power4.out`, 0.14s stagger), or use cognisearch's MotionProvider `data-reveal` directly. Wrap the eyebrow ("Simona Barboiu portfolio") with React Bits **ShinyText** for a subtle shimmer.
+- **Showreel video**: keep [LightImage](components/LightImage.tsx) but add `data-reveal-clip` so the video reveals via clip-path polygon + scale `1.2 → 1` over 3.2s as it enters the viewport.
+- **Featured grid**: enhance [HomeProjectThumbnail](components/HomeProjectThumbnail.tsx) with React Bits **SpotlightCard** hover (radial gradient follows cursor). Use `data-stagger-in` on the grid container for choreographed entry. Add `data-parallax` on alternating cards (`yPercent: 0 → 25`) for subtle depth on scroll.
+- **Background ambience**: optional, dialled to ~10–15% opacity behind the hero — pick **one** of (recommended in order): React Bits **Grainient** (gradient + grain, on-brand for the dark theme), **SoftAurora** (gentle moving gradient), **Threads** (flowing thread lines), or **DarkVeil** (moody dark overlay). Avoid Particles/Galaxy/Hyperspeed — too literal for a moody artist site.
+
+### Phase 5 — 3D project detail pages (was Phase B, expanded)
+
+Bring the thinner pages up to the lamps-page bar, then add cognisearch-grade polish.
+
+- **Reusable `<ProjectLayout>`** consuming the schema from Phase 2: hero render → BigStatement title (clamp 3.5–12rem, SplitText reveal) → description (`data-reveal` line-by-line) → renders gallery → process scroll → software badges.
+- **Multi-render gallery**: pick per project — React Bits **DomeGallery** (curved 3D-feeling carousel — perfect for showcasing multi-angle 3D renders), **CircularGallery** (orbital), or **Carousel** (classic). Default to DomeGallery for hero environments and CircularGallery for product viz.
+- **Process section**: cognisearch's pinned **horizontal scroll** pattern (`data-hscroll`) — section pins to viewport, track scrubs across N process slides, each `100vw`. Captions sit beside images. Or for less-aggressive motion, React Bits **ScrollStack** (cards stack as you scroll). Pick per project; horizontal scroll for narrative process, ScrollStack for static beats.
+- **Software badges**: React Bits **LogoLoop** (auto-scrolling logo strip) at the bottom, populated from `lib/software.ts`. Falls back to a simple grid if reduced motion is set.
+- **Keep**: existing [ScrollModel](components/ScrollModel.tsx) (lamps rotator), [BeforeAndAfter](components/BeforeAndAfter.tsx). Integrate them into the new layout.
+
+### Phase 6 — Illustration gallery transformation (was Phase C, expanded)
+
+The gallery is half-built. Finish the brief and elevate the presentation.
+
+- **Replace [FlexGrid](components/FlexGrid.tsx) with React Bits Masonry**: true masonry packing (the brief shows mixed aspect ratios). FlexGrid stays for backwards compat if anything else uses it.
+- **Click-to-zoom + process scroll**: extend [LightImage](components/LightImage.tsx). When an illustration's data has `process: Image[]`, the lightbox becomes a vertical scroller — hero illustration first, process pics stacked below, scroll-to-explore. Without process images, falls back to today's zoom + pan. **Direct match to the client brief.**
+- **Hover treatment**: React Bits **GlareHover** on each thumbnail — light glare passes across the image on hover. Subtle, premium.
+- **Optional alternate view**: a "stack mode" using React Bits **FlyingPosters** or **BounceCards** — flick through illustrations like physical prints. Toggleable, not default.
+
+### Phase 7 — About / Experience / Contact
+
+Combine experience + contact into one rich page (the brief explicitly allows it), or keep separate — decide once Phase 4 ships and we see the site's rhythm.
+
+- **About page** ([app/about/page.tsx](app/about/page.tsx)): React Bits **ProfileCard** (tilted, with gloss + avatar) for the bio block. Bio copy with `data-reveal` line splits.
+- **Experience timeline** ([app/work/page.tsx](app/work/page.tsx)): existing [Timeline](components/Timeline.tsx) gets `data-stagger-in` so entries cascade in as the user scrolls. Year markers grow on activation. Optional: React Bits **CountUp** for any "X years experience" stats.
+- **Software section**: same **LogoLoop** as Phase 5, but full-width and slower.
+- **Contact form** (was Phase D): adapt cognisearch's `src/lib/contact-schema.ts` (Zod) + form state machine into a Next.js Route Handler at `app/api/contact/route.ts`. Keep mailto fallback. Resend integration if the client opts in. **ClickSpark** on the submit button for delight.
+
+### Phase 8 — Micro-interactions sweep
+
+Site-wide pass to make every hover/click feel intentional.
+
+- **Magnet** on every primary CTA (already from Phase 3).
+- **ClickSpark** on submit and major CTAs.
+- **ShinyText** on eyebrow labels and one-word emphasis.
+- **GradualBlur** reveal on long body copy below the fold.
+- **Hover glow** for nav links: keep accent-orange colour shift, add `text-shadow: 0 0 8px var(--accent)/40%` on `:hover` — the literal "glow on hover" the client asked for. Apply via a single utility class so it's consistent.
+- **Audit transitions**: replace every ad-hoc `transition-all duration-300` with the `--ease-smooth` / `--duration-normal` tokens added in the previous CLAUDE.md update.
+
+### Phase 9 — Quality, performance, ship
+
+The "looks as good as possible" bar fails if it loads slowly or breaks accessibility.
+
+- **Reduced motion**: confirm Lenis off, cursor hidden, all `data-reveal` content visible at rest, no animation under `prefers-reduced-motion: reduce`.
+- **Image pipeline**: every `<Image>` has explicit `sizes`, lazy-loads below the fold, AVIF/WebP variants generated by Next.js automatically. Run `npm run test:media` after content moves.
+- **Lighthouse**: target ≥ 95 on Performance, 100 on Accessibility/Best-Practices/SEO. Animation work tends to hurt Performance — measure and adjust.
+- **Husky + CI** (was Phase F): pre-commit running `lint` + `tsc --noEmit`; minimal GitHub Actions workflow mirroring it.
+- **SEO**: per-route `metadata` exports with proper Open Graph + Twitter cards. Each project page should have a unique title/description.
+
+## Curated React Bits picks (with rationale)
+
+The full library has 110+ components; this is the shortlist that fits the brand. Skip the rest unless a specific need surfaces.
+
+**Backgrounds — use sparingly, dialled to low opacity:**
+
+- `Grainient` — gradient + grain. **Top pick** for hero ambient.
+- `SoftAurora` — gentle moving gradient.
+- `Threads` — flowing thread lines, very artistic.
+- `DarkVeil` — moody dark overlay, good behind text-heavy sections.
+- `LightRays` — single beam, hero accent.
+- `Noise` — pure grain (alternative to the SVG film-grain in Phase 0).
+
+**Text animations — for headings only, not body:**
+
+- `SplitText` — line-by-line reveal. Workhorse.
+- `ShinyText` — subtle shimmer, perfect for eyebrow labels.
+- `BlurText` — blur-in reveal, alternative to SplitText.
+- `DecryptedText` / `ScrambledText` — scramble effect for one-word emphasis (cognisearch uses this).
+- `RotatingText` — cycle through phrases (e.g. "3D artist / Illustrator / Visualizer").
+- `CountUp` — for stats on About page.
+
+**Animations — interaction polish:**
+
+- `Magnet` / `MagnetLines` — magnetic CTA buttons.
+- `ClickSpark` — sparks on click for delight.
+- `GlareHover` — light glare on hover, gallery thumbnails.
+- `GradualBlur` — body-copy reveal.
+- `ImageTrail` — image trail follows cursor (use **only** on the gallery page, optional toggle).
+- `LogoLoop` — software badge carousel.
+- `AnimatedContent` / `FadeContent` — generic wrappers for non-text reveals.
+
+**Components — set pieces:**
+
+- `Masonry` — illustration gallery. Replaces FlexGrid.
+- `DomeGallery` / `CircularGallery` — multi-render galleries on 3D project pages. **Showcase moments.**
+- `SpotlightCard` — radial-gradient hover for project thumbnails.
+- `TiltedCard` — alternative tilt-on-hover for thumbnails.
+- `ScrollStack` — process section cards on 3D pages (alternative to horizontal scroll).
+- `ProfileCard` — About page bio block.
+- `FlyingPosters` / `BounceCards` — optional gallery alt view.
+- `ModelViewer` — only if Three.js scope grows; currently `ScrollModel` covers this.
+
+**Explicitly skipped**: Hyperspeed, Galaxy, Particles, Iridescence, Plasma, Lightning, Balatro, GlitchText, FaultyTerminal, LiquidChrome, MetaBalls, Cubes — too gaming/sci-fi/literal for a moody artist portfolio.
+
+## Reference sources
+
+- **`cognisearch`** at [`../cognisearch`](../cognisearch) — primary style reference. Lift: `MotionProvider.tsx`, `global.css` `@theme` (motion + spacing + type, NOT colours), `Header.astro` mix-blend pattern, `SectionNavDots.astro`, `BigStatement.astro`, `AutoScrollColumns.astro`, `HorizontalScroll` pin pattern.
+- **`web-starter-claude`** at `c:\Users\Stephen\GithubRepos\web-starter-claude` — workflow/tooling reference. Lift: `AGENTS.md` conventions, `contact-schema.ts` (Phase 7), `.husky/` + `.github/workflows/ci.yml` (Phase 9).
+- **[React Bits](https://reactbits.dev)** — copy-paste component source. Each component has JS-CSS / JS-TW / TS-CSS / TS-TW variants; pick **TS-TW** to match this project (TypeScript + Tailwind).
