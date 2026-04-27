@@ -157,3 +157,92 @@ button.btn:hover {
   /* background-color: var(--accent); */
   transform: scale(1.05);
 }
+
+/* ─────────────────────────────────────────────────────────────────────
+   Motion — keyframes + custom cursor + spotlight card.
+   Added in Phase 0. No colour changes; brand stays.
+   ───────────────────────────────────────────────────────────────────── */
+
+@keyframes shiny-text-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
+}
+
+@keyframes scroll-indicator-pulse {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+.scroll-indicator-pulse {
+  animation: scroll-indicator-pulse 1.8s ease-in infinite;
+}
+
+/* Custom cursor — only on fine pointers, only when MotionProvider mounts. */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"] {
+    cursor: none;
+  }
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
+.custom-cursor-ring.is-hovering {
+  width: 60px;
+  height: 60px;
+  opacity: 0.85;
+  border-color: var(--accent);
+}
+
+/* Spotlight card — radial gradient that follows the cursor. */
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--spotlight-x, -200px) var(--spotlight-y, -200px),
+    rgba(235, 116, 42, 0.22),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+  z-index: 2;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Hover-glow utility — the "simple text, glow on hover" the client asked for. */
+.hover-glow {
+  transition: color var(--duration-normal) var(--ease-smooth),
+              text-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.hover-glow:hover {
+  color: var(--accent);
+  text-shadow: 0 0 14px rgba(235, 116, 42, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text,
+  .marquee-track,
+  .scroll-indicator-pulse {
+    animation: none !important;
+  }
+}
