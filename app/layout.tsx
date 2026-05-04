@@ -8,6 +8,7 @@ import MotionProvider from "@/components/motion/MotionProvider";
 import Cursor from "@/components/motion/Cursor";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import GrainOverlay from "@/components/motion/GrainOverlay";
+import SectionNavDots from "@/components/motion/SectionNavDots";
 import Inter from "next/font/local";
 
 const interFont = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({
         <ScrollProgress />
         <GrainOverlay />
         <Cursor />
+        <SectionNavDots />
         <Header />
         <RoutingNav />
         {children}

@@ -1,57 +1,50 @@
 import Link from "next/link";
-import HomeProjectThumbnail from "@/components/HomeProjectThumbnail";
 import LightImage from "@/components/LightImage";
+import HeaderGradient from "@/components/HeaderGradient";
 import ShinyText from "@/components/home/ShinyText";
 import Marquee from "@/components/home/Marquee";
 import ScrollIndicator from "@/components/home/ScrollIndicator";
+import CategoryShowcase from "@/components/home/CategoryShowcase";
+import { getCategoryShowcase, type ProjectCategory } from "@/lib/projects";
 
-const projects = [
+/**
+ * Home page renders one CategoryShowcase per category. Each showcase pulls
+ * its hero project + carousel thumbnails from `lib/projects.ts`. Section
+ * label, description, hero alignment, marquee direction, and view-all
+ * visibility are configured here. Illustration intentionally omits the
+ * view-all button (its carousel already enumerates standalone works).
+ */
+const CATEGORY_SECTIONS: {
+  category: ProjectCategory;
+  label: string;
+  description: string;
+  heroAlign: "left" | "right";
+  reverse: boolean;
+  showViewAll: boolean;
+}[] = [
   {
-    href: "/projects/viz/vintage-flower-lamps",
-    imageSrc: "/lamps/1.webp",
-    imageAlt: "Vintage Flower Lamps product visualization",
-    summary:
-      "Product visualization with a refined studio look and Unreal-ready presentation.",
-    spanClassName: "md:col-span-7",
-    aspectClassName: "aspect-[2100/2874]",
-    parallax: 14,
+    category: "product-viz",
+    label: "Product Viz",
+    description: "Studio renders and real-time integration for products that earn their keep on shelf and on screen.",
+    heroAlign: "left",
+    reverse: false,
+    showViewAll: true,
   },
   {
-    href: "/projects/illustration",
-    imageSrc: "/illustration/prpls.webp",
-    imageAlt: "Illustration portfolio thumbnail",
-    summary: "Color-driven illustration work with a softer, expressive finish.",
-    spanClassName: "md:col-span-5",
-    aspectClassName: "aspect-[4961/2695]",
-    parallax: -10,
+    category: "environments",
+    label: "Environments",
+    description: "Stylized environment work focused on mood, structure and light.",
+    heroAlign: "right",
+    reverse: true,
+    showViewAll: true,
   },
   {
-    href: "/projects/environments/greek-house",
-    imageSrc: "/greek/01.webp",
-    imageAlt: "Greek House environment thumbnail",
-    summary: "A warm environment study focused on structure, light and mood.",
-    spanClassName: "md:col-span-6",
-    aspectClassName: "aspect-[16/9]",
-    parallax: 16,
-  },
-  {
-    href: "/projects/viz/flower-alley",
-    imageSrc: "/alley/01.webp",
-    imageAlt: "Flower Alley environment thumbnail",
-    summary: "Stylized scenery with layered botanical detail and atmosphere.",
-    spanClassName: "md:col-span-6",
-    aspectClassName: "aspect-[1677/2160]",
-    parallax: -12,
-  },
-  {
-    href: "/projects/interactive/paxvr",
-    imageSrc: "/lamps/Unreal.webp",
-    imageAlt: "Pax VR interactive project thumbnail",
-    summary:
-      "Interactive product work and Unreal integration for the lamp pack.",
-    spanClassName: "md:col-span-12",
-    aspectClassName: "aspect-[2065/1406]",
-    parallax: 8,
+    category: "illustration",
+    label: "Illustration",
+    description: "Color-driven illustration with a soft, expressive finish.",
+    heroAlign: "left",
+    reverse: false,
+    showViewAll: false,
   },
 ];
 
@@ -69,15 +62,13 @@ export default function Home() {
   return (
     <main className="relative">
       {/* HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8">
-        {/* Ambient glow backdrop — single source of warmth, very subtle */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-10"
-          aria-hidden
-        >
-          <div className="absolute top-[-20%] left-[-10%] h-[70vh] w-[70vh] rounded-full bg-[var(--accent)]/15 blur-[120px]" />
-          <div className="absolute top-[10%] right-[-15%] h-[55vh] w-[55vh] rounded-full bg-orange-700/10 blur-[120px]" />
-        </div>
+      <section
+        id="hero"
+        data-nav-section="Intro"
+        className="relative isolate overflow-hidden px-4 sm:px-6 lg:px-8"
+      >
+        {/* HeaderGradient — interactive WebGL gradient as the hero backdrop. */}
+        <HeaderGradient />
 
         <div className="relative mx-auto grid max-w-screen-2xl items-end gap-12 pt-16 pb-24 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pt-24 lg:pb-32">
           <div className="space-y-7">
@@ -156,64 +147,39 @@ export default function Home() {
       {/* MARQUEE ──────────────────────────────────────────────────────── */}
       <Marquee items={keywords} speed={55} />
 
-      {/* SECTION HEADER ───────────────────────────────────────────────── */}
-      <section
-        id="projects"
-        className="px-4 pt-24 pb-10 sm:px-6 lg:px-8 lg:pt-32"
-      >
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid items-end gap-6 sm:grid-cols-[55%_1fr] sm:gap-12">
-            <div className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.45em] text-white/55">
-                Featured work
-              </p>
-              <h2
-                data-reveal-split
-                className="text-3xl font-semibold sm:text-4xl lg:text-5xl"
-              >
-                A selection spanning style, subject, and software.
-              </h2>
-            </div>
-            <p
-              data-reveal
-              className="text-sm leading-7 text-white/60 sm:text-base"
-            >
-              Each project below is a short story — a few hero renders, a note
-              on the idea, and the process behind it. Click anywhere on a card
-              to step inside.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS GRID ────────────────────────────────────────────────── */}
-      <section className="px-4 pb-32 sm:px-6 lg:px-8">
-        <div
-          data-stagger-in
-          className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-5 md:grid-cols-12"
-        >
-          {projects.map((project, index) => (
-            <div
-              key={project.href}
-              data-parallax={project.parallax}
-              className={project.spanClassName}
-            >
-              <HomeProjectThumbnail
-                href={project.href}
-                imageSrc={project.imageSrc}
-                imageAlt={project.imageAlt}
-                summary={project.summary}
-                spanClassName=""
-                aspectClassName={project.aspectClassName}
-                priority={index === 0}
+      {/* CATEGORY SHOWCASES ───────────────────────────────────────────── */}
+      <div id="projects" className="pt-24 pb-24 lg:pt-32">
+        {CATEGORY_SECTIONS.map(
+          (
+            { category, label, description, heroAlign, reverse, showViewAll },
+            index
+          ) => {
+            const showcase = getCategoryShowcase(category);
+            if (!showcase) return null;
+            return (
+              <CategoryShowcase
+                key={category}
+                label={label}
+                description={description}
+                software={showcase.software}
+                hero={showcase.hero}
+                thumbnails={showcase.thumbnails}
+                heroAlign={heroAlign}
+                reverse={reverse}
+                showViewAll={showViewAll && showcase.thumbnails.length > 2}
+                isFirst={index === 0}
               />
-            </div>
-          ))}
-        </div>
-      </section>
+            );
+          }
+        )}
+      </div>
 
       {/* CTA ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden px-4 py-32 sm:px-6 lg:px-8 lg:py-40">
+      <section
+        id="contact-cta"
+        data-nav-section="Contact"
+        className="relative overflow-hidden px-4 py-32 sm:px-6 lg:px-8 lg:py-40"
+      >
         <div
           className="pointer-events-none absolute inset-0 -z-10"
           aria-hidden

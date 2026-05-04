@@ -12,12 +12,14 @@ type NavDropdownProps = {
   label: ReactNode;
   items: DropdownItem[];
   className?: string;
+  triggerClassName?: string;
 };
 
 export default function NavDropdown({
   label,
   items,
   className = "",
+  triggerClassName = "",
 }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
@@ -62,7 +64,7 @@ export default function NavDropdown({
     >
       <button
         type="button"
-        className="inline-flex items-center gap-1 text-left"
+        className={`inline-flex items-center gap-1 text-left ${triggerClassName}`}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
