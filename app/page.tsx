@@ -70,8 +70,8 @@ export default function Home() {
         {/* HeaderGradient — interactive WebGL gradient as the hero backdrop. */}
         <HeaderGradient />
 
-        <div className="relative mx-auto grid max-w-screen-2xl items-end gap-12 pt-16 pb-24 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pt-24 lg:pb-32">
-          <div className="space-y-7">
+        <div className="relative mx-auto grid max-w-screen-2xl gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <div className="space-y-7 pt-16 pb-24 lg:pt-24 lg:pb-32">
             <p className="text-xs uppercase tracking-[0.45em]">
               <ShinyText>Simona Barboiu — Portfolio</ShinyText>
             </p>
@@ -129,7 +129,7 @@ export default function Home() {
 
           <div
             data-reveal-clip
-            className="relative aspect-16/10 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-[0_30px_100px_rgba(0,0,0,0.55)]"
+            className="relative aspect-16/10 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-[0_30px_100px_rgba(0,0,0,0.55)] lg:aspect-auto lg:self-stretch"
           >
             <div className="pointer-events-none absolute inset-0 z-3 bg-linear-to-tr from-black/40 via-transparent to-black/30" />
             <div className="pointer-events-none absolute inset-0 z-3 bg-linear-to-t from-black/30 via-transparent to-transparent" />
