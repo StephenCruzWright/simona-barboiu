@@ -486,6 +486,10 @@ export default function HeaderGradient() {
     window.addEventListener("touchmove", onTouch, { passive: true });
     window.addEventListener("resize", resize);
 
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     let start = performance.now();
     function tick(now: number) {
       if (!gl) return;
@@ -524,7 +528,9 @@ export default function HeaderGradient() {
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-      rafRef.current = requestAnimationFrame(tick);
+      if (!reducedMotion) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
     }
 
     rafRef.current = requestAnimationFrame(tick);
@@ -558,7 +564,7 @@ export default function HeaderGradient() {
     >
       <canvas
         ref={canvasRef}
-        style={{ width: "100vw", height: "100%", display: "external" }}
+        style={{ width: "100vw", height: "100%", display: "block" }}
         aria-hidden
       />
     </div>

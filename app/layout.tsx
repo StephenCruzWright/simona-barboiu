@@ -4,6 +4,11 @@ import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 import RoutingNav from "@/components/RoutingNav";
 import ScrollToTop from "@/components/ScrollToTop";
+import MotionProvider from "@/components/motion/MotionProvider";
+import Cursor from "@/components/motion/Cursor";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import GrainOverlay from "@/components/motion/GrainOverlay";
+import SectionNavDots from "@/components/motion/SectionNavDots";
 import Inter from "next/font/local";
 
 const interFont = Inter({
@@ -35,6 +40,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interFont.variable} antialiased`}>
       <body className="font-(--font-inter)">
+        <MotionProvider />
+        <ScrollProgress />
+        <GrainOverlay />
+        <Cursor />
+        <SectionNavDots />
         <Header />
         <RoutingNav />
         {children}

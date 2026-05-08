@@ -32,6 +32,22 @@
   --z-overlay: 30;
   --z-modal: 40;
   --z-toast: 50;
+
+  /* Phase 1 — Fluid type scale. Clamp-based, no media queries.
+     Generates Tailwind utilities: text-display, text-h1 ... text-small. */
+  --text-display: clamp(3.5rem, 1.09rem + 9.55vw, 9rem);
+  --text-h1: clamp(2.5rem, 0.95rem + 6.8vw, 6rem);
+  --text-h2: clamp(2rem, 0.91rem + 5.45vw, 5rem);
+  --text-h3: clamp(1.5rem, 0.5rem + 3vw, 2.5rem);
+  --text-h4: clamp(1.25rem, 0.75rem + 1.5vw, 1.75rem);
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-small: clamp(0.8rem, 0.75rem + 0.1vw, 0.875rem);
+
+  /* Phase 1 — Fluid section spacing. Use via var() or arbitrary class.
+     section { padding-block: var(--space-section-y); padding-inline: var(--space-section-x) } */
+  --space-section-y: clamp(5rem, 12vh, 14rem);
+  --space-section-x: clamp(1.25rem, 5vw, 6rem);
+  --space-gutter: clamp(1rem, 3vw, 3rem);
 }
 
 /* @media (prefers-color-scheme: light) {
@@ -156,4 +172,126 @@ button.btn {
 button.btn:hover {
   /* background-color: var(--accent); */
   transform: scale(1.05);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Motion — keyframes + custom cursor + spotlight card.
+   Added in Phase 0. No colour changes; brand stays.
+   ───────────────────────────────────────────────────────────────────── */
+
+@keyframes shiny-text-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
+}
+
+@keyframes thumbnail-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-indicator-pulse {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+.scroll-indicator-pulse {
+  animation: scroll-indicator-pulse 1.8s ease-in infinite;
+}
+
+/* Custom cursor — only on fine pointers, only when MotionProvider mounts. */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"] {
+    cursor: none;
+  }
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
+.custom-cursor-ring.is-hovering {
+  width: 60px;
+  height: 60px;
+  opacity: 0.85;
+  border-color: var(--accent);
+}
+
+/* Spotlight card — radial gradient that follows the cursor. */
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--spotlight-x, -200px) var(--spotlight-y, -200px),
+    rgba(235, 116, 42, 0.22),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+  z-index: 2;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Hover-glow utility — the "simple text, glow on hover" the client asked for. */
+.hover-glow {
+  transition: color var(--duration-normal) var(--ease-smooth),
+              text-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.hover-glow:hover {
+  color: var(--accent);
+  text-shadow: 0 0 14px rgba(235, 116, 42, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text,
+  .marquee-track,
+  .thumbnail-marquee-track,
+  .scroll-indicator-pulse {
+    animation: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Phase 1 — Asymmetric grid utilities, ported from cognisearch.
+   Hero: heading occupies 40%, editorial content fills the remaining
+   3 tracks. Editorial: even 1/1 split for two-column content. Section
+   header: 55/45 split for heading vs. supporting copy. All collapse
+   to a single column below 768px so they degrade gracefully on mobile.
+   ───────────────────────────────────────────────────────────────────── */
+
+.grid-hero,
+.grid-editorial,
+.grid-section-header {
+  display: grid;
+  gap: var(--space-gutter);
+}
+
+.grid-hero           { grid-template-columns: 40% 1fr 1fr 1fr; }
+.grid-editorial      { grid-template-columns: 1fr 1fr; }
+.grid-section-header { grid-template-columns: 55% 1fr; }
+
+@media (max-width: 768px) {
+  .grid-hero,
+  .grid-editorial,
+  .grid-section-header {
+    grid-template-columns: 1fr;
+  }
 }

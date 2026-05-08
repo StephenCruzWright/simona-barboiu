@@ -3,7 +3,6 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HeaderGradient from "./HeaderGradient";
 import NavDropdown from "./NavDropdown";
 import { useHideOnScroll } from "@/lib/useHideOnScroll";
 
@@ -32,14 +31,17 @@ export default function Header() {
   return (
     <header
       className={`
-        sticky top-0 z-50 shadow-lg bg-background
+        sticky top-0 z-50 backdrop-blur-md
         transition-transform duration-300 ease-out
-        ${hidden ? "md:translate-y-0 -translate-y-full shadow-lg" : "translate-y-0"}
+        ${hidden ? "md:translate-y-0 -translate-y-full" : "translate-y-0"}
     `}
     >
-      <HeaderGradient />
       <div className="mx-auto flex px-4 py-2 sm:px-6 lg:px-8 max-w-screen-2xl justify-between items-center gap-4">
-        <Link href="/" onClick={close} className="max-w-[20vw]">
+        <Link
+          href="/"
+          onClick={close}
+          className="max-w-[20vw] mix-blend-difference"
+        >
           <Image
             src="/LogoOffWhite.png"
             alt="Simona Barboiu"
@@ -50,9 +52,10 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden gap-8 text-sm md:flex md:text-base lg:text-lg flex-row items-center">
+        <nav className="hidden gap-8 text-sm md:flex md:text-base lg:text-lg flex-row items-center font-medium">
           <NavDropdown
             label="Projects"
+            triggerClassName="mix-blend-difference text-white font-medium"
             items={[
               { label: "All projects", href: "/#projects" },
               { label: "Vintage Flower Lamps", href: "/projects/viz/vintage-flower-lamps" },
@@ -62,13 +65,17 @@ export default function Header() {
               { label: "Illustration", href: "/projects/illustration" },
             ]}
           />
-          <Link href="/work">Work Experience</Link>
-          <Link href="/about">About &amp; Contact</Link>
+          <Link href="/work" className="mix-blend-difference text-white font-medium">
+            Work Experience
+          </Link>
+          <Link href="/about" className="mix-blend-difference text-white font-medium">
+            About &amp; Contact
+          </Link>
         </nav>
 
         <button
           type="button"
-          className="md:hidden inline-flex items-center justify-center rounded-md p-2"
+          className="md:hidden inline-flex items-center justify-center rounded-md p-2 mix-blend-difference text-white"
           aria-label="Open menu"
           aria-expanded={open}
           aria-controls={panelId}
