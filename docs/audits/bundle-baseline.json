@@ -1,8 +1,0 @@
-{
-  "js": 97690,
-  "css": 110840,
-  "total": 208530,
-  "count": 9,
-  "measuredAt": "2026-05-25T16:54:55.299Z",
-  "notes": "Updated by `node scripts/bundle-size-check.mjs --update`. Threshold is 10% delta; bypass via `[bundle-ok]` in PR title."
-}

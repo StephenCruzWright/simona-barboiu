@@ -1,266 +1,73 @@
-# Content guide — adding pages and posts
+# Content Guide
 
-Most of what you edit day-to-day is *content*, not code. This explains
-where content lives and how to add more without breaking anything.
+How portfolio content is structured and where to edit it. This project has **no CMS** — content is typed TypeScript in `lib/`, consumed by the App Router pages and home-page components.
 
----
+> This replaces the old Astro "content collections" guide. There are no `src/content/` collections, no MDX, and no frontmatter in this project.
 
-## The two kinds of content
+## Where content lives
 
-### 1. Pages (one per URL)
-Files in `src/pages/`. Each file becomes one URL.
+| File | Owns |
+| --- | --- |
+| [lib/projects.ts](../lib/projects.ts) | Every portfolio project/artwork — the single source of truth. |
+| [lib/software.ts](../lib/software.ts) | The software/tools registry (label + logo) referenced by projects. |
+| [lib/timeline.ts](../lib/timeline.ts) | CV / experience entries for `/work`. |
+| [public/](../public/) | All media (images/video), grouped per project: `/lamps` (incl. a 30-frame `/array`), `/greek`, `/alley`, `/illustration`, `/misc`. |
 
-| File | URL |
-|---|---|
-| `src/pages/index.astro` | `/` |
-| `src/pages/about.astro` | `/about` |
-| `src/pages/contact.astro` | `/contact` |
-| `src/pages/blog/[slug].astro` | `/blog/anything` (dynamic) |
-
-### 2. Content collections (many of the same type)
-Files in `src/data/<collection>/`. Each file is one entry.
-
-| Folder | Purpose |
-|---|---|
-| `src/data/home/` | Homepage content (single file) |
-| `src/data/pages/` | Misc page copy (about, services, etc.) |
-| `src/data/blog/` | Blog posts |
-| `src/data/faqs/` | FAQ entries |
-
-Collections are defined in `src/content.config.ts` — that file lists
-every collection and its Zod schema (required fields).
-
----
-
-## Add a new blog post
-
-1. Create `src/data/blog/my-first-post.mdx`
-2. Add frontmatter:
-
-```mdx
----
-title: "My first post"
-description: "A short summary for search engines and social cards."
-pubDate: "2026-04-20"
-author: "Your Name"
-tags: ["announcement"]
-draft: false
----
-
-Body of the post goes here. This is Markdown — **bold**, _italic_,
-[links](https://example.com), lists, headings, all work.
-
-## Subheading
-
-You can also import and use components:
-
-import Button from "../../components/ui/Button.astro";
-
-<Button href="/contact" variant="primary">Get in touch</Button>
-```
-
-3. Save. The post is now discoverable via `getCollection("blog")`.
-4. If no blog page exists yet, see "Set up the blog index" below.
-
-### What happens if I get a field wrong?
-
-`astro check` (runs on pre-commit) will scream at you:
-
-```
-Invalid frontmatter in src/data/blog/my-first-post.mdx:
-  - pubDate: Expected date, received string "yesterday"
-```
-
-Fix the value and try again. This is what Zod + `astro check` buy you —
-broken content never ships.
-
----
-
-## Set up the blog index page
-
-This template doesn't ship with a blog index by default (since not every
-site needs one). To add one:
-
-### 1. Create the list page — `src/pages/blog/index.astro`
-
-```astro
----
-export const prerender = true;
-import { getCollection } from "astro:content";
-import PageLayout from "../../layouts/PageLayout.astro";
-import Container from "../../components/ui/Container.astro";
-import SectionHeading from "../../components/ui/SectionHeading.astro";
-import { formatDate } from "../../lib/utils";
-
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
----
-
-<PageLayout title="Blog" description="Latest posts.">
-  <section class="py-16 md:py-24">
-    <Container variant="blog">
-      <SectionHeading eyebrow="Blog" title="Latest posts" />
-      <ul class="space-y-6 list-none ml-0 mt-8">
-        {posts.map((post) => (
-          <li>
-            <article class="border-b border-border pb-6">
-              <h2 class="text-xl font-bold">
-                <a href={`/blog/${post.id}`} class="no-underline text-dark hover:text-primary">
-                  {post.data.title}
-                </a>
-              </h2>
-              <p class="text-sm text-muted mt-1">{formatDate(post.data.pubDate)}</p>
-              <p class="text-base text-muted-strong mt-2">{post.data.description}</p>
-            </article>
-          </li>
-        ))}
-      </ul>
-    </Container>
-  </section>
-</PageLayout>
-```
-
-### 2. Create the single-post page — `src/pages/blog/[slug].astro`
-
-```astro
----
-export const prerender = true;
-import { getCollection, render } from "astro:content";
-import BlogLayout from "../../layouts/BlogLayout.astro";
-
-export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
-}
-
-const { post } = Astro.props;
-const { Content } = await render(post);
----
-
-<BlogLayout
-  title={post.data.title}
-  description={post.data.description}
-  pubDate={post.data.pubDate}
-  updatedDate={post.data.updatedDate}
-  author={post.data.author}
-  image={post.data.image}
-  bodyText={post.body}
->
-  <Content />
-</BlogLayout>
-```
-
-That's a fully working blog. Drop more MDX files into `src/data/blog/`
-and they appear on the list + get their own URL.
-
----
-
-## Edit the homepage
-
-Homepage copy lives in `src/data/home/home.mdx`. The file's frontmatter
-is pulled in by `src/pages/index.astro` via `getCollection("home")`.
-
-Fields the homepage uses:
-- `title` — tab title / OG title
-- `description` — meta description
-- `heroTagline` — hero H1
-- `heroSubtitle` — hero lede paragraph
-- `ctaLabel`, `ctaHref` — primary button
-
-To add more fields: update the `home` schema in
-[`src/content.config.ts`](../src/content.config.ts), then re-run
-`npm run check`.
-
----
-
-## Add a new collection type
-
-Say you want `case-studies`:
-
-### 1. Add to `src/content.config.ts`
+## Project schema (`lib/projects.ts`)
 
 ```ts
-const caseStudies = defineCollection({
-  loader: glob({ pattern: "*.mdx", base: "./src/data/case-studies" }),
-  schema: z.object({
-    title: z.string(),
-    client: z.string(),
-    summary: z.string(),
-    result: z.string(),
-    pubDate: z.coerce.date(),
-    draft: z.boolean().default(false),
-  }),
-});
+type ProjectCategory = "product-viz" | "environments" | "illustration";
 
-export const collections = { home, pages, blog, faqs, caseStudies };
+type ProjectImage = { src: string; alt: string; href?: string };
+
+type ProjectHeroImage = ProjectImage & {
+  // Tailwind aspect utility as a LITERAL string, e.g. "aspect-[16/9]".
+  // Must be a literal so Tailwind's JIT scanner sees it — never build it
+  // with a template literal.
+  aspectClass: string;
+};
+
+type ProjectProcessStep = ProjectImage & { caption?: string };
+
+type Project = {
+  slug: string;            // unique id, e.g. "vintage-flower-lamps"
+  href: string;            // route to the detail page
+  title: string;
+  summary: string;         // one line, used on cards
+  category: ProjectCategory;
+  heroImage: ProjectHeroImage;
+  software: SoftwareKey[]; // keys into lib/software.ts
+  gallery?: ProjectImage[];      // illustration only — standalone artworks
+  description?: string;          // detail-page body
+  renders?: ProjectImage[];      // detail-page render gallery
+  process?: ProjectProcessStep[];// detail-page captioned process steps
+};
 ```
 
-### 2. Create the folder + a sample entry
+### Field notes
 
-```sh
-mkdir -p src/data/case-studies
-```
+- **`aspectClass`** must be a literal Tailwind class (`aspect-[2100/2874]`). The intrinsic ratio matters for zero-CLS layout — measure the real image and use its pixel ratio.
+- **`software`** are keys, not labels — they index `SOFTWARE` in `lib/software.ts`. The home page aggregates them per category into the software-pill row.
+- **`gallery`** is only used by the `illustration` project: each entry is a standalone artwork shown as a carousel thumbnail. Non-illustration categories leave it undefined and the carousel uses sibling project `heroImage`s.
+- **`renders` / `process` / `description`** drive the project **detail** pages. As of this writing most projects only populate `heroImage` — filling these in (with real `process[].caption`s) is the main content task for the 3D case-study redesign.
 
-Then `src/data/case-studies/acme.mdx`:
+### Helpers (already in the file — reuse them)
 
-```mdx
----
-title: "How we doubled Acme's conversion rate"
-client: "Acme Inc."
-summary: "A short summary that shows up in the index."
-result: "2x lift over 8 weeks."
-pubDate: "2026-03-15"
-draft: false
----
+- `getProject(slug)` — look up one project.
+- `getProjectsByCategory(category)` — all projects in a category.
+- `getCategoryShowcase(category)` — `{ hero, thumbnails, software }` for the home-page `CategoryShowcase` (handles the illustration special-case and dedupes software keys).
 
-Body goes here.
-```
+## Software registry (`lib/software.ts`)
 
-### 3. Run `npm run check`
+Each entry is `{ key, label, logoSrc }`. Add a tool here before referencing its `key` from a project. Use monochrome / foreground-tinted logos so the accent orange stays reserved for hover.
 
-If the schema is happy, you're set. Consume the new collection via
-`getCollection("caseStudies")` in any page.
+## Adding or editing content
 
----
+1. **Add media** to the right `public/<project>/` folder. Prefer `.webp` (or `.avif`); use `.mp4`/`.webm` for video with a poster image.
+2. **Add/extend the project** in `lib/projects.ts` (correct `aspectClass`, real `alt`, `software` keys, and — for 3D projects — `renders`/`process`/`description`).
+3. **Register any new software** in `lib/software.ts`.
+4. **Validate**: `npm run test:media` (checks referenced files exist), then `npx tsc --noEmit` and `npm run lint`.
 
-## Rendering Markdown content
+## Copy policy
 
-To render MDX body from a collection entry in an Astro page:
-
-```astro
----
-import { getEntry, render } from "astro:content";
-const entry = await getEntry("pages", "about");
-if (!entry) throw new Error("pages/about.mdx not found");
-const { Content } = await render(entry);
----
-
-<Content />
-```
-
----
-
-## Common content gotchas
-
-- **Dates must parse**: `z.coerce.date()` accepts ISO strings like
-  `"2026-04-20"` or `"2026-04-20T10:00:00Z"`. Plain "April 20" won't work.
-- **Draft flag**: set `draft: true` in frontmatter and a collection query
-  with `({ data }) => !data.draft` will filter it out.
-- **Relative image paths**: `image: "/images/blog/foo.jpg"` (absolute from
-  `public/`) is simpler than relative imports.
-- **Collection slugs**: by default, Astro uses the filename (without
-  extension) as the slug (`post.id`). Override via an `id` field in
-  frontmatter if you want pretty URLs that differ from filenames.
-- **After schema changes, always `npm run check`** — a schema mismatch
-  propagates into every layout that consumes the collection.
-
----
-
-## See also
-
-- [Astro content collections docs](https://docs.astro.build/en/guides/content-collections/)
-- [`src/content.config.ts`](../src/content.config.ts) — current schemas
-- [`src/layouts/BlogLayout.astro`](../src/layouts/BlogLayout.astro) — the blog post wrapper
+Keep existing real copy. Lorem ipsum is allowed **only** as a temporary scaffold for genuinely net-new sections, and must be replaced with real copy before launch — placeholder text and empty process captions read as unfinished (and are an awards/hiring red flag). See the brand + conventions in [CLAUDE.md](../CLAUDE.md).

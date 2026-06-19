@@ -1,146 +1,40 @@
-# Deployment — shipping your site to the internet
+# Deployment
 
-You'll push code to GitHub, connect that repo to Vercel, and Vercel will
-auto-build and deploy every time you push to `main`. First-time setup is
-~15 minutes; every subsequent deploy is automatic.
+The site is a **Next.js** app hosted on **Vercel**, auto-deploying from `main` to [simonabarboiu.com](https://simonabarboiu.com).
 
----
+## How it works
 
-## One-time setup
+1. Push to a branch → Vercel builds a **Preview** deployment with its own URL.
+2. Merge to `main` → Vercel builds and promotes to **Production** (the custom domain).
 
-### 1. Push the project to GitHub
+Vercel auto-detects Next.js — no `vercel.json` is required. Build command `next build`, output handled by the Next.js framework preset.
 
-If you haven't already:
+## One-time setup (already done for this project)
 
-1. In **GitHub Desktop**: File → Add Local Repository → pick this folder
-2. Click **Publish repository** (top of the window)
-3. Pick a name (lowercase, dashes — e.g. `my-cafe-site`)
-4. Pick Public or Private (either works with Vercel's free tier)
-5. Click **Publish Repository**
+1. Import the GitHub repo in the Vercel dashboard.
+2. Framework preset: **Next.js** (auto-detected).
+3. Add the custom domain `simonabarboiu.com` under Project → Settings → Domains.
+4. Set any environment variables (see below) under Project → Settings → Environment Variables.
 
-Your code is now at `github.com/<you>/<name>`.
+## Environment variables
 
-### 2. Create a Vercel account
+None are required for the current build. If/when the contact form (`app/api/contact/route.ts`) ships with email delivery, add the provider key (e.g. `RESEND_API_KEY`) in Vercel and document it in a `.env.example`. Until then the form uses a mailto fallback.
 
-Go to [vercel.com/signup](https://vercel.com/signup). Sign in with GitHub
-(easiest).
+## Before you push
 
-### 3. Install the Vercel GitHub app
-
-During signup Vercel will ask which repos it can access. Two options:
-
-- **All repositories** (fine for personal projects)
-- **Only select repositories** (more secure — pick just the one)
-
-### 4. Import the project into Vercel
-
-1. Vercel dashboard → **Add New → Project**
-2. Pick your GitHub repo from the list
-3. Vercel auto-detects **Framework Preset: Astro** — confirm it's set
-   to Astro, not "Other"
-4. **Root Directory**: leave blank (the project is at the repo root)
-5. **Build Command**: leave as-is (`npm run build`)
-6. **Output Directory**: leave blank (adapter handles it)
-7. **Node.js Version**: set to **22.x** (Vercel should auto-detect from
-   `.nvmrc`, but override in the UI to be safe)
-
-### 5. Environment variables
-
-If you haven't set any yet, skip this — every var is optional and the
-site will build fine without them.
-
-When you're ready to enable features:
-
-1. Project Settings → Environment Variables
-2. For each var, add to **all three scopes**: Production, Preview, Development
-3. The ones that unlock features:
-   - `RESEND_API_KEY` — contact form email send (Phase 3 feature)
-   - `PUBLIC_GA4_ID` — Google Analytics (when you launch)
-   - `PUBLIC_COOKIEYES_ID` — cookie banner (when you launch)
-4. See [`.env.example`](../.env.example) for the full list + notes
-
-### 6. Click Deploy
-
-Wait 1–3 minutes. Vercel builds your site and gives you a URL
-(`<name>-<hash>.vercel.app`). Click it — your site is live on the
-internet.
-
----
-
-## Day-to-day: deploying changes
-
-1. Make changes locally (`npm run dev` to preview)
-2. Commit via GitHub Desktop
-3. Push (or click "Push origin" in GitHub Desktop)
-4. Vercel auto-builds + deploys within 1–3 minutes
-
-Every PR gets a **preview URL** you can share before merging. `main`
-deploys to the production URL.
-
----
-
-## Custom domain
-
-1. Buy a domain (Namecheap, Cloudflare Registrar, Porkbun — any works)
-2. Vercel → Project → Settings → Domains → Add
-3. Vercel tells you the DNS records to add at your registrar
-4. Add them, wait 5–30 minutes for DNS to propagate
-5. Vercel auto-issues a Let's Encrypt cert; HTTPS works automatically
-
-Once it's live, update `astro.config.mjs` → `site:` to your real URL,
-and update `public/robots.txt` to reference the real sitemap URL. Commit
-and push.
-
----
-
-## When a deploy fails
-
-If the build fails, Vercel shows red in the dashboard. Click the failed
-deploy → expand **Build Logs**.
-
-**Common failure modes** (see [LESSONS-LEARNED.md](LESSONS-LEARNED.md)
-for details):
-
-| Symptom | Likely cause |
-|---|---|
-| Fails at `Building server entrypoints…` with no visible error | OOM or native-binary crash — switch to Turbo builder (60 GB) |
-| "Expected ':' but found ')'" in a generated chunk | Old esbuild; confirm `overrides` block in package.json forces 0.28+ |
-| "Module not found" | Case-sensitive import on Linux; check exact filename casing |
-| Pre-commit hook failed on CI | Run `npm run check && npm run lint` locally and fix |
-| Env var required but not set | Check Project Settings → Environment Variables |
-
-**Before blaming Vercel**: reproduce locally with a clean install.
-
-```sh
-rm -rf node_modules dist .astro
-npm ci
-npm run build
+```bash
+npm run lint
+npx tsc --noEmit
+npm run test:media   # if you added/moved files in public/
+npm run build        # catch build-time errors locally
 ```
 
-If local succeeds and Vercel fails, the failure is environment-specific.
-If local also fails, the bug is in the code.
+CI ([.github/workflows/quality-checks.yml](../.github/workflows/quality-checks.yml)) runs `test:media` + `build` on every push/PR, but it is not yet a merge gate — keep the local checks green.
 
----
+## Rollback
 
-## Rolling back
+In the Vercel dashboard → Deployments, find a previous green Production deployment and **Promote to Production**. Instant, no rebuild.
 
-Vercel keeps every deployment. To roll back:
+## Performance after deploy
 
-1. Deployments tab → find the last known-good deploy
-2. ⋯ menu → **Promote to Production**
-
-Takes effect in under 30 seconds; no rebuild required.
-
----
-
-## Cost
-
-The Vercel Hobby (free) tier covers:
-
-- 100 GB bandwidth / month
-- Unlimited deployments
-- Preview URLs on every PR
-- HTTPS + custom domains
-
-Small marketing sites rarely need more. If you exceed bandwidth you'll
-get an email before being charged.
+Add **Vercel Speed Insights** to capture field Core Web Vitals (INP only surfaces in real-user data). Targets: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1. Run Lighthouse against the deployed home page, a 3D project page, and the gallery — each has a different LCP element.

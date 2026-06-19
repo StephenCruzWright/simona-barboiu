@@ -1,6 +1,11 @@
 /**
  * Software registry. Source of truth for tools Simona uses.
- * Phase 5 will add real `logoSrc` paths and render badges on project pages.
+ *
+ * `logoSrc` is optional and currently unset — the software strip renders text
+ * pills as the baseline (and reduced-motion fallback). When monochrome /
+ * foreground-tinted logo SVGs are added under `public/software/<key>.svg`,
+ * set `logoSrc` here. Do NOT point `logoSrc` at files that don't exist yet
+ * (it would fail `npm run test:media`).
  */
 
 export type Software = {
@@ -18,6 +23,7 @@ export const SOFTWARE_KEYS = [
   "maya",
   "zbrush",
   "marvelous",
+  "houdini",
 ] as const;
 
 export type SoftwareKey = (typeof SOFTWARE_KEYS)[number];
@@ -31,6 +37,7 @@ export const SOFTWARE: Record<SoftwareKey, Software> = {
   maya:       { key: "maya",       label: "Maya" },
   zbrush:     { key: "zbrush",     label: "ZBrush" },
   marvelous:  { key: "marvelous",  label: "Marvelous Designer" },
+  houdini:    { key: "houdini",    label: "Houdini" },
 };
 
 export function getSoftware(key: SoftwareKey): Software {
