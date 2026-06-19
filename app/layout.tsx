@@ -9,6 +9,7 @@ import Cursor from "@/components/motion/Cursor";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import GrainOverlay from "@/components/motion/GrainOverlay";
 import SectionNavDots from "@/components/motion/SectionNavDots";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Inter from "next/font/local";
 
 const interFont = Inter({
@@ -49,8 +50,8 @@ export default function RootLayout({
         <RoutingNav />
         {children}
         <ScrollToTop />
-        <br />
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

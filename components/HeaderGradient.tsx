@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
+type Pt = { x: number; y: number };
+type TrailPoint = Pt & { age: number; force: number; vx: number; vy: number };
+
 class TouchTexture {
   size = 64;
   width = this.size;
@@ -9,8 +12,8 @@ class TouchTexture {
   maxAge = 64;
   radius = 0.25 * this.size;
   speed = 1 / this.maxAge;
-  trail: Array<any> = [];
-  last: any = null;
+  trail: TrailPoint[] = [];
+  last: Pt | null = null;
 
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
@@ -54,7 +57,7 @@ class TouchTexture {
     const speed = this.speed;
     for (let i = this.trail.length - 1; i >= 0; i--) {
       const point = this.trail[i];
-      let f = point.force * speed * (1 - point.age / this.maxAge);
+      const f = point.force * speed * (1 - point.age / this.maxAge);
       point.x += point.vx * f;
       point.y += point.vy * f;
       point.age++;
@@ -66,7 +69,7 @@ class TouchTexture {
     }
   }
 
-  drawPoint(point: any) {
+  drawPoint(point: TrailPoint) {
     const pos = {
       x: point.x * this.width,
       y: (1 - point.y) * this.height,
@@ -490,7 +493,7 @@ export default function HeaderGradient() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    let start = performance.now();
+    const start = performance.now();
     function tick(now: number) {
       if (!gl) return;
 
@@ -512,7 +515,7 @@ export default function HeaderGradient() {
           gl.UNSIGNED_BYTE,
           touch.canvas,
         );
-      } catch (err) {
+      } catch {
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 0);
         gl.texImage2D(
           gl.TEXTURE_2D,
@@ -546,7 +549,7 @@ export default function HeaderGradient() {
         gl.deleteProgram(program);
         gl.bindBuffer(gl.ARRAY_BUFFER, null);
         gl.deleteBuffer(buffer);
-      } catch (e) {
+      } catch {
         // ignore
       }
     };
