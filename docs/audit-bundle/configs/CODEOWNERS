@@ -1,0 +1,21 @@
+# Default owner for everything
+*                       @Cognisearch/admins
+
+# Security & CI gates
+/.github/               @Cognisearch/admins
+/biome.json             @Cognisearch/admins
+/lefthook.yml           @Cognisearch/admins
+/next.config.ts         @Cognisearch/admins
+/vercel.json            @Cognisearch/admins
+
+# Schema & SEO
+/src/app/layout.tsx     @Cognisearch/admins
+/src/app/sitemap.ts     @Cognisearch/admins
+/src/app/robots.ts      @Cognisearch/admins
+/src/app/manifest.ts    @Cognisearch/admins
+/public/llms.txt        @Cognisearch/admins
+
+# Docs (SOP + checklist)
+/docs/                  @Cognisearch/admins
+/CLAUDE.md              @Cognisearch/admins
+/AGENTS.md              @Cognisearch/admins

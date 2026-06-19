@@ -1,0 +1,10 @@
+version: 2
+
+triggerPaths:
+  - "package.json"
+  - "package-lock.json"
+
+githubApp:
+  enabled: true
+  dependencyOverviewEnabled: true
+  disableCommentsAndCheckRuns: false
