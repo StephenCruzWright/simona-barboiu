@@ -243,6 +243,17 @@ button.btn:hover {
   border-color: var(--accent);
 }
 
+/* Context label that rides with the cursor ("View" / "Zoom" / "View process"). */
+.custom-cursor-label {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+  white-space: nowrap;
+}
+
+.custom-cursor-label.is-visible {
+  opacity: 1;
+}
+
 /* Spotlight card — radial gradient that follows the cursor. */
 .spotlight-card::before {
   content: "";

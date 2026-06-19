@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -13,7 +14,8 @@ export default function Cursor() {
 
     const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!dot || !ring) return;
+    const label = labelRef.current;
+    if (!dot || !ring || !label) return;
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -38,6 +40,16 @@ export default function Cursor() {
       } else {
         ring.classList.remove("is-hovering");
       }
+
+      // Context label ("View" / "View process" / "Zoom" / "Drag").
+      const labelled = target?.closest<HTMLElement>("[data-cursor-label]");
+      const text = labelled?.dataset.cursorLabel ?? "";
+      if (text) {
+        label.textContent = text;
+        label.classList.add("is-visible");
+      } else {
+        label.classList.remove("is-visible");
+      }
     };
 
     const tick = () => {
@@ -48,6 +60,7 @@ export default function Cursor() {
 
       dot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
       ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      label.style.transform = `translate(${ringX}px, ${ringY}px) translate(18px, 18px)`;
 
       rafId = requestAnimationFrame(tick);
     };
@@ -78,6 +91,12 @@ export default function Cursor() {
         ref={ringRef}
         className="custom-cursor-ring pointer-events-none fixed top-0 left-0 h-9 w-9 rounded-full border border-foreground/70 mix-blend-difference transition-[width,height,opacity] duration-300 ease-out"
         style={{ zIndex: 9998, transform: "translate(-100px, -100px)" }}
+        aria-hidden
+      />
+      <div
+        ref={labelRef}
+        className="custom-cursor-label pointer-events-none fixed top-0 left-0 rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-black"
+        style={{ zIndex: 9999, transform: "translate(-100px, -100px)" }}
         aria-hidden
       />
     </>
