@@ -7,11 +7,30 @@
   --footer-foreground: #6D6D6D;
   --accent: #eb742a;
   --grey-button: #585858;
+
+  /* Warm surface ramp (luminance-elevation). On a dark canvas shadows don't
+     read, so depth comes from surfaces getting LIGHTER as they come forward.
+     surface-0 = page; cards → surface-1; hover → surface-2; lightbox → surface-3. */
+  --surface-0: #222222;
+  --surface-1: #2a2826;
+  --surface-2: #322f2c;
+  --surface-3: #3a3633;
+  /* Hairline border for framing artwork / cards on the dark base. */
+  --hairline: rgba(241, 240, 236, 0.10);
+  /* Accent in rgba form for low-opacity glows/shadows (keeps #eb742a single-source). */
+  --accent-rgb: 235, 116, 42;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  /* Surface ramp → Tailwind utilities: bg-surface-1, border-surface-2, etc. */
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-hairline: var(--hairline);
   --font-regular: var(--font-inter, --font-roboto-slab, system-ui, sans-serif);
 
   /* Motion — easing curves and durations for hover/transition consistency. */
@@ -108,10 +127,6 @@ header nav a:hover {
   color: var(--accent);
 }
 
-footer nav a:hover {
-  opacity: 0.7;
-}
-
 footer {
   background: var(--footer-background);
   color: var(--footer-foreground);
@@ -157,6 +172,21 @@ a {
 
 a:hover {
   color: var(--accent);
+}
+
+/* Keyboard focus — a high-contrast accent ring + offset (shape, not just
+   colour). Essential because the custom cursor hides the native pointer; the
+   ring keeps keyboard users oriented. Only shows for keyboard/AT focus. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 button.btn {
@@ -228,6 +258,17 @@ button.btn:hover {
   border-color: var(--accent);
 }
 
+/* Context label that rides with the cursor ("View" / "Zoom" / "View process"). */
+.custom-cursor-label {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+  white-space: nowrap;
+}
+
+.custom-cursor-label.is-visible {
+  opacity: 1;
+}
+
 /* Spotlight card — radial gradient that follows the cursor. */
 .spotlight-card::before {
   content: "";
@@ -258,6 +299,100 @@ button.btn:hover {
 .hover-glow:hover {
   color: var(--accent);
   text-shadow: 0 0 14px rgba(235, 116, 42, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Phase 2 — Surface framing, link glow, dithered ambient.
+   Brand-colour-only; depth from luminance + texture, never a new colour.
+   ───────────────────────────────────────────────────────────────────── */
+
+/* .link-glow — the literal "glow on hover" for nav + inline links:
+   accent colour shift + an animated underline wipe + a soft text-shadow.
+   Apply to nav links and emphasis links for a single consistent treatment. */
+.link-glow {
+  position: relative;
+  color: inherit;
+  transition: color var(--duration-normal) var(--ease-smooth),
+              text-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.link-glow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.link-glow:hover,
+.link-glow:focus-visible {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(var(--accent-rgb), 0.40);
+}
+
+.link-glow:hover::after,
+.link-glow:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* .art-frame — frames dark-edged artwork so it doesn't dissolve into the
+   #222 void: an elevated surface, a hairline border, and an inner vignette. */
+.art-frame {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.art-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.35);
+}
+
+/* .bg-ambient-radial — the ONE optional ambient background for a dark section
+   (e.g. a project page header). A warm radial dialled low, with a fine static
+   noise overlay that doubles as dithering to kill banding on #222. */
+.bg-ambient-radial {
+  position: relative;
+  isolation: isolate;
+}
+
+.bg-ambient-radial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%,
+      rgba(var(--accent-rgb), 0.10),
+      transparent 60%),
+    radial-gradient(100% 60% at 50% 0%,
+      var(--surface-1),
+      var(--surface-0) 70%);
+}
+
+/* Dither/grain overlay for the ambient — repeating fractal noise at very low
+   opacity removes visible gradient banding without a shader. */
+.bg-ambient-radial::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {

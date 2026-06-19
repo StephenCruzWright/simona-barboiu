@@ -15,9 +15,14 @@
 
 ## About
 
-This is the portfolio website made for Simona Barboiu, a multifaceted 3D/2D artist/designer and is actively hosted with vercel on [simonabarboiu.com](https://simonabarboiu.com)
+This is the portfolio website made for Simona Barboiu, a multifaceted 3D/2D artist/designer, actively hosted with Vercel on [simonabarboiu.com](https://simonabarboiu.com).
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Built with **Next.js 16** (App Router) + **React 19**, **Tailwind CSS v4** (CSS-first `@theme`), **TypeScript** (strict), and a motion stack of **GSAP + ScrollTrigger**, **Lenis** (smooth scroll), and **Split-Type**, plus **Three.js** for the WebGL hero. Bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+### Documentation
+
+- [CLAUDE.md](CLAUDE.md) — project context, brand, conventions, and the redesign roadmap (current status of every phase).
+- [docs/design-research.md](docs/design-research.md) — the verified research synthesis (best-in-class web design patterns) driving the redesign.
 
 ## Preview
 
@@ -43,29 +48,27 @@ This project's workflow is managed via the github Kanban board project, and it r
 
 
 ## Getting Started
+
 First, install the dependencies:
 
 ```bash
-pnpm install 
-
+pnpm install
 ```
 
-Then, build the development server:
+Then run the development server:
 
 ```bash
-
-pnpm run build
-
-```
-
-Then, run the development server:
-
-```bash
-
 pnpm run dev
-
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page auto-updates as you edit files (start with `app/page.tsx`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
+
+| Script | What it does |
+| --- | --- |
+| `pnpm run dev` | Start the Next.js dev server (HMR) at http://localhost:3000 |
+| `pnpm run build` | Production build |
+| `pnpm run start` | Serve the production build |
+| `pnpm run lint` | ESLint (run with `npx tsc --noEmit` before committing) |
+| `pnpm run test:media` | Validate media references after adding/moving files in `public/` |

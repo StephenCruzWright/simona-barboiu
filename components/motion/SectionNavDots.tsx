@@ -33,8 +33,14 @@ export default function SectionNavDots() {
       });
     });
 
+    // Reading the mounted DOM for `[data-nav-section]` elements is an
+    // external-system read — the legitimate use of an effect — so syncing the
+    // discovered sections into state here is intentional, not a render-derived
+    // value. (This runs once on mount.)
+    /* eslint-disable react-hooks/set-state-in-effect */
     setSections(list);
     setActive(list[0]?.id ?? null);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const observer = new IntersectionObserver(
       (entries) => {
