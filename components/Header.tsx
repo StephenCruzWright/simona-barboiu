@@ -99,60 +99,60 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-black/80">
+        <div className="md:hidden">
+          {/* Backdrop */}
           <button
             aria-label="Close menu"
-            className="fixed inset-0 z-40"
+            className="fixed inset-0 z-58 bg-black/60 backdrop-blur-sm"
             onClick={close}
           />
+          {/* Panel — opaque, near-fullscreen, above the grain overlay (z-55) */}
           <div
             id={panelId}
-            className="fixed right-0 top-0 z-50 h-screen w-60 p-6 shadow-xl bg-black/80"
+            className="fixed right-0 top-0 z-60 flex h-dvh w-full max-w-sm flex-col bg-surface-1 p-6 shadow-2xl"
           >
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="relative">
-              <div className="flex items-center justify-between text-xl">
-                <div />
-                <button
-                  type="button"
-                  className="rounded-mdpx-6 py-5 px-6 hover:opacity-70 transition-opacity select-none"
-                  aria-label="Close menu"
-                  onClick={close}
-                />
+            <div className="flex items-center justify-end">
+              <button
+                type="button"
+                className="-mr-2 rounded-md p-2 text-3xl leading-none transition-opacity hover:opacity-70"
+                aria-label="Close menu"
+                onClick={close}
+              >
+                &times;
+              </button>
+            </div>
+
+            <nav className="mt-4 flex flex-col gap-6 text-lg">
+              <div>
+                <Link href="/projects" onClick={close} className="link-glow w-fit">
+                  Projects
+                </Link>
+                <div className="mt-3 flex flex-col gap-2 text-sm opacity-80">
+                  <Link href="/projects/viz/vintage-flower-lamps" onClick={close} className="link-glow w-fit">
+                    Vintage Flower Lamps
+                  </Link>
+                  <Link href="/projects/viz/flower-alley" onClick={close} className="link-glow w-fit">
+                    Flower Alley
+                  </Link>
+                  <Link href="/projects/environments/greek-house" onClick={close} className="link-glow w-fit">
+                    Greek House
+                  </Link>
+                  <Link href="/projects/interactive/paxvr" onClick={close} className="link-glow w-fit">
+                    Pax VR
+                  </Link>
+                  <Link href="/projects/illustration" onClick={close} className="link-glow w-fit">
+                    Illustration
+                  </Link>
+                </div>
               </div>
 
-              <nav className="mt-6 flex flex-col gap-6 text-lg">
-                <div>
-                  <Link href="/#projects" onClick={close}>
-                    Projects
-                  </Link>
-                  <div className="mt-2 flex flex-col gap-1 text-sm opacity-80">
-                    <Link href="/projects/viz/vintage-flower-lamps" onClick={close}>
-                      Vintage Flower Lamps
-                    </Link>
-                    <Link href="/projects/viz/flower-alley" onClick={close}>
-                      Flower Alley
-                    </Link>
-                    <Link href="/projects/environments/greek-house" onClick={close}>
-                      Greek House
-                    </Link>
-                    <Link href="/projects/interactive/paxvr" onClick={close}>
-                      Pax VR
-                    </Link>
-                    <Link href="/projects/illustration" onClick={close}>
-                      Illustration
-                    </Link>
-                  </div>
-                </div>
-
-                <Link href="/work" onClick={close}>
-                  Work Experience
-                </Link>
-                <Link href="/about" onClick={close}>
-                  About &amp; Contact
-                </Link>
-              </nav>
-            </div>
+              <Link href="/work" onClick={close} className="link-glow w-fit">
+                Work Experience
+              </Link>
+              <Link href="/about" onClick={close} className="link-glow w-fit">
+                About &amp; Contact
+              </Link>
+            </nav>
           </div>
         </div>
       )}

@@ -11,8 +11,10 @@ export default function SideTitle({ className }: { className?: string }) {
 
   return (
     <div
+      aria-hidden
       className={`
-        z-10 absolute 
+        z-10 absolute
+        hidden xl:block
         origin-left -rotate-90
         whitespace-nowrap
         text-5xl font-semibold opacity-90

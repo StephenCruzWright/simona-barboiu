@@ -123,7 +123,7 @@ export default function ProjectLayout({
               <MediaCard
                 key={`${image.src}-${i}`}
                 image={image}
-                className="h-full"
+                className={`h-full ${image.type === "video" ? "md:col-span-2" : ""}`}
               />
             ))}
           </div>

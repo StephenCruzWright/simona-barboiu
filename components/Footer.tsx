@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const CONTACT_EMAIL = "simonab@gmail.com";
+const CONTACT_EMAIL = "simonab518@gmail.com";
 
 export default function Footer() {
   return (
