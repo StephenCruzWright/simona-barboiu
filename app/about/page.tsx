@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 
-const CONTACT_EMAIL = "simonab@gmail.com";
+const CONTACT_EMAIL = "simonab518@gmail.com";
 
 export const metadata: Metadata = {
   title: "About & Contact — Simona Barboiu",
@@ -40,7 +40,7 @@ export default function AboutPage() {
           </h1>
           <p
             data-reveal
-            className="text-body text-[color-mix(in_srgb,var(--foreground)_85%,transparent)]"
+            className="text-body max-w-prose text-[color-mix(in_srgb,var(--foreground)_85%,transparent)]"
           >
             Hi, I&apos;m Simona, a 3D / 2D artist with several years of
             professional experience working across real-time projects, product
